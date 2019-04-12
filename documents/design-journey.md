@@ -52,14 +52,11 @@ Example:
 
 [Note: There is no specific amount to write here. You simply need enough content to do the job.]
 
-Example:
 - **Navigation**
-  - Home
-  - Portfolio
-    - Websites
-    - Mobile Apps
-    - Tablets
-  - About Me
+  - Home/ About
+  - Gallery
+    - View Single Image Fullscreen
+  - Contact Us/ Upload a File
 
 - **Content** (List all the content corresponding to main navigation and sub-categories.)
   - *Portfolio*: list all the projects (as images) this client has worked on. When the image is hovered over, display a description of the project; add a search function to enable users search for specific projects;
@@ -74,9 +71,19 @@ Example:
 
 ## Interactivity
 
-[What interactive features will your site have? What PHP elements will you include?]
+- **Interactivity**
+  - Users (login + logout)
+  - Sessions
+  - Gallery with user controls
+    - Uploading images
+    - Viewing a single image if you click it
+    - Tags (may not be necessary ?????)
+  - Art request form
+    - Sticky
+    - Feedback
+  - Image Upload Form
+    - Feedback
 
-[Also, describe how the interactivity connects with the needs of the clients/target audience.]
 
 
 ## Work Distribution
@@ -85,6 +92,7 @@ Example:
 
 [Set internal deadlines. Determine your internal dependencies. Whose task needs to be completed first in order for another person's task to be relevant? Be specific in your task descriptions so that everyone knows what needs to be done and can track the progress effectively. Consider how much time will be needed to review and integrate each other's work. Most of all, make sure that tasks are balanced across the team.]
 
+- **How we are initially planning to split up the workload:**
   - Home/About Page + Login/Logout/Sessions
   - Gallery + Query String Parameter → viewing a single image on a page
   - Form upload image (sticky w/ feedback) + Initial CSS (general site layout)
