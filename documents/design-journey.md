@@ -7,9 +7,7 @@ Your Team Name: White-Mammoth
 
 ## Client Description
 
-[Tell us about your client. Who is your client? What kind of website do they want? What are their key goals?]
-
-[NOTE: If you are redesigning an existing website, give us the current URL and some screenshots of the current site. Tell us how you plan to update the site in a significant way that meets the final project requirements.]
+Our client is a freelance artist named Jennifer Gibson.
 
 
 ## Meeting Notes
@@ -19,7 +17,7 @@ Your Team Name: White-Mammoth
 
 ## Purpose & Content
 
-[Tell us the purpose of the website and what it is all about.]
+Our client requested that we make her a website that could serve as a gallery for her artwork, as well as a way to attract and interact with potential clients. This would mean that our website's content would be her art, and forms to allow her to upload her newer art and a contact/ art request form.
 
 
 ## Target Audience(s)
@@ -86,11 +84,6 @@ Example:
 [Describe how each of your responsibilities will be distributed among your group members.]
 
 [Set internal deadlines. Determine your internal dependencies. Whose task needs to be completed first in order for another person's task to be relevant? Be specific in your task descriptions so that everyone knows what needs to be done and can track the progress effectively. Consider how much time will be needed to review and integrate each other's work. Most of all, make sure that tasks are balanced across the team.]
-  - Home/About Page + Login/Logout/Sessions
-  - Gallery + Query String Parameter → viewing a single image on a page
-  - Form upload image (sticky w/ feedback) + Initial CSS (general site layout)
-  - Request Commission Form (sticky w/ feedback) + Nav bar
-
 
 ## Additional Comments
 
