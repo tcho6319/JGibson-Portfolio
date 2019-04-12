@@ -86,6 +86,11 @@ Example:
 [Describe how each of your responsibilities will be distributed among your group members.]
 
 [Set internal deadlines. Determine your internal dependencies. Whose task needs to be completed first in order for another person's task to be relevant? Be specific in your task descriptions so that everyone knows what needs to be done and can track the progress effectively. Consider how much time will be needed to review and integrate each other's work. Most of all, make sure that tasks are balanced across the team.]
+  - Home/About Page + Login/Logout/Sessions
+  - Gallery + Query String Parameter → viewing a single image on a page
+  - Form upload image (sticky w/ feedback) + Initial CSS (general site layout)
+  - Request Commission Form (sticky w/ feedback) + Nav bar
+
 
 ## Additional Comments
 
