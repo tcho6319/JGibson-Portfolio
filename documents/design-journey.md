@@ -1,6 +1,6 @@
 # Project 4: Design Journey
 
-Your Team Name: [your team name]
+Your Team Name: White-Mammoth
 
 **All images must be visible in Markdown Preview. No credit will be provided for images in your repository that are not properly linked in Markdown. Assume all file paths are case sensitive!**
 
