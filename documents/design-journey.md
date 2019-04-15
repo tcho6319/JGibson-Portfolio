@@ -11,8 +11,26 @@ Our client is a freelance artist named Jennifer Gibson.
 
 
 ## Meeting Notes
+In-person meeting with client: 4/15/19
+Purpose of Client's Website (Like a portfolio):
+- Children's illustration work to show to art directors
+  - Art directors mostly in NY. Working in print publishing for children's illustrations and smaller publishers.
+  - As
+- To showcase older pieces for purchase
+  - Local people
+  - Galleries
+- Commissions
+  - Local people
+  - Galleries
 
-[By this point, you have met once with your client to discuss all their requirements. Include your notes from the meeting, an email they sent you, or whatever you used to keep track of what was discussed at the meeting. Include these artifacts here.]
+- Clean, white background. Put focus on the art work.
+- Likes idea of filtering gallery images. Would like to keep the categories she has on her squarespace site. For example, her illustrations category is specifically geared toward art directors for potetntial children's illustration work.
+- Likes the form ideas
+- Concerns: Image size and resolution. Would like good resolution for images and sizes that would be appropriate (i.e. so that user would not have to scroll to see the entire piece).
+- We should give client ability to delete her images
+- Client will send content/images, possibly login so we can access her squarespace site, and details about her pieces (title, date, description like what media she used).
+
+- Theresa's question to the rest of the group: Should we give the client the option to edit the title, date, description of a single image? This is in case she adds an image where her description has a typo or something.
 
 
 ## Purpose & Content
