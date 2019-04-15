@@ -42,6 +42,15 @@ Our client requested that we make her a website that could serve as a gallery fo
 
 [Tell us about the potential audience for this website. How, when, and where would they interact with the website? Get as much detail as possible from the client to help you find representative users.]
 
+Based on our meeting with the client, there are three main target audiences.
+
+The first target audience is art directors interested in childrens illustration work. Most of these art directors would live in NY. They would interact with the site to see her work and decide if they would like to publish it.
+
+The second target audience is local people and galleries who may be interested in showcasing the client's older pieces for purchase. They would interact with the site similarly to the directors by viewing her portfolio and decided if they would like to showcase her work.
+
+The third target audience would be local people/galleries who want to buy art directly from the client. Rather than viewing the website for publishing or showcasing purposes, they would be decideding if they are interested in buying her work for themselves.
+
+All of the target audiences would find the client's website through her referral to the site. They would interact with it on a personal or work computer to view the clients artwork and learn a bit about the artist. The client hopes to use the website as a portfolio.
 
 ## Client Requirements & Target Audiences' Needs
 
