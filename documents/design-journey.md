@@ -12,10 +12,10 @@ Our client is a freelance artist named Jennifer Gibson.
 
 ## Meeting Notes
 In-person meeting with client: 4/15/19
+
 Purpose of Client's Website (Like a portfolio):
 - Children's illustration work to show to art directors
   - Art directors mostly in NY. Working in print publishing for children's illustrations and smaller publishers.
-  - As
 - To showcase older pieces for purchase
   - Local people
   - Galleries
