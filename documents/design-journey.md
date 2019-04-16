@@ -101,20 +101,42 @@ All of the target audiences would find the client's website through her referral
 [Note: There is no specific amount to write here. You simply need enough content to do the job.]
 
 - **Navigation**
-  - Home/ About
+  - Home
+  - About
   - Gallery
     - View Single Image Fullscreen
-  - Contact Us/ Upload a File
+  - Contact / Upload a File
 
 - **Content** (List all the content corresponding to main navigation and sub-categories.)
-  - *Portfolio*: list all the projects (as images) this client has worked on. When the image is hovered over, display a description of the project; add a search function to enable users search for specific projects;
-  - *Websites*: showcase all the websites designed by the client, with thumbnail images and a brief description for each design;
-  - *Mobile Apps*: showcase all the mobile apps designed by the client, with thumbnail images and a brief description for each design;
-  - *Tablets*: showcase all the tablet applications designed by the client, with thumbnail images and a brief description for each design;
+  - *Home*
+    - Short introduction
+    - Single image of our clicnet's painting that can represent her art style
+    - Short discription of the painting
+  - *About*
+    - Describe who Jennifer Gibson is
+    - Past events
+      - Exhibitions
+      - Publications
+      - Education
+  - *Gallery*:
+    -  Four categories for her four different styles
+      - outdoor
+      - portraits
+      - illustration
+      - personal
+    - When one category is clicked, paintings under the category will pop up
+    - When one painting is clicked, full image of the painting and short discription will pop up
+  - *Contact*:
+    - Contact information
+      - fb, instagram, email, phone number ... (Or should we put this in the footer?)
+    - Form that asks users to input and submit their full name, email, phone number, and comments that will be sent to our client
 
 - **Process**
   - [photo of card sort]
+  ![](cardsorting1-1.jpeg)
+
   - [explanation of how your come up with your content organization and navigation.]
+    - We brainstormed together based on the information given from the first meeting with our client.
 
 
 ## Interactivity
