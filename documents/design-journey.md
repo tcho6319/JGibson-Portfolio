@@ -4,16 +4,16 @@ Your Team Name: White-Mammoth
 
 **All images must be visible in Markdown Preview. No credit will be provided for images in your repository that are not properly linked in Markdown. Assume all file paths are case sensitive!**
 
-
 ## Client Description
 
 Our client is a freelance artist named Jennifer Gibson.
 
-
 ## Meeting Notes
+
 In-person meeting with client: 4/15/19
 
 Purpose of Client's Website (Like a portfolio):
+
 - Children's illustration work to show to art directors
   - Art directors mostly in NY. Working in print publishing for children's illustrations and smaller publishers.
 - To showcase older pieces for purchase
@@ -32,11 +32,9 @@ Purpose of Client's Website (Like a portfolio):
 
 - Theresa's question to the rest of the group: Should we give the client the option to edit the title, date, description of a single image? This is in case she adds an image where her description has a typo or something.
 
-
 ## Purpose & Content
 
-Our client requested that we make her a website that could serve as a gallery for her artwork, as well as a way to attract and interact with potential clients. This would mean that our website's content would be her art, and forms to allow her to upload her newer art and a contact/ art request form.
-
+Our client requested that we make her a new, improved website that could serve as a gallery for her artwork, as well as a way to attract potential clients. This would mean that our website's content would be her art as well as information regarding her previous projects, and forms to allow her to upload her new art and a contact/ art request form.
 
 ## Target Audience(s)
 
@@ -46,7 +44,7 @@ The first target audience is art directors interested in childrens illustration 
 
 The second target audience is local people and galleries who may be interested in showcasing the client's older pieces for purchase. They would interact with the site similarly to the directors by viewing her portfolio and decided if they would like to showcase her work.
 
-The third target audience would be local people/galleries who want to buy art directly from the client. Rather than viewing the website for publishing or showcasing purposes, they would be decideding if they are interested in buying her work for themselves.
+The third target audience would be local people/galleries who want to buy art directly from the client. Rather than viewing the website for publishing or showcasing purposes, they would be deciding if they are interested in buying her work for themselves.
 
 All of the target audiences would find the client's website through her referral to the site. They would interact with it on a personal or work computer to view the clients artwork and learn a bit about the artist. The client hopes to use the website as a portfolio.
 
@@ -84,13 +82,12 @@ All of the target audiences would find the client's website through her referral
   - **Rationale** [Justify your decisions; additional notes.]
     - The client should be able to justify her artwork ongoing, so she should be able to edit her description of the image. Another example may be if a piece wins a reward and she wants to mention that in the image description.
 
-
 ## Initial Design
 
 [Include exploratory idea sketches of your website.]
-![](sketch1-1.jpeg)
-![](sketch1-2.jpeg)
-![](sketch1-3.jpeg)
+![sketch1-1](sketch1-1.jpeg)
+![sketch1-2](sketch1-2.jpeg)
+![sketch1-3](sketch1-3.jpeg)
 
 ## Information Architecture, Content, and Navigation
 
@@ -119,7 +116,7 @@ All of the target audiences would find the client's website through her referral
       - Publications
       - Education
   - *Gallery*:
-    -  Four categories for her four different styles
+    - Four categories for her four different styles
       - outdoor
       - portraits
       - illustration
@@ -133,11 +130,10 @@ All of the target audiences would find the client's website through her referral
 
 - **Process**
   - [photo of card sort]
-  ![](cardsorting1-1.jpeg)
+  ![card sorting](cardsorting1-1.jpeg)
 
   - [explanation of how your come up with your content organization and navigation.]
     - We brainstormed together based on the information given from the first meeting with our client.
-
 
 ## Interactivity
 
@@ -153,8 +149,6 @@ All of the target audiences would find the client's website through her referral
     - Feedback
   - Image Upload Form
     - Feedback
-
-
 
 ## Work Distribution
 
@@ -172,6 +166,7 @@ All of the target audiences would find the client's website through her referral
 
 [If you feel like you haven't fully explained your design choices, or if you want to explain some other functions in your site (such as special design decisions that might not meet the final project requirements), you can use this space to justify your design choices or ask other questions about the project and process.]
 
+All of the content (both images and text) we plan on using has been provided on her current website, <https://www.jgibsonillustration.com>. However, outside of some organizational structures, we will be completely redesigning her website from scratch.
 
 --- <!-- ^^^ Milestone 1; vvv Milestone 2 -->
 
