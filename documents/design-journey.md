@@ -88,7 +88,9 @@ All of the target audiences would find the client's website through her referral
 ## Initial Design
 
 [Include exploratory idea sketches of your website.]
-
+![](sketch1-1.jpeg)
+![](sketch1-2.jpeg)
+![](sketch1-3.jpeg)
 
 ## Information Architecture, Content, and Navigation
 
