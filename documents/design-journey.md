@@ -40,8 +40,6 @@ Our client requested that we make her a website that could serve as a gallery fo
 
 ## Target Audience(s)
 
-[Tell us about the potential audience for this website. How, when, and where would they interact with the website? Get as much detail as possible from the client to help you find representative users.]
-
 Based on our meeting with the client, there are three main target audiences.
 
 The first target audience is art directors interested in childrens illustration work. Most of these art directors would live in NY. They would interact with the site to see her work and decide if they would like to publish it.
@@ -54,16 +52,37 @@ All of the target audiences would find the client's website through her referral
 
 ## Client Requirements & Target Audiences' Needs
 
-[Collect your client's needs and wants for the website. Come up with several appropriate design ideas on how those needs may be met. In the **Rationale** field, justify your ideas and add any additional comments you have. There is no specific number of needs required for this, but you need enough to do the job.]
+- Client requirement
+  - **Requirement**
+    - Client wants a clean, white background in order to not distract from her artwork
+  - **Design Ideas & Choices**
+    - We will adhere to the clients wishes by making the background white and creating a minimalist look.
+  - **Rationale**
+    - The client wants the focus to be on her art work. She doesn't want the target audience to be distracted by the design of the website and take away from its purpose.
 
-Example:
-- (_pick one:_) Client Requirement/Target Audience Need
-  - **Requirement or Need** [What does your client and audience need or want?]
-    - Client wants to cater to people who speak different languages.
-  - **Design Ideas and Choices** [How will you meet those needs or wants?]
-    - Create web-pages manually in multiple languages.
+- Target Audience Need
+  - **Need**
+    - Client wants to filter gallery images the way they are currently filtered on her website. Filtering helps the target audience by making it easier to find the type of art they are looking for.
+  - **Design Ideas and Choices**
+    - We will have four separate galleries for her 4 different styles - outdoor, portraits,  illustration, and personal.
+  - **Rationale**
+    - The target audiences will likely have 1/4 styles in their mind when visiting the client's website, so we will make it simple for them to find the type of art they're looking for.
+
+- Client Requirement
+  - **Requirement**
+    - The client wants to make sure that each image is the appropriate size and resolution.
+  - **Design Ideas and Choices**
+    - We will design the website so that the user can view each image on their browser without having to scroll up/down to view the image.
+  - **Rationale**
+    - Make the images a good size so that the target audience can consume them, but not too big that they are longer than the length of the website page.
+
+- Client Requirement
+  - **Requirement**
+    - The client wants to be able to edit images in her gallery (e.g. be able to delete an image, send an image, have titles/dates/descriptions of media)
+  - **Design Ideas and Choices**
+    - We will design the website so that when the client uploads an image she can add a title, date, and description of the media. In addition, after uploading she should be able to edit these pieces of information about the image.
   - **Rationale** [Justify your decisions; additional notes.]
-    - Create multiple pages in multiple languages manually.
+    - The client should be able to justify her artwork ongoing, so she should be able to edit her description of the image. Another example may be if a piece wins a reward and she wants to mention that in the image description.
 
 
 ## Initial Design
