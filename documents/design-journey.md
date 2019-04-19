@@ -141,9 +141,13 @@ All of the target audiences would find the client's website through her referral
   - Users (login + logout)
   - Sessions
   - Gallery with user controls
-    - Uploading images
-    - Viewing a single image if you click it
-    - Tags (may not be necessary ?????)
+    - Tags + Description
+    - Viewing a single image in a larger format if you click it
+      - Arrow buttons to cycle through images in gallery in larger format
+      - Add tag forms
+      - Remove tag forms
+      - Delete image button
+    - Searching by both tags and description
   - Art request form
     - Sticky
     - Feedback
