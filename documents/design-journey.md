@@ -161,10 +161,10 @@ All of the target audiences would find the client's website through her referral
 [Set internal deadlines. Determine your internal dependencies. Whose task needs to be completed first in order for another person's task to be relevant? Be specific in your task descriptions so that everyone knows what needs to be done and can track the progress effectively. Consider how much time will be needed to review and integrate each other's work. Most of all, make sure that tasks are balanced across the team.]
 
 - **How we are initially planning to split up the workload:**
-  - Home/About Page + Login/Logout/Sessions
-  - Gallery + Query String Parameter → viewing a single image on a page
-  - Form upload image (sticky w/ feedback) + Initial CSS (general site layout)
-  - Request Commission Form (sticky w/ feedback) + Nav bar
+  - Home/About Page + Login/Logout/Sessions + Request Commission Form (sticky w/ feedback) + Nav bar
+  - Gallery Page + Search Bar
+  - Sticky form to upload image (sticky w/ feedback) + Initial CSS (general site layout) + Forms for editing details for single image on page (add/remove tags, delete image)
+  - Query String Parameter → viewing a single image on a page + functionality for arrow buttons to cycle through images on each single image page
 
 ## Additional Comments
 
