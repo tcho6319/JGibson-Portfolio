@@ -161,11 +161,36 @@ All of the target audiences would find the client's website through her referral
 [Set internal deadlines. Determine your internal dependencies. Whose task needs to be completed first in order for another person's task to be relevant? Be specific in your task descriptions so that everyone knows what needs to be done and can track the progress effectively. Consider how much time will be needed to review and integrate each other's work. Most of all, make sure that tasks are balanced across the team.]
 
 - **How we are initially planning to split up the workload:**
-  - Home/About Page + Login/Logout/Sessions + Request Commission Form (sticky w/ feedback) + Nav bar
-  - Gallery Page + Search Bar
-  - Sticky form to upload image (sticky w/ feedback) + Initial CSS (general site layout) + Forms for editing details for single image on page (add/remove tags, delete image)
-  - Query String Parameter → viewing a single image on a page + functionality for arrow buttons to cycle through images on each single image page
+  - Jinny: Home/About Page + Login/Logout/Sessions + Request Commission Form (sticky w/ feedback) + Nav bar + Design Sketcher
+  - Shae: Gallery Page + Search Bar + Client Liason
+  - Cora: Sticky form to upload image (sticky w/ feedback) + Initial CSS (general site layout) + Forms for editing details for single image on page (add/remove tags, delete image) + GenderMag evaluation facilitator
+  - Theresa: Query String Parameter → viewing a single image on a page + functionality for arrow buttons to cycle through images on each single image page + Design Journey Editor
 
+  Each person will add to the pseudocode planning section if need be or update the db schema for any relevant tables for their certain tasks.
+
+
+- **Internal Deadlines (may change):**
+  - By Tues 4/23: GenderMag Eval Completed, Design is Finalized
+  - By Thurs 4/25 or Fri 4/26:
+    1. Implement Home/About Page
+    2. Initial CSS
+    3. Login/Logout/Sessions
+    4. Nav Bar
+    5. Seed data for database in init.php
+
+  - By Sat 4/28:
+    6. Gallery Page
+
+  - By Thurs 5/2 (doesn't have to be sticky forms yet; basic functionality and CSS)
+    7. Search Bar, Upload image form, QSP single page
+    8. Forms for editing details for single image
+    9. Request commission form
+
+  - By Sat 5/4:
+    10. Functionality for arrow buttons
+
+  - By DEADLINE 5/7:
+    - All aspects fully functional. Style should be done. Forms sticky.
 ## Additional Comments
 
 [If you feel like you haven't fully explained your design choices, or if you want to explain some other functions in your site (such as special design decisions that might not meet the final project requirements), you can use this space to justify your design choices or ask other questions about the project and process.]
