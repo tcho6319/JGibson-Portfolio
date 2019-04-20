@@ -266,9 +266,33 @@ Task 2:
 
 [Describe the structure of your database. You may use words or a picture. A bulleted list is probably the simplest way to do this.]
 
-Table: movies
-* field 1: description...
-* field...
+```
+user (
+id : INTEGER {PK, U, Not, AI}
+name : TEXT {Not}
+username : TEXT {Not}
+password : TEXT {Not}
+)
+
+images (
+id : INTEGER {PK, U, Not, AI}
+filename : TEXT {Not}
+ext : TEXT {Not}
+description : TEXT
+user_id : INTEGER {Not}
+)
+
+tags (
+id : INTEGER {PK, U, Not, AI}
+tag : TEXT {Not}
+)
+
+image_tags (
+id : INTEGER {PK, U, Not, AI}
+tag_id : TEXT {Not}
+image_id : TEXT {Not}
+)
+```
 
 
 ## Database Queries
@@ -280,9 +304,16 @@ Table: movies
 
 [List the PHP files you will have. You will probably want to do this with a bulleted list.]
 
-* index.php - main page.
+* index.php - home page.
+* about.php - about page.
+* gallery.php - gallery page.
+* contact.php - contact (and also upload) page.
+* singleimage.php - page used to view an image in fullscreen.
 * includes/init.php - stuff that useful for every web page.
-* TODO
+* includes/header.php - a header for every web page.
+* includes/footer.php - a footer for every web page.
+* includes/contactform.php - the contact form.
+* includes/uploadform.php - the image upload form.
 
 
 ## Pseudocode
