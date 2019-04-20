@@ -199,6 +199,15 @@ All of the content (both images and text) we plan on using has been provided on 
 
 --- <!-- ^^^ Milestone 1; vvv Milestone 2 -->
 
+- New sketches after getting the feedback from the Milestone 1
+![sketch2-1](sketch2-1.jpg)
+![sketch2-2](sketch2-2.jpg)
+![sketch2-3](sketch2-3.jpg)
+![sketch2-4](sketch2-4.jpg)
+![sketch2-5](sketch2-5.jpg)
+![sketch2-6](sketch2-6.jpg)
+![sketch2-7](sketch2-7.jpg)
+
 ## Client Feedback
 
 [Share the feedback notes you received from your client about your initial design.]
