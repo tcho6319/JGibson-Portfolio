@@ -267,9 +267,9 @@ Here are screenshots of the client's original website:
 
 [Pick a persona that you believe will help you address the gender bias within your design.]
 
-I've selected **[Abby/Patricia/Patrick/Tim]** as my persona.
+I've selected Abby as my persona.
 
-I've selected my persona because... [Tell us why you picked your persona in 1-3 sentences. Your explanation should include why your persona will help you address gender-inclusiveness bugs in your design.]
+I've selected my persona because Abby has the hardest time adapting to new technology. It is important that we don't assume the users of our client's website, or our client herself, are technologically adapted.
 
 ### Tasks
 
@@ -277,34 +277,213 @@ I've selected my persona because... [Tell us why you picked your persona in 1-3 
 
 [For each task, list the ideal set of actions that you would like your users to take when working towards the task.]
 
-Task 1: [describe your task]
+Task 1: Edit the title of an image in the gallery
 
-  1. [action 1...]
-  2. [action 2...]
-  3. ...
+  1. Log in
+  2. Go to gallery page
+  3. Delete current image
+  4. Re-add the image to the gallery, changing it's title
 
-Task 2:
+Task 2: Contact the artist for purchasing inquiry
 
+  1. Go to contact page
+  2. Fill out form
+  3. Submit form
 
 ### Cognitive Walkthrough
 
-[Perform a cognitive walkthrough using the GenderMag method for all of your Tasks. Use the GenderMag template in the <documents/gendermag-template.md> file.]
-
 #### Task 1 - Cognitive Walkthrough
 
-[copy the GenderMag template here and conduct a cognitive walkthrough to evaluate your design (wireframes).]
+**Task name: Edit the title of an image in the gallery**
 
-[You may need to add additional subgoals and/or actions for each task.]
+**Subgoal #1 : Log in**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: yes
+    - Why?
+      Abby will know that she has to log in to make changes to the gallery because it is a feature only people with authority have access to.
 
+**Action #1A : Fill out username and password**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      Abby would have been given a username and password in order to login, so she will be able to complete this step.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      Abby knows her login information and filling out a login form for a website is something she is already confident in because it is a functionality of many websites.
+
+**Action #1B : Click submit**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+    The submit button for the log in form is clear, so Abby will know she has to click it to complete her log in.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: maybe
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+    There will no longer be a log in form in the footer once she is done logging in. To make this more clear, it might help to add a "log out" button in our sketches.
+
+**Subgoal #2 : Go to the gallery page**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: yes
+    - Why?
+      Abby has low confidence, but one of her first actions will likely be to check the navigation bar to find out where she can complete her task. The gallery would be an instinctive choice to edit images.
+
+**Action #2A : Click on gallery on navigation**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      Abby knows that she needs to edit an image that is in the gallery, so once she sees the navigation her choice would be to go to the gallery page
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      Abby will see the gallery page and know she is in the right place because it contains all of the images in the gallery and a place to edit the images.
+
+**Subgoal #3 : Delete the current image**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: maybe
+    - Why?
+      Abby might hope there would be an edit button for images. Once she sees there isn't one, she might get nervous that she didn't find it. She may either give up or realize she can delete an image and then add it again in order to change the title.
+
+
+**Action #3A : Select image**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: no
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      Our sketches don't make it clear how to select an image.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: maybe
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      If Abby finds a way to select the image, she will know it is selected and proceed to delete it.
+
+**Action #3B : Click delete image**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      There is a clear "delete painting" button which Abby will know to click in order to delete the image.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      The image will be deleted from the gallery, so Abby will know it is gone.
+
+**Subgoal #4 : Re-add the image to the gallery, changing it's title**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: maybe
+    - Why?
+      If Abby knew to delete the image in the previous subgoal, she will know to add a new image. If she didn't, she might already be lost.
+
+**Action #4A : Click on add a new painting**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      The button for "add a new painting" is clear and Abby will know to click on it.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      There will be a window to select the image Abby wants to add. She will then select the image.
+
+**Action #4B : Enter a title and tag**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: maybe
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      Abby will know she needs to add a title and tags to her image, and she will see the form next to the "add a new painting" button she just completed. She might get confused by the search bar above this part of the form.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      She will be able to see that she entered a title and tags.
+
+
+**Action #4B : Upload image**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: no
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      There is no submit button currently in our sketch.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: no
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      It is impossible for her to complete this action without the submit button, so we need to add that.
 
 #### Task 2 - Cognitive Walkthrough
 
+**Task name: Contact the artist for purchasing inquiry**
+
+**Subgoal #1 : Go to contact page**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: maybe
+    - Why?
+      Abby knows she has to contact the artist in order to purchase her artwork, so it would be natural for her to go to the contact page. She may first check out the about page to see if there is any information about purchasing there. We may want to add some info there.
+
+**Action #1A : Click on contact page**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: maybe
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      As stated, she may be conflicted between the about and contact page.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      She will see the form for contacting the artist and know she is in the right place.
+
+**Subgoal #2 : Fill out form**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: yes
+    - Why?
+      Once Abby gets to the contact page, she will see the form and know to complete it in order to let the artist know she wants to purchase something.
+
+**Action #2A : Choose a reason from dropdown**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      Her options will be for purchase or general inquiry. She wants to buy artwork, so she will select purchase.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      She will see that she selected "purchasing" from the dropdown.
+
+**Action #2B : Fill out rest of form**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      Abby is used to completing tasks, and this form is a simple task. She will know how to fill it out.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: yes
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      She will see her progress and what she has typed into the form.
+
+**Subgoal #3 : Submit form**
+  - Will Abby have formed this sub-goal as a step to their overall goal?
+    - Yes, maybe or no: no
+    - Why?
+      There is no submit button on our sketches currently
+
+**Action #2B : Click submit button**
+  - Will Abby know what to do at this step?
+    - Yes, maybe or no: no
+    - Why? (Especially consider [persona name]'s Knowledge/Skills, Motivations/Strategies, Self-Efficacy and Tinkering.)
+      There currently isn't a submit button for the form.
+  - If Abby does the right thing, will she know that she did the right thing, and is making progress towards her goal?
+    - Yes, maybe or no: maybe
+    - Why? (Especially consider [persona name]'s Self-Efficacy and Attitude toward Risk.)
+      If there is confirmation after submitting the form, Abby will know what she did is right.
 
 ### Cognitive Walk-though Results
 
 [Did you discover any issues with your design? What were they? How will you change your design to address the gender-inclusiveness bugs you discovered?]
 
+There were a few functionality issues with our design.
+
+First, we realized that we need to include a log out button when the user is logged it. This will confirm for the user that they are logged in.
+
+Next, it was confusing for the persona that the images didn't seem to have a select button in order to delete the image. We will implement that as well so that the user can easily see they need to select the image in order to delete it.
+
+We also realized that the search bar next to the form for adding the image is confusing. It would make more sense for the search bar to be its own entity and not connected/so close to the form.
+
+There were also issues with sketching the submit button for our forms. Submitting is a crucial part of implementing forms, so we need to fix our sketches.
+
+We also realized that a persona like Abby may be confused as to where she should go to make a purchase from the artist. To make this more clear, we will add information in the about page that says users should go to "contact" page and fill it out if they wish to purchase artwork.
+
+Finally, we need to make sure that users have confirmation of submitting the contact form. User feedback for submitting forms is imperative.
+
 [Your responses here should be **very** thorough and thoughtful.]
+
 
 
 ## Final Design
