@@ -236,13 +236,13 @@ Here are screenshots of the client's original website:
 --- <!-- ^^^ Milestone 1; vvv Milestone 2 -->
 
 - New sketches after receiving feedback from the Milestone 1
-![sketch2-1](sketch2-1.jpg)
-![sketch2-2](sketch2-2.jpg)
-![sketch2-3](sketch2-3.jpg)
-![sketch2-4](sketch2-4.jpg)
-![sketch2-5](sketch2-5.jpg)
-![sketch2-6](sketch2-6.jpg)
-![sketch2-7](sketch2-7.jpg)
+![sketch2-1](sketch2-1.JPG)
+![sketch2-2](sketch2-2.JPG)
+![sketch2-3](sketch2-3.JPG)
+![sketch2-4](sketch2-4.JPG)
+![sketch2-5](sketch2-5.JPG)
+![sketch2-6](sketch2-6.JPG)
+![sketch2-7](sketch2-7.JPG)
 
 ## Client Feedback
 
@@ -253,13 +253,13 @@ Here are screenshots of the client's original website:
 
 [Improve your design based on the feedback you received from your client.]
 - New sketches after receiving feedback from our client
-![sketch3-1](sketch3-1.jpg)
+![sketch3-1](sketch3-1.JPG)
 ![sketch3-2](sketch3-2.jpeg)
-![sketch3-3](sketch3-3.jpg)
-![sketch3-4](sketch3-4.jpg)
-![sketch3-5](sketch3-5.jpg)
-![sketch3-6](sketch3-6.jpg)
-![sketch3-7](sketch3-7.jpg)
+![sketch3-3](sketch3-3.JPG)
+![sketch3-4](sketch3-4.JPG)
+![sketch3-5](sketch3-5.JPG)
+![sketch3-6](sketch3-6.JPG)
+![sketch3-7](sketch3-7.JPG)
 
 ## Evaluate your Design
 
