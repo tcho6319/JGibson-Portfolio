@@ -34,7 +34,7 @@ Purpose of Client's Website (Like a portfolio):
 
 ## Purpose & Content
 
-Our client requested that we make her a new, improved website that could serve as a gallery for her artwork, as well as a way to attract potential clients. This would mean that our website's content would be her art as well as information regarding her previous projects, and forms to allow her to upload her new art and a contact/ art request form.
+Our client requested that we make her a new, improved website that could serve as a gallery for her artwork, as well as a way to attract potential clients. This would mean that our website's content would include her art, details about her art (i.e. title, date, media, whether or not it is available for purchase), information regarding her previous projects, and forms to allow her to upload her new art and a contact/art request form.
 
 ## Target Audience(s)
 
@@ -46,7 +46,7 @@ The second target audience is local people and galleries who may be interested i
 
 The third target audience would be local people/galleries who want to buy art directly from the client. Rather than viewing the website for publishing or showcasing purposes, they would be deciding if they are interested in buying her work for themselves.
 
-All of the target audiences would find the client's website through her referral to the site. They would interact with it on a personal or work computer to view the clients artwork and learn a bit about the artist. The client hopes to use the website as a portfolio.
+All of the target audiences would find the client's website through her referral to the site. They would interact with it on a personal or work computer to view the client's artwork and learn a bit about the artist. The client hopes to use the website as a portfolio.
 
 ## Client Requirements & Target Audiences' Needs
 
@@ -54,17 +54,9 @@ All of the target audiences would find the client's website through her referral
   - **Requirement**
     - Client wants a clean, white background in order to not distract from her artwork
   - **Design Ideas & Choices**
-    - We will adhere to the clients wishes by making the background white and creating a minimalist look.
+    - We will adhere to the client's wishes by making the background white and creating a minimalist look.
   - **Rationale**
     - The client wants the focus to be on her art work. She doesn't want the target audience to be distracted by the design of the website and take away from its purpose.
-
-- Target Audience Need
-  - **Need**
-    - Client wants to filter gallery images the way they are currently filtered on her website. Filtering helps the target audience by making it easier to find the type of art they are looking for.
-  - **Design Ideas and Choices**
-    - We will have four separate galleries for her 4 different styles - outdoor, portraits,  illustration, and personal.
-  - **Rationale**
-    - The target audiences will likely have 1/4 styles in their mind when visiting the client's website, so we will make it simple for them to find the type of art they're looking for.
 
 - Client Requirement
   - **Requirement**
@@ -72,15 +64,54 @@ All of the target audiences would find the client's website through her referral
   - **Design Ideas and Choices**
     - We will design the website so that the user can view each image on their browser without having to scroll up/down to view the image.
   - **Rationale**
-    - Make the images a good size so that the target audience can consume them, but not too big that they are longer than the length of the website page.
+    - Make the images a good size so that the target audience can consume them, but not too big that they are longer than the length of the website page. Minimize horizontal & vertical scrolling to further enhance the professional look of the website.
 
 - Client Requirement
   - **Requirement**
     - The client wants to be able to edit images in her gallery (e.g. be able to delete an image, send an image, have titles/dates/descriptions of media)
   - **Design Ideas and Choices**
     - We will design the website so that when the client uploads an image she can add a title, date, and description of the media. In addition, after uploading she should be able to edit these pieces of information about the image.
-  - **Rationale** [Justify your decisions; additional notes.]
-    - The client should be able to justify her artwork ongoing, so she should be able to edit her description of the image. Another example may be if a piece wins a reward and she wants to mention that in the image description.
+  - **Rationale**
+    - The client should be able to justify her artwork ongoing, so she should be able to edit her description of the image. Another example may be if a piece wins an award and she wants to mention that in the image description. Also, since the client is a freelancer, she needs to be able to showcase her works herself after we deliver the product to her. The client does not have a webmaster so the website should be accessible to her, especially when she wants to add works or modify details of her works.
+
+
+Target Audience Needs for All Three Target Audiences
+- Target Audience Need
+  - **Need**
+    - Client wants to filter gallery images the way they are currently filtered on her website. Filtering helps the target audience by making it easier to find the type of art they are looking for.
+  - **Design Ideas and Choices**
+    - We will have four separate galleries for her 4 different styles - outdoor, portraits,  illustration, and personal.
+    - We will create buttons for the 4 different styles to help filter the gallery.
+  - **Rationale**
+    - The target audiences will likely have 1/4 styles in their mind when visiting the client's website, so we will make it simple for them to find the type of art they're looking for.
+    - Since the target audience would be working professionals or local people/galleries, they may be older and not want to bother with complicated filtering. Therefore, having buttons that in essence do a filter search specific to the 4 different style categories will aid in simple usability.
+
+- Target Audience Need
+  - **Need**
+    - Art Directors are busy filtering through different artists for children's illustrations. They will have to work through a high volume of applicants in a limited amount of time.
+    - Local people or galleries that may want to showcase or purchase certain art pieces may already want a specific type of piece, and they may not have the time to go through the client's whole gallery of works.
+  - **Design Ideas and Choices**
+    - We will include an additional element to the search bar for the gallery so that the user can look up a keyword in the description field. For example, if a user entered "underwater" because they wanted to see if the client did any underwater pieces to see her technique (maybe for art directors) or if they specifically wanted to showcase or purchase an underwater piece, any pieces that have the word "underwater" in the description will show up in the search results.
+    - If there are no pieces that correspond to the search term, then there will be a message that directs the user to a contact form to show that the client would be willing to work with the user to create the style of work the user was looking for.
+    - We will allow the user to flip through single image views of all search results (if a search was made) or all works (default).
+  - **Rationale**
+    - The text input field for a keyword search in addition to the tag search will further expedite the process of browsing for the busy target audiences. Since the purpose of the site is to engage the target audience's interest in the hopes of encouraging contact between the client and the target audience, adding this convenient way to filter the gallery would be helpful for busy users.
+    - Adding a message that directs the target audience to a contact form in case there are no search results for the keyword search further helps maintain contact between the client and the target audience. Since the client is using this site to get projects, it would be in her best interest to redirect the target audience to an alternative of reaching out to her directly if they want to view a specific style of art rather than simply showing that she does not have the work.
+    - Flip through single image views: By having buttons on the left and right side of a single image view, a user can look through the single image views of search results or the whole gallery quickly without having to go back to the grid form and clicking on the next piece to see it in single image view.
+
+Target Audience Need for Local People and Galleries
+- Target Audience Need
+  - **Need**
+    - Want to purchase the client's art.
+  - **Design Ideas and Choices**
+    - We will include another filter button called "Available" that, when clicked, would show the pieces that the client would like to sell.
+    - On the Gallery page, we will include a message that directs the user to the contact page if they would like to purchase a piece.
+    - We will not list the price of the piece.
+  - **Rationale**
+    - The filter button creates a more personalized experience for target audience members who solely wish to purchase the client's work so that they do not have to unnecessarily browse through her art and guess whether or not a piece is on sale.
+    - The message on the Gallery page guides the process of requesting to purchase a piece by directing the user to the contact/purchase form. By having the message right on the page where the gallery is, the user would see the instructions easily and know how to request an available piece.
+    - We did not list the price of the piece in case the client would like to negotiate a price with a potential buyer.
+
 
 ## Initial Design
 
@@ -196,6 +227,11 @@ All of the target audiences would find the client's website through her referral
 [If you feel like you haven't fully explained your design choices, or if you want to explain some other functions in your site (such as special design decisions that might not meet the final project requirements), you can use this space to justify your design choices or ask other questions about the project and process.]
 
 All of the content (both images and text) we plan on using has been provided on her current website, <https://www.jgibsonillustration.com>. However, outside of some organizational structures, we will be completely redesigning her website from scratch.
+
+Here are screenshots of the client's original website:
+![original1](original1.png)
+![original2](original2.png)
+![original3](original3.png)
 
 --- <!-- ^^^ Milestone 1; vvv Milestone 2 -->
 
