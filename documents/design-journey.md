@@ -247,12 +247,19 @@ Here are screenshots of the client's original website:
 ## Client Feedback
 
 [Share the feedback notes you received from your client about your initial design.]
-
+- Our client's only feedback was that she wanted "gallery" page before "about" page in the navigarion bar.
 
 ## Iterated Design
 
 [Improve your design based on the feedback you received from your client.]
-
+- New sketches after receiving feedback from our client
+![sketch3-1](sketch3-1.jpg)
+![sketch3-2](sketch3-2.jpeg)
+![sketch3-3](sketch3-3.jpg)
+![sketch3-4](sketch3-4.jpg)
+![sketch3-5](sketch3-5.jpg)
+![sketch3-6](sketch3-6.jpg)
+![sketch3-7](sketch3-7.jpg)
 
 ## Evaluate your Design
 
