@@ -492,6 +492,18 @@ Finally, we need to make sure that users have confirmation of submitting the con
 
 [What changes did you make to your final design based on the results on your cognitive walkthrough?]
 
+![sketch3-1](sketch3-1.JPG)
+Changes to about page: add section clarifying how target audience can go about buying artwork/inquiring with the artist
+![sketch4-2](sketch4-2.jpeg)
+![sketch3-3](sketch3-3.JPG)
+Changes to gallery 1 - when logged in: changed location of search bar, added submit button
+![sketch4-1](sketch4-1.jpeg)
+![sketch3-5](sketch3-5.JPG)
+![sketch3-6](sketch3-6.JPG)
+Changes to contact page: added submit button
+![sketch4-3](sketch4-3.jpeg)
+Changes to footer - created template, shows users login if they aren't logged in and shows log out so that user can log out. This also verifies for the user that they are currently logged in.
+![sketch4-4](sketch4-4.jpeg)
 
 ## Database Schema
 
