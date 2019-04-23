@@ -502,7 +502,7 @@ Changes to gallery 1 - when logged in: changed location of search bar, added sub
 ![sketch3-6](sketch3-6.JPG)
 Changes to contact page: added submit button
 ![sketch4-3](sketch4-3.jpeg)
-Changes to footer - created template, shows users login if they aren't logged in and shows log out so that user can log out. This also verifies for the user that they are currently logged in.
+Changes to footer - created template, shows users login if they aren't logged in and shows log out so that user can log out (this also verifies for the user that they are currently logged in).
 ![sketch4-4](sketch4-4.jpeg)
 
 ## Database Schema
