@@ -528,7 +528,47 @@ image_id : TEXT {Not}
 
 ## Database Queries
 
-[Plan your database queries. You may use natural language, pseudocode, or SQL.]
+- Display all images
+
+  - SELECT * FROM images;
+
+- Search by tag
+
+  - SELECT * FROM images INNER JOIN image_tags ON images.id = image_tags.image_id WHERE image_tags.tag_id = '%'||:tag_id||'%';
+
+- Search by description
+
+  - SELECT * FROM images WHERE image.description = '%'||:search||'%';
+
+- Insert image
+
+  - INSERT INTO images (filename, ext, description, user_id) VALUES (:filename, :ext, :description, :user_id)
+
+- Remove image and its tags
+
+  - DELETE FROM image_tags WHERE image_tags.image_id = ".$image_id
+
+  - DELETE FROM images WHERE images.id = ".$image_id
+
+- Insert tag
+
+  - If the tag does not exist yet:
+
+    - INSERT INTO tags (tag) VALUES (:tag)
+
+  - Check for duplicate tag:
+
+    - SELECT image_tags.image_id FROM image_tags WHERE image_tags.tag_id = ".get_tag_id($user_tag)
+
+    - INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)
+
+- Remove tag
+
+  - DELETE FROM image_tags WHERE image_tags.image_id = ".$image_id." AND image_tags.tag_id = ".$tag_id
+
+  - If this is the last image tagged with this tag:
+
+    - DELETE FROM tags WHERE tags.id = ".$tag_id
 
 
 ## PHP File Structure
