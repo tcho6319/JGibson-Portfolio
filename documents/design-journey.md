@@ -606,11 +606,123 @@ image_id : TEXT {Not}
 ### index.php
 
 ```
-Pseudocode for index.php...
+include init.php
+<body>
+include header.php
 
+include footer.php
+</body>
+```
+
+### about.php
+
+```
+include init.php
+<body>
+include header.php
+
+link to contact page
+
+include footer.php
+</body>
+```
+
+### gallery.php
+
+```
+include init.php
+<body>
+include header.php
+
+code for buttons that filter images by categories (SQL query)
+
+code for search bar (SQL query)
+
+code for delete images button db (SQL query)
+
+code for uploadform (SQL query)
+
+
+
+if search button pressed or filter category button pressed:
+  show search results
+
+else:
+  show all gallery images
+
+if logged_in:
+  show check boxes for images in gallery
+  show edit the gallery section, with delete images button and include uploadform.php
+
+include footer.php
+</body>
+```
+
+### contact.php
+
+```
+include init.php
+<body>
+include header.php
+
+include contactform.php
+
+include footer.php
+</body>
+```
+
+### singleimage.php
+
+```
 include init.php
 
-TODO
+code to process query string parameter to dynamically display page contents
+
+if logged_in:
+  edit painting form (SQL query)
+
+<body>
+include header.php
+
+show details of id of image selected according to QSP
+
+if logged_in:
+  edit painting form
+
+include footer.php
+</body>
+```
+
+### includes/init.php
+
+```
+login/logout
+
+sessions
+
+user-defined functions
+```
+
+### includes/header.php
+
+```
+header HTML
+
+nav bar HTML
+
+code to dynamically indicate current page in nav bar
+```
+
+### includes/contactform.php
+
+```
+HTML for contact form
+```
+
+### includes/uploadform.php
+
+```
+HTML for upload form
 ```
 
 
