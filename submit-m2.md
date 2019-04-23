@@ -41,5 +41,5 @@ See the course website for a detailed citation policy with more information on u
 
 Each team member should sign their name and include today's date and time to submit **MILESTONE 2**.
 
-- Full Name of Each Contributing Team Member: Theresa Cho, Seamus Murphy, Cora Geunes
-- Date & Time: 4/23/19 1:06pm, 4/23/19 1:07PM, 4/23/19 1:53 PM
+- Full Name of Each Contributing Team Member: Theresa Cho, Seamus Murphy, Cora Geunes, Jinny Lee
+- Date & Time: 4/23/19 1:06pm, 4/23/19 1:07PM, 4/23/19 1:53 PM, 4/23/19 2:18 PM
