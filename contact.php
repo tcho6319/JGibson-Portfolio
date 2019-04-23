@@ -1,5 +1,4 @@
 <?php
- // INCLUDE ON EVERY TOP-LEVEL PAGE!
 include("includes/init.php");
 ?>
 <!DOCTYPE html>
@@ -11,9 +10,10 @@ include("includes/init.php");
 
 <body>
   <?php include("includes/header.php");?>
+  <div class="contact">
 
 
-  <!-- TODO: This should be your main page for your site. -->
+  </div>
   <?php include("includes/footer.php");?>
 </body>
 </html>

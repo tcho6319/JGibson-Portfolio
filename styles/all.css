@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+    color: black;
+    font-size: 50px;
+  }
+
+
+
+header {
+    background-color: white;
+    padding: 1px 0 80px 0;
+  }
+
+header #title {
+    padding: 30px;
+  }
+
+header .nav_bar{
+    text-align: center;
+    color: black;
+    font-size: 20px;
+  }
+
+
+
+footer {
+    padding: 120px 0 10px 0 ;
+    background-color: white;
+  }
+
+ .footer{
+  font-size: 15px;
+  padding: 10px 10px;
+  text-align: center;
+}
