@@ -593,6 +593,16 @@ image_id : TEXT {Not}
 
     - DELETE FROM tags WHERE tags.id = ".$tag_id
 
+- Access images from a particular album
+  - SELECT images.id, images.filename, images.ext, images.description FROM images INNER JOIN image_albums ON images.id = image_albums.image_id WHERE image_albums.album_id = :album_id
+
+- Inserting image into db (Maybe make into a function)
+  - INSERT INTO images (filename, ext, description, user_id) VALUES (:filename, :ext, :description, :user_id)
+  - INSERT INTO tags (tags) VALUES (:tag)
+  - INSRT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)
+  - INSERT INTO albums (album) VALUES (:album)
+  - INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)
+
 
 ## PHP File Structure
 
