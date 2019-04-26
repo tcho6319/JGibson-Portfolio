@@ -9,6 +9,8 @@ include("includes/init.php");
 
 
 <body>
+  <?php $contact="current_page"; ?>
+
   <?php include("includes/header.php");?>
   <div class="contact">
 

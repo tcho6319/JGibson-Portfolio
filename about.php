@@ -9,6 +9,8 @@ include("includes/init.php");
 
 
 <body>
+  <?php $about="current_page"; ?>
+
   <?php include("includes/header.php");?>
 
 
