@@ -535,6 +535,17 @@ id : INTEGER {PK, U, Not, AI}
 tag_id : TEXT {Not}
 image_id : TEXT {Not}
 )
+
+albums (
+id : INTEGER {PK, U, Not, AI}
+album : TEXT {Not}
+)
+
+image_albums (
+id : INTEGER {PK, U, Not, AI}
+album_id : TEXT {Not}
+image_id : TEXT {Not}
+)
 ```
 
 
