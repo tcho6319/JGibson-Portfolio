@@ -22,8 +22,26 @@ h3 {
   font-weight: lighter;
 }
 
+
+
+
+
+/* About page font */
+ .info {
+  font-weight: lighter;
+  font-size: 13pt;
+  text-align: left;
+  color: black;
+}
+
+.info img {
+  float: left;
+  padding: 0 20px 20px 0;
+ }
+
+
 header {
-    background-color: whitesmoke;
+    background-color: white;
     padding: 1px 0 80px 0;
   }
 
@@ -70,16 +88,80 @@ body {
 
 }
 
+.subtitle1 {
+  padding-top: 0;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  font-weight: bold;
+}
+
+.subtitle2 {
+  text-align: center;
+  font-size: 18pt;
+  margin-top: 120px;
+  font-weight: bold;
+}
 
 
+#search_form {
+  margin: 25px 5px 25px 5px;
+}
+
+
+.contact input[type=text], select, textarea {
+
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 700px;
+  margin: 0 auto;
+  position: relative;
+  float: none;
+
+}
+
+
+
+
+
+ul.a {
+  list-style-type: circle;
+}
+
+#content-wrap {
+  padding: 10px;
+
+}
 
 footer {
-    padding: 120px 0 10px 0 ;
-    background-color: whitesmoke;
-  }
-
- .footer{
-  font-size: 15px;
-  padding: 10px 10px;
+  font-size: 14px;
+  width: 100%;
   text-align: center;
+  clear: both;
+  padding-bottom: 30px;
+  padding-top: 5px;
+
+
+}
+
+
+
+.login{
+  text-align: left;
+  padding: 16px;
+
 }
