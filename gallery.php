@@ -1,6 +1,25 @@
 <?php
 include("includes/init.php");
 
+
+//upload form
+
+if ( issset( $_POST["image_upload"]) ) {
+
+  // get information about image
+  $upload_info = $_FILES["new_image"];
+  $upload_title = filter_input(INPUT_POST, 'upload_title', FILTER_SANITIZE_STRING);
+  $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
+
+  if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
+    // upload successful
+    // get name
+    $upload_name = basename($upload_info["name"]);
+    // get file extension
+    $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION));
+  }
+}
+
 // Search
 const SEARCH_FIELDS = [
   "All" => "By All",
@@ -118,7 +137,7 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
         <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
         </li>
         <li>
-          <button class=\"center\" name=\"submit_upload\" type=\"submit\">Upload Image</button>
+          <button class=\"center\" name=\"image_upload\" type=\"submit\">Upload Image</button>
         </li>
       </ul>
     </form>";
