@@ -57,7 +57,7 @@ CREATE TABLE 'submissions' (
 
 
 -- TODO: initial seed data
-INSERT INTO 'users' (id, name, admin_id, password) VALUES (1, 'Jennifer Gibson', 'jgibson', '$2y$10$7J6OBlJQvj0Jy6hXJNkTSuD1ceC5fUE74bftOy57LVTus4c5kHmKi'); -- password: instagram
+INSERT INTO 'admins' (id, name, admin_id, password) VALUES (1, 'Jennifer Gibson', 'jgibson', '$2y$10$7J6OBlJQvj0Jy6hXJNkTSuD1ceC5fUE74bftOy57LVTus4c5kHmKi'); -- password: instagram
 
 -- TODO: FOR HASHED PASSWORDS, LEAVE A COMMENT WITH THE PLAIN TEXT PASSWORD!
 
@@ -80,15 +80,39 @@ INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (16, 'gra
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (17, 'mustaches', 'jpg', 'pencil illustration of a whole lot of fake mustaches', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (18, 'cat-walk', 'jpg', 'pencil illustration of a woman walking with a cat on a hill', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (19, 'wolf', 'jpg', 'pencil watercolor illustration of a man and a wolf in the snow', 1);
-INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (20, 'sleep-song', 'jpg', 'a whimsical illustration of a woman allowing the night to come into her room', 1);
+INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (20, 'cheese-plate', 'jpg', 'a illustration of a delicious cheese plate', 1);
+INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (21, 'sleep-song', 'jpg', 'a whimsical illustration of a woman allowing the night to come into her room', 1);
+
+INSERT INTO `albums` (album) VALUES ('available');
+INSERT INTO `albums` (album) VALUES ('outdoor');
+INSERT INTO `albums` (album) VALUES ('portrait');
+INSERT INTO `albums` (album) VALUES ('illustration');
+INSERT INTO `albums` (album) VALUES ('personal');
+
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  1);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  2);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  3);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  4);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  5);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  6);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  7);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  8);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (3,  9);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (3,  10);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (3,  11);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (3,  12);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (3,  13);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  14);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  15);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  16);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  17);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  18);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  19);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  20);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (5,  21);
 
 
-
-
-
-
-
-
+-- STILL NEEDED: SEED TAGS DATA, SEED DATA FOR AVAILABLE IN image_albums
 
 
 
