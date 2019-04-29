@@ -513,8 +513,9 @@ Changes to footer - created template, shows users login if they aren't logged in
 user (
 id : INTEGER {PK, U, Not, AI}
 name : TEXT {Not}
-username : TEXT {Not}
+admin_id : TEXT {Not} UNIQUE
 password : TEXT {Not}
+session : TEXT UNIQUE
 )
 
 images (
@@ -522,7 +523,7 @@ id : INTEGER {PK, U, Not, AI}
 filename : TEXT {Not}
 ext : TEXT {Not}
 description : TEXT
-user_id : INTEGER {Not}
+admin_id : INTEGER {Not}
 )
 
 tags (

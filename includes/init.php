@@ -79,23 +79,23 @@ function session_alert($message) {
 /* Source: lab 8 solution (init.php) by Kyle Harms */
 
 // A function to login
-function log_in($username, $password) {
+function log_in($admin_id, $password) {
   global $db;
-  global $current_user;
+  global $current_admin;
 
-  if (isset($username) && isset($password)) {
-    // username and password should exist in the database
-  $sql = "SELECT * FROM users WHERE username = :username;";
-  $params = array (':username' => $username );
+  if (isset($admin_id) && isset($password)) {
+    // admin ID and password should exist in the database
+  $sql = "SELECT * FROM admins WHERE admin_id = :admin_id;";
+  $params = array (':admin_id' => $admin_id );
   $records = exec_sql_query ($db, $sql, $params) -> fetchAll();
 
   if ($records){
-    // there should be only one record because user name is unique
+    // there should be only one record because admin name is unique
     if (password_verify($password, $records[0]['password'])){
       // password is checked in database, and then session is generated/stored
     $session = session_create_id();
-    $sql = "UPDATE users SET session = :session WHERE id=:user_id;";
-    $params = array(':user_id' => $records[0]['id'],
+    $sql = "UPDATE admins SET session = :session WHERE id=:admin_id;";
+    $params = array(':admin_id' => $records[0]['id'],
                     ':session' => $session);
     $result = exec_sql_query($db, $sql, $params);
       // session is stored in db
@@ -105,46 +105,46 @@ function log_in($username, $password) {
         setcookie("session", $session, time()+3600);
         // 3600 sec is 60sec * 60min, which is 1 hour
 
-        session_alert("Logged in as $username");
-        return $username;
-        $current_user = $records[0];
-        return $current_user;
+        session_alert("Logged in as $admin_id");
+        return $admin_id;
+        $current_admin = $records[0];
+        return $current_admin;
 
       } else{
         session_alert("Log in failed.");
       }
 
     } else {
-      session_alert("Invalid username or password.");
+      session_alert("Invalid admin ID or password.");
     }
 
   } else {
-    session_alert ("Invalid username or password.");
+    session_alert ("Invalid admin ID or password.");
   }
 
 } else {
-  session_alert ("No username or password given.");
+  session_alert ("No admin ID or password given.");
 }
 
 return NULL;
-$current_user = NULL;
+$current_admin = NULL;
 }
 
 // a logout function
 function log_out() {
-  global $current_user;
+  global $current_admin;
   global $db;
 
-  if ($current_user){
-    $sql = "UPDATE users SET session = :session WHERE username = :username;";
-    $params = array ('username' => $current_user, ':session' => NULL);
+  if ($current_admin){
+    $sql = "UPDATE admins SET session = :session WHERE admin_id = :admin_id;";
+    $params = array ('admin_id' => $current_admin, ':session' => NULL);
     if (!exec_sql_query($db, $sql, $params)) {
       record_alert("Log out failed.");
     }
   }
   // expire the session
   setcookie("session","", time()-3600);
-  $current_user=NULL;
+  $current_admin=NULL;
 }
 
 // a function to get an ID that is currently logged in
@@ -153,12 +153,12 @@ function get_id(){
 
   if (isset ($_COOKIE["session"])) {
     $session = $_COOKIE["session"];
-    $sql= "SELECT *FROM users WHERE session = :session;";
+    $sql= "SELECT *FROM admins WHERE session = :session;";
     $params = array(':session'=>$session);
     $records= exec_sql_query($db, $sql, $params) -> fetchAll();
 
     if ($records){
-      // there should be only one record because user name is unique
+      // there should be only one record because admin name is unique
       return $records[0]['id'];
     }
   }
@@ -166,26 +166,26 @@ function get_id(){
 }
 
 
-// a function to check whether a user is logged in or not
-function check_user_log_in () {
-  global $current_user;
-  // if $current_user is not null, a user should be logged in
-  return ($current_user != NULL);
+// a function to check whether a admin is logged in or not
+function check_admin_log_in () {
+  global $current_admin;
+  // if $current_admin is not null, a admin should be logged in
+  return ($current_admin != NULL);
 }
 
-// check if the user should be logged in or not
+// check if the admin should be logged in or not
 if (isset ($_POST['login'])) {
-  $username= filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-  $username= trim($username);
+  $admin_id= filter_input(INPUT_POST, 'admin_id', FILTER_SANITIZE_STRING);
+  $admin_id= trim($admin_id);
   $password= filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-  $current_user= log_in($username, $password);
+  $current_admin= log_in($admin_id, $password);
 
 } else {
-  $current_user = check_user_log_in();
+  $current_admin = check_admin_log_in();
 }
 
-if (!empty($current_user)) {
-  $current_user_id = get_id();
+if (!empty($current_admin)) {
+  $current_admin_id = get_id();
 }
 
 

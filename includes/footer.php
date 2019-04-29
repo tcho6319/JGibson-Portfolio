@@ -8,14 +8,14 @@
         <?php
         foreach($messages as $message){
             echo "<strong>" . htmlspecialchars($message) . "</strong>\n";}
-        // this prints a message to users
+        // this prints a message to admins
 
-        if (!$current_user) { ?>
+        if (!$current_admin) { ?>
         <form id="loginForm" action="index.php" method="POST">
                 <ul style="list-style-type:none;">
                 <li>
-                    <label>Username: </label>
-                    <input type="text" name="admin_id" placeholder="Enter Username" required/>
+                    <label>Admin ID: </label>
+                    <input type="text" name="admin_id" placeholder="Enter Admin ID" required/>
                 </li>
                 <li>
                     <label>Password: </label>

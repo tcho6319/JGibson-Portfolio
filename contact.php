@@ -5,14 +5,14 @@ include("includes/init.php");
 if (isset($_POST['submit_r'])){
   $submit_respond = TRUE;
   $reason = filter_input(INPUT_POST, 'reason', FILTER_SANITIZE_STRING);
-  $user_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_STRING);
+  $user_name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $user_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
   if (preg_match('/^[a-zA-Z0-9._%]+@\w+\.[a-zA-Z]{2,4}$/', $user_email)) {
   } else {
     $user_email = NULL;
     $submit_respond = FALSE;
   }
-  $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
+  $user_phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
 
   if (preg_match("/^[0-9\-]|[\+0-9]|[0-9\s]|[0-9()]*$/", $phone)) {
     // this reg ex is the format the html date input creates
