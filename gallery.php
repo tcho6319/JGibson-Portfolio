@@ -88,6 +88,13 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
 }
 ?>
 
+  <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
+
+  <form action="gallery.php" method="post">
+  <input class="center" type="submit" name="submit" value="Delete Painting">
+  </form>
+
+  <p>Add a new painting:</p>
 
 
   </div>
