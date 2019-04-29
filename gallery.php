@@ -2,23 +2,23 @@
 include("includes/init.php");
 
 
-//upload form
+// //upload form
 
-if ( issset( $_POST["image_upload"]) ) {
+// if ( issset( $_POST["image_upload"]) ) {
 
-  // get information about image
-  $upload_info = $_FILES["new_image"];
-  $upload_title = filter_input(INPUT_POST, 'upload_title', FILTER_SANITIZE_STRING);
-  $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
+//   // get information about image
+//   $upload_info = $_FILES["new_image"];
+//   $upload_title = filter_input(INPUT_POST, 'upload_title', FILTER_SANITIZE_STRING);
+//   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
 
-  if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
-    // upload successful
-    // get name
-    $upload_name = basename($upload_info["name"]);
-    // get file extension
-    $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION));
-  }
-}
+//   if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
+//     // upload successful
+//     // get name
+//     $upload_name = basename($upload_info["name"]);
+//     // get file extension
+//     $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION));
+//   }
+// }
 
 // Search
 const SEARCH_FIELDS = [
