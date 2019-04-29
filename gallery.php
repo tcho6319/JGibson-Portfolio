@@ -95,30 +95,34 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
   </form>
 
   <?php
-  if ( !check_admin_log_in() ) {
-    echo "<h3>Sign in to edit gallery.</h3>";
-  }
-  else {
-    echo "<p>Add a new painting:</p>
-
+  // if ( !check_admin_log_in() ) {
+  //   echo "<h3>Sign in to edit gallery.</h3>";
+  // }
+  // else {
+    echo "
     <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
       <ul id=\"upload_form\">
-        <li>
+        <li class=\"center\">
           <!-- declare max file size before uploading an image -->
           <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"<?php echo MAX_FILE_SIZE; ?>\" />
-          <label for=\"new_image\">Upload Image:</label>
+          <label for=\"new_image\">Add a new painting:</label>
           <input id=\"new_image\" type=\"file\" name=\"new_image\">
         </div>
         </li>
-        <li>
+        <li class=\"center\">
           <label for=\"upload_title\">Title:</label>
           <input id=\"upload_title\" type=\"text\" name=\"upload_title\" />
         </li>
-          <button name=\"submit_upload\" type=\"submit\">Upload Image</button>
+        <li class=\"center\">
+        <label for=\"upload_tag\">Tag:</label>
+        <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
+        </li>
+        <li>
+          <button class=\"center\" name=\"submit_upload\" type=\"submit\">Upload Image</button>
         </li>
       </ul>
     </form>";
-  }
+  // }
   ?>
 
   </div>
