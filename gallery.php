@@ -94,8 +94,32 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
   <input class="center" type="submit" name="submit" value="Delete Painting">
   </form>
 
-  <p>Add a new painting:</p>
+  <?php
+  if ( !check_admin_log_in() ) {
+    echo "<h3>Sign in to edit gallery.</h3>";
+  }
+  else {
+    echo "<p>Add a new painting:</p>
 
+    <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
+      <ul id=\"upload_form\">
+        <li>
+          <!-- declare max file size before uploading an image -->
+          <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"<?php echo MAX_FILE_SIZE; ?>\" />
+          <label for=\"new_image\">Upload Image:</label>
+          <input id=\"new_image\" type=\"file\" name=\"new_image\">
+        </div>
+        </li>
+        <li>
+          <label for=\"upload_title\">Title:</label>
+          <input id=\"upload_title\" type=\"text\" name=\"upload_title\" />
+        </li>
+          <button name=\"submit_upload\" type=\"submit\">Upload Image</button>
+        </li>
+      </ul>
+    </form>";
+  }
+  ?>
 
   </div>
   <?php include("includes/footer.php");?>
