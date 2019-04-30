@@ -34,11 +34,10 @@ const SEARCH_FIELDS = [
   "description" => "By Description",
 ];
 
-if (isset($_GET['search']) && isset($_GET['category']) ) {
+if (isset($_GET['search']) && isset($_GET['category'])) {
 
   $do_search = TRUE;
   $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
-
   if (in_array($category, array_keys(SEARCH_FIELDS))) {
     $search_field = $category;
   }
@@ -54,6 +53,12 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
     $do_search = FALSE;
     array_push($messages, "Please enter a search term.");
   }
+}
+elseif(isset($_GET['search']) && !isset($_GET['category'])) {
+  $do_search = FALSE;
+  array_push($messages, "Please enter a valid search category.");
+  $search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
+  $search = trim($search);
 }
 else {
   $do_search = FALSE;
@@ -134,17 +139,33 @@ function print_tag_buttons($tag) {
 
     <div>
       <form id="search_form" action="gallery.php" method="get">
-        <select name="category">
-          <option value="" selected disabled>Search By</option>
+        <?php
+        if (isset($search_field)) { ?>
+          <select name="category">
+          <option value="" disabled>Search By</option>
           <?php
             foreach(SEARCH_FIELDS as $dbname => $label){
               ?>
-              <option value="<?php echo $dbname;?>"><?php echo $label;?></option>
+              <option value="<?php echo $dbname;?>" <?php if (isset($search_field) && ($search_field == $dbname)) { echo selected; } ?>><?php echo $label;?></option>
               <?php
             }
           ?>
         </select>
-        <input type="text" name="search"/>
+        <?php
+        }
+        else { ?>
+          <select name="category">
+          <option value="" selected disabled>Search By</option>
+          <?php
+            foreach(SEARCH_FIELDS as $dbname => $label) {
+              ?>
+              <option value="<?php echo $dbname;?>"><?php echo $label;?></option>
+              <?php
+            }
+        }
+        ?>
+        </select>
+        <input type="text" name="search" value="<?php if (isset($search)) { echo $search; } ?>"/>
         <button type="submit">Search</button>
       </form>
     </div>
