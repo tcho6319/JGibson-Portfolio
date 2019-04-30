@@ -39,19 +39,23 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
   $do_search = TRUE;
   $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
 
-  if (in_array($category, array_keys(SEARCH_FIELDS) )){
+  if (in_array($category, array_keys(SEARCH_FIELDS))) {
     $search_field = $category;
-
-  } else {
+  }
+  else {
     $do_search = FALSE;
-    array_push($messages, "Error in Selecting Search Category");
+    array_push($messages, "Error in selecting search category.");
   }
 
   $search = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_STRING);
   $search = trim($search);
 
-
-} else {
+  if ($search == "") {
+    $do_search = FALSE;
+    array_push($messages, "Please enter a search term.");
+  }
+}
+else {
   $do_search = FALSE;
   $category = NULL;
   $search = NULL;
@@ -103,9 +107,10 @@ function print_tag_buttons($tag) {
   <?php include("includes/header.php");?>
 
   <div id="gallery-content">
+
     <?php
     foreach($messages as $message){
-      echo "<strong>" . htmlspecialchars($message) . "</strong>\n";
+      echo "<p class='disclaimer'>" . htmlspecialchars($message) . "</p>\n";
     }
     ?>
     <h1>Gallery</h1>
@@ -131,43 +136,52 @@ function print_tag_buttons($tag) {
       <form id="search_form" action="gallery.php" method="get">
         <select name="category">
           <option value="" selected disabled>Search By</option>
-          <option value="By Artwork Name">By Artwork Name</option>
-          <option value="By Description">By Description</option>
+          <?php
+            foreach(SEARCH_FIELDS as $dbname => $label){
+              ?>
+              <option value="<?php echo $dbname;?>"><?php echo $label;?></option>
+              <?php
+            }
+          ?>
         </select>
         <input type="text" name="search"/>
         <button type="submit">Search</button>
       </form>
     </div>
 
-      <?php
+    <?php
     if ($do_search) {
       ?>
       <h1>Search Results</h1>
       <?php
         $sql = "SELECT * FROM images WHERE " . $search_field . " LIKE '%' || :search || '%';";
         $params = array(':search' => $search);
+        $result = exec_sql_query($db, $sql, $params);
     }
     else {
       $sql = "SELECT images.id, images.filename, images.ext FROM images;";
       $params = array();
       $result = exec_sql_query($db, $sql, $params);
-      ?>
+    }
+    ?>
 
-      <h3 class="disclaimer">Click images to see fullscreen view!</h3>
+    <h3 class="disclaimer">Click images to see fullscreen view!</h3>
 
-      <div id="images-container">
-        <?php
-          $images = $result->fetchAll();
+    <div id="images-container">
+      <?php
+        $images = $result->fetchAll();
+        if (count($images)>0) {
           foreach ($images as $image) {
             print_image($image);
           }
-        ?>
-      </div>
-      <?php
-
-        //  code
-    }
+        }
+        else {
+          ?>
+          <h2>No Search Results Found. Please try another search term.</h2>
+          <?php
+        }
       ?>
+    </div>
 
     <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
 
