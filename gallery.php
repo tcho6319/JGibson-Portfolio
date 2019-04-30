@@ -1,6 +1,14 @@
 <?php
 include("includes/init.php");
 
+$tags_sql = "SELECT tags.id, tags.tag FROM tags";
+$tags_params = array();
+$tags_result = exec_sql_query($db, $tags_sql, $tags_params);
+$tags = $tags_result->fetchAll();
+$albums_sql = "SELECT albums.id, albums.album FROM albums";
+$albums_params = array();
+$albums_result = exec_sql_query($db, $albums_sql, $albums_params);
+$albums = $albums_result->fetchAll();
 
 // //upload form
 
@@ -22,12 +30,8 @@ include("includes/init.php");
 
 // Search
 const SEARCH_FIELDS = [
-  "All" => "By All",
-  "Available" => "By Available",
-  "Outdoor" => "By Ourdoor",
-  "Portrait" => "By Portrait",
-  "Illustration" => "By Illustration",
-  "Personal" => "By Personal",
+  "filename" => "By Artwork Name",
+  "description" => "By Description",
 ];
 
 if (isset($_GET['search']) && isset($_GET['category']) ) {
@@ -35,7 +39,7 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
   $do_search = TRUE;
   $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
 
-  if (in_array($category, array_keys (SEARCH_FIELDS) )){
+  if (in_array($category, array_keys(SEARCH_FIELDS) )){
     $search_field = $category;
 
   } else {
@@ -53,7 +57,39 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
   $search = NULL;
 }
 
+function print_image($image) {
+  $fileid = htmlspecialchars($image["id"]);
+  $filename = htmlspecialchars($image["filename"]);
+  $fileext = htmlspecialchars($image["ext"]);
+  $fullpath = "uploads/images/".$fileid.".".$fileext;
+  ?>
+    <div class="image-content">
+      <figure>
+        <!-- Artwork created by Jennifer Gibson. -->
+        <?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $fileid)).'"'?>><img src=<?php echo $fullpath;?> alt=<?php echo $filename;?>></a>
+        <figcaption>Artwork created by Jennifer Gibson.</figcaption>
+      </figure>
+    </div>
+<?php
+}
+
+function print_album_buttons($album) {
+  $album_text = htmlspecialchars($album["album"]);
+  ?>
+    <button class="album-button"><?php echo ucfirst($album_text); ?></button>
+<?php
+  }
+
+function print_tag_buttons($tag) {
+  $tag_text = htmlspecialchars($tag["tag"]);
+  ?>
+    <button class="tag-button"><?php echo ucfirst($tag_text); ?></button>
+<?php
+  }
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,59 +101,85 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
   <?php $gallery="current_page"; ?>
 
   <?php include("includes/header.php");?>
-  <div id="content-wrap">
 
-  <?php
- foreach($messages as $message){
-   echo "<strong>" . htmlspecialchars($message) . "</strong>\n";
- }
- ?>
+  <div id="gallery-content">
+    <?php
+    foreach($messages as $message){
+      echo "<strong>" . htmlspecialchars($message) . "</strong>\n";
+    }
+    ?>
+    <h1>Gallery</h1>
 
+    <div id="gallery-button-group">
+      <span id="album-buttons">
+        <?php
+        foreach($albums as $album){
+          print_album_buttons($album);
+        }
+        ?>
+      </span>
+      <span id="tag-buttons">
+        <?php
+        foreach($tags as $tag){
+          print_tag_buttons($tag);
+        }
+        ?>
+      </span>
+    </div>
 
-  <form id="search_form" action="gallery.php" method="get" style="text-align:center">
-      <select name="category">
-        <option value="" selected disabled>Search By</option>
-        <option value="All">All</option>
-        <option value="Available">Available</option>
-        <option value="Outdoor">Outdoor</option>
-        <option value="Portrait">Portrait</option>
-        <option value="Illustration">Illustration</option>
-        <option value="Personal">Personal</option>
-      </select>
-      <input type="text" name="search"/>
-      <button type="submit">Search</button>
+    <div>
+      <form id="search_form" action="gallery.php" method="get">
+        <select name="category">
+          <option value="" selected disabled>Search By</option>
+          <option value="By Artwork Name">By Artwork Name</option>
+          <option value="By Description">By Description</option>
+        </select>
+        <input type="text" name="search"/>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+      <?php
+    if ($do_search) {
+      ?>
+      <h1>Search Results</h1>
+      <?php
+        $sql = "SELECT * FROM images WHERE " . $search_field . " LIKE '%' || :search || '%';";
+        $params = array(':search' => $search);
+    }
+    else {
+      $sql = "SELECT images.id, images.filename, images.ext FROM images;";
+      $params = array();
+      $result = exec_sql_query($db, $sql, $params);
+      ?>
+
+      <h3 class="disclaimer">Click images to see fullscreen view!</h3>
+
+      <div id="images-container">
+        <?php
+          $images = $result->fetchAll();
+          foreach ($images as $image) {
+            print_image($image);
+          }
+        ?>
+      </div>
+      <?php
+
+        //  code
+    }
+      ?>
+
+    <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
+
+    <form action="gallery.php" method="post">
+    <input class="center" type="submit" name="submit" value="Delete Painting">
     </form>
 
-
     <?php
-  if ($do_search) {
-    ?>
-    <h3>Search Results</h3>
-    <?php
-
-    $sql = "SELECT * FROM gallery WHERE " . $search_field . " LIKE '%' || :search || '%'";
-    $params = array(
-      ':search' => $search );
-  }else{
-    ?>
-    <h3>All Arts</h3>
-    <?php
-
-//  code
-}
-?>
-
-  <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
-
-  <form action="gallery.php" method="post">
-  <input class="center" type="submit" name="submit" value="Delete Painting">
-  </form>
-
-  <?php
-  // if ( !check_admin_log_in() ) {
-  //   echo "<h3>Sign in to edit gallery.</h3>";
-  // }
-  // else {
+    // if ( !check_admin_log_in() ) {
+    //   echo "<h3>Sign in to edit gallery.</h3>";
+    // }
+    // else {
     echo "
     <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
       <ul id=\"upload_form\">
@@ -141,8 +203,8 @@ if (isset($_GET['search']) && isset($_GET['category']) ) {
         </li>
       </ul>
     </form>";
-  // }
-  ?>
+// }
+?>
 
   </div>
   <?php include("includes/footer.php");?>

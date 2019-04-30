@@ -1,5 +1,5 @@
 <header>
-    <h1 id="title">Jennifer Gibson</h1>
+    <a href="index.php" id="logo"><img src="images/site-logo.png" alt=<?php echo $filename;?>></a>
 
     <?php
         $pages = [['index.php', 'Home'],['gallery.php', 'Gallery'],['about.php', 'About'],['contact.php', 'Contact']];

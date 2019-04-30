@@ -1,3 +1,10 @@
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
 /* Title font*/
 h1{
     text-align: center;
@@ -21,10 +28,6 @@ h3 {
   text-decoration: none;
   font-weight: lighter;
 }
-
-
-
-
 
 /* About page font */
  .info {
@@ -58,7 +61,7 @@ body {
 #nav_bar {
   display: inline;
   position:relative;
-  top: 50px;
+  top: -5px;
 }
 
 #nav_bar ul {
@@ -77,8 +80,8 @@ body {
 }
 
 #current_page a {
-  color: rgb(95, 95, 95);
-  border-bottom: 2px solid rgb(95, 95, 95);
+  color: #a01e1e;
+  border-bottom: 2px solid #a01e1e;
 }
 
 /* Center image */
@@ -106,10 +109,6 @@ body {
 }
 
 
-#search_form {
-  margin: 25px 5px 25px 5px;
-}
-
 
 .contact input[type=text], select, textarea {
 
@@ -135,7 +134,70 @@ body {
 }
 
 
+/* Gallery Page */
+#gallery-content {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+}
 
+#gallery-button-group {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#gallery-button-group button {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px 25px;
+  text-align: center;
+  font-size: medium;
+}
+
+#gallery-button-group button:hover {
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+}
+
+#album-buttons button {
+  color: #a01e1e;
+}
+
+#tag-buttons {
+  margin-left: 10px;
+}
+
+#search_form {
+  text-align: center;
+  margin: 25px 5px 25px 5px;
+}
+
+.disclaimer {
+  font-style: oblique;
+}
+
+#images-container {
+  text-align: center;
+  padding-left: 25px;
+  padding-right: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.image-content img {
+  width: 100%;
+  max-height: 250px;
+}
+
+
+/* ?????? */
 
 
 ul.a {
@@ -157,8 +219,6 @@ footer {
 
 
 }
-
-
 
 .login{
   text-align: left;

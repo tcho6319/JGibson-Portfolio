@@ -3,8 +3,8 @@ BEGIN TRANSACTION;
 
 -- admins table
 CREATE TABLE `admins` (
-	'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	`name`TEXT NOT NULL,
+  'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `name`TEXT NOT NULL,
   'admin_id' TEXT NOT NULL UNIQUE, -- USED TO LOG IN
   'password' TEXT NOT NULL,
   'session' TEXT UNIQUE
@@ -12,37 +12,37 @@ CREATE TABLE `admins` (
 
 -- images table
 CREATE TABLE `images` (
-	`id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	`filename`TEXT NOT NULL,
-	`ext`TEXT NOT NULL,
-	`description`TEXT,
+  `id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `filename`TEXT NOT NULL,
+  `ext`TEXT NOT NULL,
+  `description`TEXT,
   `admin_id`INTEGER NOT NULL -- ADMINISTRATOR'S ID IN 'admins' TABLE, NOT LOGIN INFORMATION
 );
 
 -- tags table
 CREATE TABLE `tags` (
-	`id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	`tag`TEXT NOT NULL
+  `id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `tag`TEXT NOT NULL
 );
 
 -- image_tags table
 CREATE TABLE `image_tags` (
-	`id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	`tag_id`TEXT NOT NULL,
-	`image_id`TEXT NOT NULL
+  `id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `tag_id`TEXT NOT NULL,
+  `image_id`TEXT NOT NULL
 );
 
 -- albums table
 CREATE TABLE `albums` (
-	`id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	`album`TEXT NOT NULL
+  `id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `album`TEXT NOT NULL
 );
 
 -- image_albums table
 CREATE TABLE `image_albums` (
-	`id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-	`album_id`TEXT NOT NULL,
-	`image_id`TEXT NOT NULL
+  `id`INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `album_id`TEXT NOT NULL,
+ `image_id`TEXT NOT NULL
 );
 
 -- contact submissions table
@@ -110,6 +110,13 @@ INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  18);
 INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  19);
 INSERT INTO `image_albums` (album_id, image_id) VALUES (4,  20);
 INSERT INTO `image_albums` (album_id, image_id) VALUES (5,  21);
+
+INSERT INTO `tags` (tag) VALUES ('watercolor');
+INSERT INTO `tags` (tag) VALUES ('pencil');
+INSERT INTO `tags` (tag) VALUES ('nature');
+INSERT INTO `tags` (tag) VALUES ('facade');
+INSERT INTO `tags` (tag) VALUES ('landscape');
+INSERT INTO `tags` (tag) VALUES ('children');
 
 
 -- STILL NEEDED: SEED TAGS DATA, SEED DATA FOR AVAILABLE IN image_albums
