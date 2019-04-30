@@ -59,13 +59,15 @@ if ( isset($_POST["submit_upload"]) ) {
 
   $result2 = exec_sql_query($db, $sql2, $params2);
 
+
   //need to figure out how to get image id
-  // $sql3 = "INSERT INTO image_albums (album_id) VALUES (:album_id)";
+  // $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
   // $params3 = array(
-  //   ':album_id' => $upload_album
+  //   ':album_id' => $upload_album,
+  //   ':image_id' => $image_id
   // );
 
-  // $result3 = exec_sql_query($db, $sql3, $params3);
+  // $result3 = exec_sql_query($db, $sql4, $params3);
 
 }
 
