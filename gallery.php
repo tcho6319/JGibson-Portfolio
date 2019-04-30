@@ -10,23 +10,64 @@ $albums_params = array();
 $albums_result = exec_sql_query($db, $albums_sql, $albums_params);
 $albums = $albums_result->fetchAll();
 
-// //upload form
+$messages = array();
 
-// if ( issset( $_POST["image_upload"]) ) {
+const MAX_FILE_SIZE = 1000000;
 
-//   // get information about image
-//   $upload_info = $_FILES["new_image"];
-//   $upload_title = filter_input(INPUT_POST, 'upload_title', FILTER_SANITIZE_STRING);
-//   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
+// user needs to be logged in
+if ( isset($_POST["submit_upload"]) ) {
+  $upload_info = $_FILES["new_image"];
+  $upload_description = filter_input(INPUT_POST, 'upload_description', FILTER_SANITIZE_STRING);
+  $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
+  $upload_album = filter_input(INPUT_POST, 'upload_album', FILTER_SANITIZE_SPECIAL_CHARS);
 
-//   if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
-//     // upload successful
-//     // get name
-//     $upload_name = basename($upload_info["name"]);
-//     // get file extension
-//     $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION));
-//   }
-// }
+  if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
+    $upload_name = basename($upload_info["name"]);
+    $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION) );
+
+  $sql1 = "INSERT INTO images (filename, ext, description, admin_id) VALUES (:filename, :ext, :description, :admin_id)";
+  $params1 = array(
+    ':filename' => $upload_name,
+    ':ext' => $upload_ext,
+    ':description' => $upload_description,
+    ':admin_id' => $current_admin
+  );
+
+  $result = exec_sql_query($db, $sql1, $params1);
+
+  if ($result) {
+    //image was added to db
+    //need to move image to images folder
+    $file_id = $db->lastInsertId("id");
+    $id_filename = 'uploads/images/' . $file_id . '.' . $upload_ext;
+    if ( move_uploaded_file($upload_info["tmp_name"], $id_filename) ) {
+      // image was moved to folder
+      } else {
+        array_push($messages, "failed");
+      }
+    } else {
+      array_push($messages, "failed");
+    }
+  } else {
+      array_push($messages, "failed");
+    }
+
+  $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
+  $params2 = array(
+    ':tag' => $upload_tag
+  );
+
+  $result2 = exec_sql_query($db, $sql2, $params2);
+
+  //need to figure out how to get image id
+  // $sql3 = "INSERT INTO image_albums (album_id) VALUES (:album_id)";
+  // $params3 = array(
+  //   ':album_id' => $upload_album
+  // );
+
+  // $result3 = exec_sql_query($db, $sql3, $params3);
+
+}
 
 // Search
 const SEARCH_FIELDS = [
@@ -248,7 +289,7 @@ function print_tag_buttons($tag) {
         <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
         </li>
         <li>
-          <button class=\"center\" name=\"image_upload\" type=\"submit\">Upload Image</button>
+          <button class=\"center\" name=\"submit_upload\" type=\"submit\">Upload Image</button>
         </li>
       </ul>
     </form>";
