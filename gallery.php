@@ -226,9 +226,23 @@ function print_tag_buttons($tag) {
         </div>
         </li>
         <li class=\"center\">
+        <select name=\"upload_album\">
+          <option value=\"available\">Available</option>
+          <option value=\"outdoor\">Outdoor</option>
+          <option value=\"portrait\">Portrait</option>
+          <option value=\"illustration\">Illustration</option>
+          <option value=\"personal\">Personal</option>
+        </select>
+        <li class=\"center\">
           <label for=\"upload_title\">Title:</label>
           <input id=\"upload_title\" type=\"text\" name=\"upload_title\" />
         </li>
+        <li class=\"center\">
+        <p>Description:</p>
+        <textarea id=\"upload_description\" name=\"upload_description\" rows=\"10\" cols=\"30\"/>
+        </textarea>
+        </li>
+        <li>
         <li class=\"center\">
         <label for=\"upload_tag\">Tag:</label>
         <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
