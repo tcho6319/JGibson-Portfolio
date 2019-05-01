@@ -14,8 +14,6 @@ $messages = array();
 
 const MAX_FILE_SIZE = 1000000;
 
-
-
 if ( isset($_POST["submit_delete"]) ) {
   if ( isset($_POST["delete_button"]) ) {
       $selected_id = $_POST["selected_id"];
@@ -354,6 +352,7 @@ else {
 
     <h3 class="disclaimer">Click images to see fullscreen view!</h3>
 
+
     <div id="images-container">
       <?php
         $images = $result->fetchAll();
@@ -387,82 +386,88 @@ else {
 
 
 
-    <?php
-    // will uncomment when sessions work
+    <!-- will uncomment when sessions work
 
-    // if ( !check_admin_log_in() ) {
-    //   echo "<h3>Sign in to edit gallery.</h3>";
-    // }
+    if ( !check_admin_log_in() ) {
+     echo "<h3>Sign in to edit gallery.</h3>";
+     }
     // else {
 
-    // form for adding an image
-    echo "
-    <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
-      <ul id=\"upload_form\">
-        <li class=\"center\">
+    // form for adding an image -->
+
+    <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
+      <ul id="upload_form">
+        <li class="center">
           <!-- declare max file size before uploading an image -->
-          <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"<?php echo MAX_FILE_SIZE; ?>\" />
-          <label for=\"new_image\">Add a new painting:</label>
-          <input id=\"new_image\" type=\"file\" name=\"new_image\">
+          <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>" />
+          <label for="new_image">Add a new painting:</label>
+          <input id="new_image" type="file" name="new_image">
         </div>
         </li>
-        <li class=\"center\">
-        <select name=\"upload_album\">
-          <option value=\"available\">Available</option>
-          <option value=\"outdoor\">Outdoor</option>
-          <option value=\"portrait\">Portrait</option>
-          <option value=\"illustration\">Illustration</option>
-          <option value=\"personal\">Personal</option>
+        <li class="center">
+        <select name="upload_album">
+          <option value="available">Available</option>
+          <option value="outdoor">Outdoor</option>
+          <option value="portrait">Portrait</option>
+          <option value="illustration">Illustration</option>
+          <option value="personal">Personal</option>
         </select>
-        <li class=\"center\">
-          <label for=\"upload_title\">Title:</label>
-          <input id=\"upload_title\" type=\"text\" name=\"upload_title\" />
+        <li class="center">
+          <label for="upload_title">Title:</label>
+          <input id="upload_title" type="text" name="upload_title" />
         </li>
         <li>
-        <li class=\"center\">
-        <label for=\"upload_tag\">Tag:</label>
-        <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
+        <li class="center">
+        <label for="upload_tag\">Tag:</label>
+        <input id="upload_tag" type="text" name="upload_tag" />
         </li>
-        <li class=\"center\">
+        <li class="center">
         <p>Description:</p>
-        <textarea id=\"upload_description\" name=\"upload_description\" rows=\"10\" cols=\"30\"/>
+        <textarea id="upload_description" name="upload_description" rows="10" cols="30">
         </textarea>
         </li>
         <li>
-          <button class=\"center\" name=\"submit_upload\" type=\"submit\">Upload Image</button>
+          <button class="center" name="submit_upload" type="submit">Upload Image</button>
         </li>
       </ul>
-    </form>";
+    </form>
 
-    // add a tag form
-    echo "
-    <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
-    <li class=\"center\">
-    <input id=\"upload_new_tag\" type=\"text\" name=\"upload_new_tag\" />
-    <button name=\"submit_new_tag\" type=\"submit\">Add a tag</button>
+   <!-- add a tag form -->
+
+    <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
+    <li class="center">
+    <input id="upload_new_tag" type="text" name="upload_new_tag" />
+    <button name="submit_new_tag" type="submit">Add a tag</button>
     </li>
     </form>
-    ";
 
-    // add an existing tag form
 
-    echo "
-    <li class=\"center\">
-    <input id=\"upload_existing_tag\" type=\"text\" name=\"upload_existing_tag\" />
-    <button name=\"submit_existing_tag\" type=\"submit\">Add an existing tag</button>
+    <!-- add an existing tag form -->
+
+
+    <li class="center">
+    <select name="upload_existing_tag">";
+
+    <?php
+    foreach ($tags as $tag) {
+      $tag_text = htmlspecialchars($tag["tag"]);
+      echo "<option value=\"" . $tag_text . "\">" . $tag_text . "</option>";
+    }
+    ?>
+
+    </select>
+    <button name="submit_existing_tag" type="submit">Add existing tag</button>
     </li>
-    ";
 
-    // edit title form
 
-    echo "
-    <li class=\"center\">
-    <input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />
-    <button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
+
+   <!-- edit title form -->
+
+
+    <li class="center">
+    <input id="upload_edit_title" type="text" name="upload_edit_title" />
+    <button name="submit_edit_title" type="submit">Edit title</button>
     </li>
-    ";
-// }
-?>
 
   </div>
   <?php include("includes/footer.php");?>
