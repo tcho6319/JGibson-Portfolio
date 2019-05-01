@@ -84,18 +84,131 @@ function print_image($image) {
 
 function print_album_buttons($album) {
   $album_text = htmlspecialchars($album["album"]);
-  ?>
-    <button class="album-button"><?php echo ucfirst($album_text); ?></button>
-<?php
+  if (isset($_GET['by_album'])) {
+    if (filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING) == $album_text) {
+      echo '<a href="gallery.php?'.http_build_query(array('by_album' => $album_text)).'" id="selected">'.ucfirst($album_text).'</a>';
+    }
+    else {
+      echo '<a href="gallery.php?'.http_build_query(array('by_album' => $album_text)).'" class="album-button">'.ucfirst($album_text).'</a>';
+    }
   }
+  else {
+    echo '<a href="gallery.php?'.http_build_query(array('by_album' => $album_text)).'" class="album-button">'.ucfirst($album_text).'</a>';
+  }
+}
 
 function print_tag_buttons($tag) {
   $tag_text = htmlspecialchars($tag["tag"]);
-  ?>
-    <button class="tag-button"><?php echo ucfirst($tag_text); ?></button>
-<?php
+  if (isset($_GET['by_tag'])) {
+    if (filter_input(INPUT_GET, 'by_tag', FILTER_SANITIZE_STRING) == $tag_text) {
+      echo '<a href="gallery.php?'.http_build_query(array('by_tag' => $tag_text)).'" id="selected">'.ucfirst($tag_text).'</a>';
+    }
+    else {
+      echo '<a href="gallery.php?'.http_build_query(array('by_tag' => $tag_text)).'" class="tag-button">'.ucfirst($tag_text).'</a>';
+    }
   }
+  else {
+    echo '<a href="gallery.php?'.http_build_query(array('by_tag' => $tag_text)).'" class="tag-button">'.ucfirst($tag_text).'</a>';
+  }
+}
 
+function is_valid_album($user_album) {
+  global $albums;
+  $valid_album = FALSE;
+  foreach($albums as $album) {
+    if ($user_album == $album["album"]) {
+      $valid_album = TRUE;
+    }
+  }
+  return $valid_album;
+}
+
+function is_valid_tag($user_tag) {
+  global $tags;
+  $valid_tag = FALSE;
+  foreach($tags as $tag) {
+    if ($user_tag == $tag["tag"]) {
+      $valid_tag = TRUE;
+    }
+  }
+  return $valid_tag;
+}
+
+if ($do_search && isset($_GET['by_album'])) {
+  $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
+  if (is_valid_album($user_album)) {
+    ?>
+      <h1>Search Results</h1>
+    <?php
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album LIKE '%'||:album||'%' AND || :search_field || LIKE '%' || :search || '%';";
+    $params = array(':album' => $user_album, ':search_field' => $search_field, ':search' => $search);
+    $result = exec_sql_query($db, $sql, $params);
+  }
+  else {
+    array_push($messages, "Album doesn't exist.");
+    $sql = "SELECT * FROM images;";
+    $params = array();
+    $result = exec_sql_query($db, $sql, $params);
+  }
+}
+else if ($do_search && isset($_GET['by_tag'])) {
+  $user_tag = filter_input(INPUT_GET, 'by_tag', FILTER_SANITIZE_STRING);
+  if (is_valid_tag($user_tag)) {
+    ?>
+      <h1>Search Results</h1>
+    <?php
+      $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag LIKE '%'||:tag||'%' AND || :search_field || LIKE '%' || :search || '%';";
+      $params = array(':tag' => $user_tag, ':search_field' => $search_field, ':search' => $search);
+      $result = exec_sql_query($db, $sql, $params);
+  }
+  else {
+    array_push($messages, "Tag doesn't exist.");
+    $sql = "SELECT * FROM images;";
+    $params = array();
+    $result = exec_sql_query($db, $sql, $params);
+  }
+}
+else if ($do_search) {
+  ?>
+    <h1>Search Results</h1>
+  <?php
+    $sql = "SELECT * FROM images WHERE " . $search_field . " LIKE '%' || :search || '%';";
+    $params = array(':search' => $search);
+    $result = exec_sql_query($db, $sql, $params);
+}
+else if (!$do_search && isset($_GET['by_album'])) {
+  $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
+  if (is_valid_album($user_album)) {
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album LIKE '%'||:album||'%';";
+    $params = array(':album' => $user_album);
+    $result = exec_sql_query($db, $sql, $params);
+  }
+  else {
+    array_push($messages, "Album doesn't exist.");
+    $sql = "SELECT * FROM images;";
+    $params = array();
+    $result = exec_sql_query($db, $sql, $params);
+  }
+}
+else if (!$do_search && isset($_GET['by_tag'])) {
+  $user_tag = filter_input(INPUT_GET, 'by_tag', FILTER_SANITIZE_STRING);
+  if (is_valid_tag($user_tag)) {
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag LIKE '%'||:tag||'%';";
+    $params = array(':tag' => $user_tag);
+    $result = exec_sql_query($db, $sql, $params);
+  }
+  else {
+    array_push($messages, "Tag doesn't exist.");
+    $sql = "SELECT * FROM images;";
+    $params = array();
+    $result = exec_sql_query($db, $sql, $params);
+  }
+}
+else {
+  $sql = "SELECT * FROM images;";
+  $params = array();
+  $result = exec_sql_query($db, $sql, $params);
+}
 ?>
 
 
@@ -122,6 +235,7 @@ function print_tag_buttons($tag) {
 
     <div id="gallery-button-group">
       <span id="album-buttons">
+        <a href="gallery.php" class="album-button">All</a>
         <?php
         foreach($albums as $album){
           print_album_buttons($album);
@@ -170,21 +284,6 @@ function print_tag_buttons($tag) {
       </form>
     </div>
 
-    <?php
-    if ($do_search) {
-      ?>
-      <h1>Search Results</h1>
-      <?php
-        $sql = "SELECT * FROM images WHERE " . $search_field . " LIKE '%' || :search || '%';";
-        $params = array(':search' => $search);
-        $result = exec_sql_query($db, $sql, $params);
-    }
-    else {
-      $sql = "SELECT images.id, images.filename, images.ext FROM images;";
-      $params = array();
-      $result = exec_sql_query($db, $sql, $params);
-    }
-    ?>
 
     <h3 class="disclaimer">Click images to see fullscreen view!</h3>
 

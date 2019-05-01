@@ -45,7 +45,7 @@ h3 {
 
 header {
     background-color: white;
-    padding: 1px 0 80px 0;
+    padding: 1px 0 40px 0;
   }
 
 header #title {
@@ -148,7 +148,7 @@ body {
   text-align: center;
 }
 
-#gallery-button-group button {
+#gallery-button-group a {
   font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: white;
   border: 2px solid black;
@@ -157,13 +157,13 @@ body {
   font-size: medium;
 }
 
-#gallery-button-group button:hover {
+#gallery-button-group a:hover {
   background-color: black;
   color: white;
   border: 3px solid white;
 }
 
-#album-buttons button {
+#album-buttons a, #album-buttons a:hover {
   color: #a01e1e;
 }
 
@@ -197,6 +197,11 @@ body {
   max-height: 250px;
 }
 
+#selected {
+  background-color: black !important ;
+  color: white !important ;
+  border: 3px solid white !important ;
+}
 
 /* ?????? */
 
