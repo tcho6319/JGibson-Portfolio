@@ -431,6 +431,34 @@ else {
         </li>
       </ul>
     </form>";
+
+    // add a tag form
+    echo "
+    <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
+    <li class=\"center\">
+    <input id=\"upload_new_tag\" type=\"text\" name=\"upload_new_tag\" />
+    <button name=\"submit_new_tag\" type=\"submit\">Add a tag</button>
+    </li>
+    </form>
+    ";
+
+    // add an existing tag form
+
+    echo "
+    <li class=\"center\">
+    <input id=\"upload_existing_tag\" type=\"text\" name=\"upload_existing_tag\" />
+    <button name=\"submit_existing_tag\" type=\"submit\">Add an existing tag</button>
+    </li>
+    ";
+
+    // edit title form
+
+    echo "
+    <li class=\"center\">
+    <input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />
+    <button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
+    </li>
+    ";
 // }
 ?>
 
