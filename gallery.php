@@ -180,10 +180,8 @@ function is_valid_tag($user_tag) {
 if ($do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
   if (is_valid_album($user_album)) {
-    ?>
-      <h1>Search Results</h1>
-    <?php
-    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album LIKE '%'||:album||'%' AND || :search_field || LIKE '%' || :search || '%';";
+    array_push($messages, "Search Results");
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND :search_field LIKE '%'||:search||'%';";
     $params = array(':album' => $user_album, ':search_field' => $search_field, ':search' => $search);
     $result = exec_sql_query($db, $sql, $params);
   }
@@ -197,12 +195,10 @@ if ($do_search && isset($_GET['by_album'])) {
 else if ($do_search && isset($_GET['by_tag'])) {
   $user_tag = filter_input(INPUT_GET, 'by_tag', FILTER_SANITIZE_STRING);
   if (is_valid_tag($user_tag)) {
-    ?>
-      <h1>Search Results</h1>
-    <?php
-      $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag LIKE '%'||:tag||'%' AND || :search_field || LIKE '%' || :search || '%';";
-      $params = array(':tag' => $user_tag, ':search_field' => $search_field, ':search' => $search);
-      $result = exec_sql_query($db, $sql, $params);
+    array_push($messages, "Search Results");
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag = :tag AND :search_field LIKE '%'||:search||'%';";
+    $params = array(':tag' => $user_tag, ':search_field' => $search_field, ':search' => $search);
+    $result = exec_sql_query($db, $sql, $params);
   }
   else {
     array_push($messages, "Tag doesn't exist.");
@@ -212,12 +208,10 @@ else if ($do_search && isset($_GET['by_tag'])) {
   }
 }
 else if ($do_search) {
-  ?>
-    <h1>Search Results</h1>
-  <?php
-    $sql = "SELECT * FROM images WHERE " . $search_field . " LIKE '%' || :search || '%';";
-    $params = array(':search' => $search);
-    $result = exec_sql_query($db, $sql, $params);
+  array_push($messages, "Search Results");
+  $sql = "SELECT * FROM images WHERE :search_field LIKE '%' ||:search|| '%';";
+  $params = array(':search_field' => $search_field, ':search' => $search);
+  $result = exec_sql_query($db, $sql, $params);
 }
 else if (!$do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
@@ -297,12 +291,17 @@ else {
     <div>
       <form id="search_form" action="gallery.php" method="get">
         <?php
+        if (isset($user_album)) { ?>
+          <input type="hidden" name="<?php echo "by_album" ?>" value="<?php echo $user_album; ?>"/>
+        <?php }
+        if (isset($user_tag)) { ?>
+          <input type="hidden" name="<?php echo "by_tag" ?>" value="<?php echo $user_tag; ?>"/>
+        <?php }
         if (isset($search_field)) { ?>
           <select name="category">
-          <option value="" disabled>Search By</option>
-          <?php
-            foreach(SEARCH_FIELDS as $dbname => $label){
-              ?>
+            <option value="" disabled>Search By</option>
+            <?php
+            foreach(SEARCH_FIELDS as $dbname => $label) { ?>
               <option value="<?php echo $dbname;?>" <?php if (isset($search_field) && ($search_field == $dbname)) { echo selected; } ?>><?php echo $label;?></option>
               <?php
             }
