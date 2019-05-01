@@ -335,7 +335,18 @@ else {
         $images = $result->fetchAll();
         if (count($images)>0) {
           foreach ($images as $image) {
+            // LOGIN ISN'T STICKY YET
+
+            // if ( !check_admin_log_in() ) {
+            //   print_image($image);
+            // } else {
+              echo "<form method=\"post\">";
             print_image($image);
+            echo "<input type=\"hidden\" value=\"<?php" . $image[0] . ">\"name=\"imagename\" />";
+            echo "<input type=\"checkbox\" value=\"X\" name=\"delete\" />
+            </form>";
+            // }
+
           }
         }
         else {
