@@ -395,6 +395,7 @@ else {
 
     // form for adding an image -->
 
+    <div id="uploading">
     <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
       <ul id="upload_form">
         <li class="center">
@@ -402,7 +403,6 @@ else {
           <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>" />
           <label for="new_image">Add a new painting:</label>
           <input id="new_image" type="file" name="new_image">
-        </div>
         </li>
         <li class="center">
         <select name="upload_album">
@@ -431,9 +431,10 @@ else {
         </li>
       </ul>
     </form>
-
+    </div>
    <!-- add a tag form -->
 
+    <div id="tagsss">
     <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
     <li class="center">
     <input id="upload_new_tag" type="text" name="upload_new_tag" />
@@ -468,7 +469,7 @@ else {
     <input id="upload_edit_title" type="text" name="upload_edit_title" />
     <button name="submit_edit_title" type="submit">Edit title</button>
     </li>
-
+  </div>
   </div>
   <?php include("includes/footer.php");?>
 </body>

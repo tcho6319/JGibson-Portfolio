@@ -274,3 +274,11 @@ footer {
   font-size: 13pt;
   margin-top: 5px;
 }
+
+#uploading, #tagsss {
+  margin-left: 500px;
+  margin-right: 500px;
+  border-style: solid;
+  margin-top: 10px;
+  padding-bottom: 30px;
+}
