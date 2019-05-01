@@ -353,6 +353,7 @@ else {
     </form>
 
     <?php
+    // LOGIN IS NOT STICKY YET
     // if ( !check_admin_log_in() ) {
     //   echo "<h3>Sign in to edit gallery.</h3>";
     // }
@@ -379,15 +380,15 @@ else {
           <label for=\"upload_title\">Title:</label>
           <input id=\"upload_title\" type=\"text\" name=\"upload_title\" />
         </li>
-        <li class=\"center\">
-        <p>Description:</p>
-        <textarea id=\"upload_description\" name=\"upload_description\" rows=\"10\" cols=\"30\"/>
-        </textarea>
-        </li>
         <li>
         <li class=\"center\">
         <label for=\"upload_tag\">Tag:</label>
         <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
+        </li>
+        <li class=\"center\">
+        <p>Description:</p>
+        <textarea id=\"upload_description\" name=\"upload_description\" rows=\"10\" cols=\"30\"/>
+        </textarea>
         </li>
         <li>
           <button class=\"center\" name=\"submit_upload\" type=\"submit\">Upload Image</button>
