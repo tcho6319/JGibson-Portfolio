@@ -72,12 +72,15 @@ if ( isset($_POST["submit_upload"]) ) {
       array_push($messages, "failed");
     }
 
-  $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
-  $params2 = array(
-    ':tag' => $upload_tag
-  );
+  if ($upload_tag != null) {
+    $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
+    $params2 = array(
+      ':tag' => $upload_tag
+    );
 
-  $result2 = exec_sql_query($db, $sql2, $params2);
+    $result2 = exec_sql_query($db, $sql2, $params2);
+  }
+
 
   // $newimageid = "SELECT id FROM images ORDER BY id DESC LIMIT 1";
   // $result3 = exec_sql_query($db, $newimageid);
