@@ -79,15 +79,17 @@ if ( isset($_POST["submit_upload"]) ) {
 
   $result2 = exec_sql_query($db, $sql2, $params2);
 
+  // $newimageid = "SELECT id FROM images ORDER BY id DESC LIMIT 1";
+  // $result3 = exec_sql_query($db, $newimageid);
+  // echo $result3;
+  // //need to figure out how to get image id
+  //  $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
+  //  $params3 = array(
+  //    ':album_id' => $upload_album,
+  //    ':image_id' => $result3
+  //  );
 
-  //need to figure out how to get image id
-  // $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
-  // $params3 = array(
-  //   ':album_id' => $upload_album,
-  //   ':image_id' => $image_id
-  // );
-
-  // $result3 = exec_sql_query($db, $sql4, $params3);
+  //  $result4 = exec_sql_query($db, $sql4, $params3);
 
 }
 
