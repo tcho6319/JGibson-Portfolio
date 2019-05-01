@@ -26,9 +26,9 @@ if ( isset($_POST["submit_delete"]) ) {
       $delete_image = '/uploads/images/' . $selected_id . '.' . $selected_ext;
       unlink($delete_image);
       if ($result) {
-         echo "$delete_image";
+         echo "Image was deleted from gallery.";
       } else {
-        echo "not deleted";
+        echo "Image could not be deleted.";
       }
   }
 }
