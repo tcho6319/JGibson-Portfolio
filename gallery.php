@@ -14,6 +14,26 @@ $messages = array();
 
 const MAX_FILE_SIZE = 1000000;
 
+
+
+if ( isset($_POST["submit_delete"]) ) {
+  if ( isset($_POST["delete_button"]) ) {
+      $selected_id = $_POST["selected_id"];
+      $selected_ext = $_POST["selected_ext"];
+
+      $sql = "DELETE FROM images WHERE id = '$selected_id'";
+      $result = exec_sql_query($db, $sql);
+      $delete_image = '/uploads/images/' . $selected_id . '.' . $selected_ext;
+      unlink($delete_image);
+      if ($result) {
+         echo "$delete_image";
+      } else {
+        echo "not deleted";
+      }
+  }
+}
+
+
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
   $upload_info = $_FILES["new_image"];
@@ -342,8 +362,10 @@ else {
             // } else {
               echo "<form method=\"post\">";
             print_image($image);
-            echo "<input type=\"hidden\" value=\"<?php" . $image[0] . ">\"name=\"imagename\" />";
-            echo "<input type=\"checkbox\" value=\"X\" name=\"delete\" />
+            echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
+            echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
+            echo "<input type=\"checkbox\" name=\"delete_button\" />
+            <input class=\"center\" type=\"submit\" name=\"submit_delete\" value=\"Delete Painting\">
             </form>";
             // }
 
@@ -359,9 +381,7 @@ else {
 
     <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
 
-    <form action="gallery.php" method="post">
-    <input class="center" type="submit" name="submit" value="Delete Painting">
-    </form>
+
 
     <?php
     // will uncomment when sessions work
@@ -370,6 +390,8 @@ else {
     //   echo "<h3>Sign in to edit gallery.</h3>";
     // }
     // else {
+
+    // form for adding an image
     echo "
     <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
       <ul id=\"upload_form\">
