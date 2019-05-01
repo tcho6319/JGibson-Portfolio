@@ -324,7 +324,7 @@ else {
             <option value="" disabled>Search By</option>
             <?php
             foreach(SEARCH_FIELDS as $dbname => $label) { ?>
-              <option value="<?php echo $dbname;?>" <?php if (isset($search_field) && ($search_field == $dbname)) { echo selected; } ?>><?php echo $label;?></option>
+              <option value="<?php echo $dbname;?>" <?php if (isset($search_field) && ($search_field == $dbname)) { echo 'selected="selected"'; } ?>><?php echo $label;?></option>
               <?php
             }
           ?>
@@ -333,7 +333,7 @@ else {
         }
         else { ?>
           <select name="category">
-          <option value="" selected disabled>Search By</option>
+          <option value="" selected="selected" disabled>Search By</option>
           <?php
             foreach(SEARCH_FIELDS as $dbname => $label) {
               ?>
