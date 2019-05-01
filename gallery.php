@@ -14,6 +14,26 @@ $messages = array();
 
 const MAX_FILE_SIZE = 1000000;
 
+
+
+if ( isset($_POST["submit_delete"]) ) {
+  if ( isset($_POST["delete_button"]) ) {
+      $selected_id = $_POST["selected_id"];
+      $selected_ext = $_POST["selected_ext"];
+
+      $sql = "DELETE FROM images WHERE id = '$selected_id'";
+      $result = exec_sql_query($db, $sql);
+      $delete_image = '/uploads/images/' . $selected_id . '.' . $selected_ext;
+      unlink($delete_image);
+      if ($result) {
+         echo "Image was deleted from gallery.";
+      } else {
+        echo "Image could not be deleted.";
+      }
+  }
+}
+
+
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
   $upload_info = $_FILES["new_image"];
@@ -59,15 +79,17 @@ if ( isset($_POST["submit_upload"]) ) {
 
   $result2 = exec_sql_query($db, $sql2, $params2);
 
+  // $newimageid = "SELECT id FROM images ORDER BY id DESC LIMIT 1";
+  // $result3 = exec_sql_query($db, $newimageid);
+  // echo $result3;
+  // //need to figure out how to get image id
+  //  $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
+  //  $params3 = array(
+  //    ':album_id' => $upload_album,
+  //    ':image_id' => $result3
+  //  );
 
-  //need to figure out how to get image id
-  // $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
-  // $params3 = array(
-  //   ':album_id' => $upload_album,
-  //   ':image_id' => $image_id
-  // );
-
-  // $result3 = exec_sql_query($db, $sql4, $params3);
+  //  $result4 = exec_sql_query($db, $sql4, $params3);
 
 }
 
@@ -334,7 +356,20 @@ else {
         $images = $result->fetchAll();
         if (count($images)>0) {
           foreach ($images as $image) {
+            // will uncomment when sessions work
+
+            // if ( !check_admin_log_in() ) {
+            //   print_image($image);
+            // } else {
+              echo "<form method=\"post\">";
             print_image($image);
+            echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
+            echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
+            echo "<input type=\"checkbox\" name=\"delete_button\" />
+            <input class=\"center\" type=\"submit\" name=\"submit_delete\" value=\"Delete Painting\">
+            </form>";
+            // }
+
           }
         }
         else {
@@ -347,15 +382,17 @@ else {
 
     <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
 
-    <form action="gallery.php" method="post">
-    <input class="center" type="submit" name="submit" value="Delete Painting">
-    </form>
+
 
     <?php
+    // will uncomment when sessions work
+
     // if ( !check_admin_log_in() ) {
     //   echo "<h3>Sign in to edit gallery.</h3>";
     // }
     // else {
+
+    // form for adding an image
     echo "
     <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
       <ul id=\"upload_form\">
@@ -378,21 +415,49 @@ else {
           <label for=\"upload_title\">Title:</label>
           <input id=\"upload_title\" type=\"text\" name=\"upload_title\" />
         </li>
+        <li>
+        <li class=\"center\">
+        <label for=\"upload_tag\">Tag:</label>
+        <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
+        </li>
         <li class=\"center\">
         <p>Description:</p>
         <textarea id=\"upload_description\" name=\"upload_description\" rows=\"10\" cols=\"30\"/>
         </textarea>
         </li>
         <li>
-        <li class=\"center\">
-        <label for=\"upload_tag\">Tag:</label>
-        <input id=\"upload_tag\" type=\"text\" name=\"upload_tag\" />
-        </li>
-        <li>
           <button class=\"center\" name=\"submit_upload\" type=\"submit\">Upload Image</button>
         </li>
       </ul>
     </form>";
+
+    // add a tag form
+    echo "
+    <form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
+    <li class=\"center\">
+    <input id=\"upload_new_tag\" type=\"text\" name=\"upload_new_tag\" />
+    <button name=\"submit_new_tag\" type=\"submit\">Add a tag</button>
+    </li>
+    </form>
+    ";
+
+    // add an existing tag form
+
+    echo "
+    <li class=\"center\">
+    <input id=\"upload_existing_tag\" type=\"text\" name=\"upload_existing_tag\" />
+    <button name=\"submit_existing_tag\" type=\"submit\">Add an existing tag</button>
+    </li>
+    ";
+
+    // edit title form
+
+    echo "
+    <li class=\"center\">
+    <input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />
+    <button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
+    </li>
+    ";
 // }
 ?>
 

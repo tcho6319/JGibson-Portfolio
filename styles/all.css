@@ -241,3 +241,11 @@ footer {
 #upload_form li {
   list-style-type: none;
 }
+
+
+/*Single Image*/
+#singleimgblock{
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+}
