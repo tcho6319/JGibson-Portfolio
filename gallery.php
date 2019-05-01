@@ -335,7 +335,7 @@ else {
         $images = $result->fetchAll();
         if (count($images)>0) {
           foreach ($images as $image) {
-            // LOGIN ISN'T STICKY YET
+            // will uncomment when sessions work
 
             // if ( !check_admin_log_in() ) {
             //   print_image($image);
@@ -364,7 +364,8 @@ else {
     </form>
 
     <?php
-    // LOGIN IS NOT STICKY YET
+    // will uncomment when sessions work
+
     // if ( !check_admin_log_in() ) {
     //   echo "<h3>Sign in to edit gallery.</h3>";
     // }
