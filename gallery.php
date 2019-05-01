@@ -93,6 +93,7 @@ if ( isset($_POST["submit_upload"]) ) {
   //  $result4 = exec_sql_query($db, $sql4, $params3);
   header($_SERVER['REQUEST_URI']);
   exit();
+
 }
 
 // Search
