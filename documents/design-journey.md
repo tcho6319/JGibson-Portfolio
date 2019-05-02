@@ -769,7 +769,11 @@ HTML for upload form
 ## Issues & Challenges
 
 [Tell us about any issues or challenges you faced while trying to complete milestone 3. Bullet points preferred.]
+- gallery.php had a bug where the keyword search could not be properly used. We debugged as a team and was able to figure it out.
 
+- We were deciding where the most appropriate places for the upload form and edit image forms were, and after referring to our sketches and some discussion, we decided to put the upload form at the bottom of the gallery.php and to put the edit image form, including the delete image option, for the single image page, singleimage.php. We realized that it would look cleaner for the client to have edit image details for the specific single image that she is viewing.
+
+- Slideshow: We tried to figure out a way to store the search results of the gallery page when creating the slideshow on the single image page (the user would flip through the single image view of the images in the search results). We used sessions to store the list of images in the search results from the gallery.php so that it could be used in singleimage.php. We will have to ensure that doing so does not interfere with the sessions started when our client does admin login/logout.
 
 --- <!-- ^^^ Milestone 3; vvv FINAL SUBMISSION-->
 
