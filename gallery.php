@@ -19,20 +19,23 @@ const MAX_FILE_SIZE = 1000000;
 //query for image upload
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
+
   $upload_info = $_FILES["new_image"];
   $upload_description = filter_input(INPUT_POST, 'upload_description', FILTER_SANITIZE_STRING);
   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
   $upload_album = filter_input(INPUT_POST, 'upload_album', FILTER_SANITIZE_SPECIAL_CHARS);
   if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
     $upload_name = basename($upload_info["name"]);
+    $upload_filename = strtolower( pathinfo($upload_name, PATHINFO_FILENAME));
     $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION) );
   $sql1 = "INSERT INTO images (filename, ext, description, admin_id) VALUES (:filename, :ext, :description, :admin_id)";
   $params1 = array(
-    ':filename' => $upload_name,
+    ':filename' => $upload_filename,
     ':ext' => $upload_ext,
     ':description' => $upload_description,
     ':admin_id' => $current_admin
   );
+
   $result = exec_sql_query($db, $sql1, $params1);
   if ($result) {
     //image was added to db
@@ -50,20 +53,33 @@ if ( isset($_POST["submit_upload"]) ) {
   } else {
       array_push($messages, "failed");
     }
-  if ($upload_tag != null) {
+
+  if ($upload_tag && $upload_tag != null) {
     $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
     $params2 = array(
       ':tag' => $upload_tag
     );
     $result2 = exec_sql_query($db, $sql2, $params2);
   }
+
   $newimageid = $db->lastInsertId();
-  $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
-  $params3 = array(
-    ':album_id' => $upload_album,
-    ':image_id' => $newimageid
-  );
-  $result4 = exec_sql_query($db, $sql4, $params3);
+
+  $sql_album = "SELECT id FROM albums WHERE album = :album";
+  $params = array(
+      ':album' => $upload_album
+    );
+  $result_album = exec_sql_query($db, $sql_album, $params)->fetchAll();
+  $single_album = $result_album[0];
+  $album_needed = $single_album[0];
+
+    $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
+    $params3 = array(
+      ':album_id' => $album_needed,
+      ':image_id' => $newimageid
+    );
+    $result4 = exec_sql_query($db, $sql4, $params3);
+
+
   header("Location: gallery.php", true, 303);
 }
 // Search
