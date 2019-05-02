@@ -74,6 +74,17 @@ if ( isset($_POST["submit_existing_tag"]) ) {
   }
 }
 
+// query for editing title
+
+// what is title? description?
+
+// if ( isset($_POST["submit_edit_title"]) ) {
+//   if ( isset($_POST["checkbox"]) ) {
+//     $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
+//     $selected_id - $_POST["selected_id"];
+//     $sql = "UPDATE images SET ";
+//   }
+// }
 
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
@@ -417,6 +428,10 @@ else {
             echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
             echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
             echo "<input type=\"checkbox\" name=\"checkbox\" />";
+            echo "<li class=\"center\">";
+            echo "<input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />";
+            echo "<button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
+            </li>";
             // }
 
           }
