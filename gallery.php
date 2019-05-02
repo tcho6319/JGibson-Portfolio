@@ -377,7 +377,7 @@ else {
     <p class="center">Please click on an image to delete it or edit its title/tags.</p>
     <!--  form for adding an image  -->
 
-    <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
+    <form id="uploadimg" action="gallery.php" method="post" enctype="multipart/form-data">
       <ul id="upload_form">
         <li class="center">
           <!-- declare max file size before uploading an image -->

@@ -82,14 +82,36 @@ if ( isset($_POST["submit_existing_tag"]) ) {
 
 
 // query for editing title
-// what is title? description?
-// if ( isset($_POST["submit_edit_title"]) ) {
-//   if ( isset($_POST["checkbox"]) ) {
-//     $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
-//     $selected_id - $_POST["selected_id"];
-//     $sql = "UPDATE images SET ";
-//   }
+
+if ( isset($_POST["submit_edit_title"]) ) {
+    $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
+    var_dump($edit_title);
+    $new_title = str_replace(" ", "-", $edit_title);
+    $new_title = strtolower($new_title);
+    $sql = "UPDATE images SET (filename) = (:filename) WHERE id = :id;";
+    $params = array(
+      ':filename' => $new_title,
+      ':id' => $single_img_id
+    );
+    $result = exec_sql_query($db, $sql, $params);
+    if ($result) {
+      //success
+    } else {
+      //message
+    }
+  }
+
+
+//   //function to process filename from title input
+// function process_title($single_img_filename){
+//   //replace - with space
+//   $single_img_filename = str_replace(" ", "-", $single_img_filename);
+//   //capitalize first word
+//   $single_img_filename = strtolower($single_img_filename);
+//   return $single_img_filename;
 // }
+
+
 
 // var_dump($single_img);
 //function to search $image_list for index of current single image. Returns False if not found
@@ -145,6 +167,8 @@ function process_title($single_img_filename){
   $single_img_filename = strtolower($single_img_filename);
   return $single_img_filename;
 }
+
+
 //function to process description paragraph
 function process_description($single_img_description){
   $single_img_description = ucfirst($single_img_description);
@@ -243,7 +267,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
 <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="uploadFile" action="" method="post" enctype="multipart/form-data">
+    <form id="newtag" action="" method="post" enctype="multipart/form-data">
     <li class="center">
     <input id="upload_new_tag" type="text" name="upload_new_tag" />
     <button name="submit_new_tag" type="submit">Add a tag</button>
@@ -253,7 +277,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="uploadFile" action="" method="post" enctype="multipart/form-data">
+    <form id="existingtag" action="" method="post" enctype="multipart/form-data">
     <li class="center">
     <select name="upload_existing_tag">";
 
@@ -272,11 +296,12 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
    <!-- edit title form -->
 
-
+   <form id="edittitle" action="" method="post" enctype="multipart/form-data">
     <li class="center">
     <input id="upload_edit_title" type="text" name="upload_edit_title" />
     <button name="submit_edit_title" type="submit">Edit title</button>
     </li>
+  </form>
 
   </div>
 
