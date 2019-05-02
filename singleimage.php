@@ -96,6 +96,7 @@ if ( isset($_POST["submit_edit_title"]) ) {
     $result = exec_sql_query($db, $sql, $params);
     if ($result) {
       //success
+      //message here
     } else {
       //message
     }
