@@ -423,15 +423,16 @@ else {
             // if ( !check_admin_log_in() ) {
             //   print_image($image);
             // } else {
-              echo "<form method=\"post\">";
             print_image($image);
-            echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
-            echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
-            echo "<input type=\"checkbox\" name=\"checkbox\" />";
-            echo "<li class=\"center\">";
-            echo "<input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />";
-            echo "<button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
-            </li>";
+
+            // echo "<form method=\"post\">";
+            // echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
+            // echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
+            // echo "<input type=\"checkbox\" name=\"checkbox\" />";
+            // echo "<li class=\"center\">";
+            // echo "<input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />";
+            // echo "<button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
+            // </li>";
             // }
 
           }
