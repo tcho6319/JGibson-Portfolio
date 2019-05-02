@@ -1,6 +1,10 @@
 <?php
 include("includes/init.php");
 
+//start session to save array of imgs in gallery that can be accessed in singleimage.php
+session_start();
+$_SESSION["image_list"] = [];
+
 $tags_sql = "SELECT tags.id, tags.tag FROM tags";
 $tags_params = array();
 $tags_result = exec_sql_query($db, $tags_sql, $tags_params);
@@ -363,6 +367,7 @@ else {
     <div id="images-container">
       <?php
         // var_dump($result);
+        $_SESSION["image_list"] = $result;
         if (count($result)>0) {
           foreach ($result as $image) {
             // will uncomment when sessions work

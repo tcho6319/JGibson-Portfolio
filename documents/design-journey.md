@@ -698,6 +698,8 @@ include footer.php
 ```
 include init.php
 
+refer to image_list from previous query on gallery page (using sessions)
+
 code to process query string parameter to dynamically display page contents
 
 if logged_in:
@@ -706,7 +708,11 @@ if logged_in:
 <body>
 include header.php
 
+back button of slideshow will be QSP with id of entry at the previous index of the current image in image_list
+
 show details of id of image selected according to QSP
+
+next button of slideshow will be QSP with id of entry at the following index of the current image in image_list
 
 if logged_in:
   edit painting form

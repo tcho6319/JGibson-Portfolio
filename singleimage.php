@@ -1,6 +1,12 @@
 <?php
 include("includes/init.php");
 
+//start session to save array of imgs in gallery that can be accessed in singleimage.php
+session_start();
+
+$image_list = $_SESSION["image_list"];
+var_dump($image_list);
+
 //find image that corresponds to id
 if (isset($_GET['id'])){
   $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);

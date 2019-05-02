@@ -275,6 +275,12 @@ footer {
   margin-top: 5px;
 }
 
+#nav_bar a:hover, #return_gallery_link a:hover{
+  color: #a01e1e;
+  border-bottom: 2px solid #a01e1e;
+}
+
+
 #uploading, #tagsss {
   margin-left: 500px;
   margin-right: 500px;
