@@ -42,7 +42,6 @@ if ( isset($_POST["submit_delete"]) ) {
 
 // query for adding a new tag
 if ( isset($_POST["submit_new_tag"]) ) {
-  if ( isset($_POST["checkbox"]) ) {
     $tagname = filter_input(INPUT_POST, 'upload_new_tag', FILTER_SANITIZE_STRING);
     $sql = "INSERT INTO tags (tag) VALUES (:tag)";
     $params = array(
@@ -50,10 +49,13 @@ if ( isset($_POST["submit_new_tag"]) ) {
     );
     $result = exec_sql_query($db, $sql, $params);
     if ($result) {
-      //success,  tag added to db and image
+      //success
+      //array message here
+    } else {
+      // array message here
     }
   }
-}
+
 
 // query for adding existing tag
 if ( isset($_POST["submit_existing_tag"]) ) {
@@ -238,7 +240,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
 <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
+    <form id="uploadFile" action="" method="post" enctype="multipart/form-data">
     <li class="center">
     <input id="upload_new_tag" type="text" name="upload_new_tag" />
     <button name="submit_new_tag" type="submit">Add a tag</button>
