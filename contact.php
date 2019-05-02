@@ -89,7 +89,7 @@ function print_record($record) {
     <label for="phone">Phone Number:</label>
     <input type="text" id="phone" name="phone" placeholder="Required" style="width: 100%;" required/>
 
-    <label for="Comment">Comment</label>
+    <label for="Comment">Comment:</label>
     <textarea id="Comment" name="Comment" style="height:200px;width: 100%; "></textarea>
 
     <button class="button" type="submit" name="submit_r">Submit</button>
