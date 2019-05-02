@@ -193,8 +193,9 @@ body {
 }
 
 .image-content img {
-  width: 100%;
-  max-height: 250px;
+  height:100%;
+  max-height: 400px;
+  width: auto;
 }
 
 #selected {
@@ -258,6 +259,11 @@ footer {
   width: auto;
 }
 
+#mustaches img{
+  width: 100%;
+  height: auto;
+}
+
 #single_img_title{
   text-align: center;
   color: black;
@@ -278,6 +284,18 @@ footer {
 #nav_bar a:hover, #return_gallery_link a:hover{
   color: #a01e1e;
   border-bottom: 2px solid #a01e1e;
+}
+
+#slideshowdiv{
+  display: flex;
+  flex-direction: row;
+}
+
+#next_button a, #back_button a{
+  font-size: 40pt;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 50px;
 }
 
 
