@@ -154,7 +154,6 @@ $tags_to_print = print_single_img_tags($single_img_id);
 <?php include("includes/head.php");?>
 
 
-
 <body>
 <?php include("includes/header.php");?>
 
@@ -162,8 +161,9 @@ $tags_to_print = print_single_img_tags($single_img_id);
     <div id="single_img_title"><?php echo '"' . htmlspecialchars($single_img_filename) . '"' ?></div>
 
     <div id="slideshowdiv">
+    <?php if (count($image_list) > 1) { ?>
     <div id="back_button"><?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $back_img_id)).'"'?>>&lt</a></div>
-
+    <?php } ?>
     <?php
     if ($single_img_id != 17){
       echo '<img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/>';
@@ -176,7 +176,9 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     ?>
 
+    <?php if (count($image_list) > 1) { ?>
     <div id="next_button"><?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $next_img_id)).'"'?>>&gt</a></div>
+    <?php } ?>
   </div>
 
     <div id="single_img_details">
