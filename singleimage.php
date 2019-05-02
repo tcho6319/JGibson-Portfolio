@@ -16,26 +16,29 @@ if (isset($_GET['id'])){
   $single_img_id_isset = True;
 }
 $single_img_id = $single_img["id"];
+$single_img_ext = $single_img["ext"];
 
 
 $messages = array();
 
 //query for deleting an image
 if ( isset($_POST["submit_delete"]) ) {
-  if ( isset($_POST["checkbox"]) ) {
-      $selected_id = $_POST["selected_id"];
-      $selected_ext = $_POST["selected_ext"];
-      $sql = "DELETE FROM images WHERE id = '$selected_id'";
-      $result = exec_sql_query($db, $sql);
-      $delete_image = 'uploads/images/' . $selected_id . '.' . $selected_ext;
+      $sql = "DELETE FROM images WHERE id = :id;";
+      $params = array(
+        ':id' => $single_img_id
+      );
+      $result = exec_sql_query($db, $sql, $params);
+      $delete_image = 'uploads/images/' . $single_img_id . '.' . $single_img_ext;
       unlink($delete_image);
       if ($result) {
-         echo "Image was deleted from gallery.";
+        $location = "gallery.php";
+        header("Location: $location?delete_message=Image has been deleted from gallery.");
+        echo("Image was deleted from gallery");
       } else {
         echo "Image could not be deleted.";
       }
   }
-}
+
 
 // query for adding a new tag
 if ( isset($_POST["submit_new_tag"]) ) {
@@ -227,8 +230,11 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     <div id="uploading">
 
+
     <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
-    <input class="center" type="submit" name="submit_delete" value="Delete Painting"></form>
+    <form id="submit_delete" action="" method="post" enctype="multipart/form-data">
+      <input class="center" type="submit" name="submit_delete" value="Delete Painting">
+    </form>
 
 <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
 

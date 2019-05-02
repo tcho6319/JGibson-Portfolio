@@ -14,6 +14,12 @@ $albums = $albums_result->fetchAll();
 
 $messages = array();
 
+if(!empty($_GET['delete_message'])) {
+  $delete_message = $_GET['delete_message'];
+  echo $delete_message;
+// rest of your code
+}
+
 const MAX_FILE_SIZE = 1000000;
 
 //query for image upload
