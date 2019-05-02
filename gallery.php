@@ -19,19 +19,58 @@ $messages = array();
 const MAX_FILE_SIZE = 1000000;
 
 if ( isset($_POST["submit_delete"]) ) {
-  if ( isset($_POST["delete_button"]) ) {
+  if ( isset($_POST["checkbox"]) ) {
       $selected_id = $_POST["selected_id"];
       $selected_ext = $_POST["selected_ext"];
 
       $sql = "DELETE FROM images WHERE id = '$selected_id'";
       $result = exec_sql_query($db, $sql);
-      $delete_image = '/uploads/images/' . $selected_id . '.' . $selected_ext;
+      $delete_image = 'uploads/images/' . $selected_id . '.' . $selected_ext;
       unlink($delete_image);
       if ($result) {
          echo "Image was deleted from gallery.";
       } else {
         echo "Image could not be deleted.";
       }
+  }
+}
+
+
+// query for adding a new tag
+
+if ( isset($_POST["submit_new_tag"]) ) {
+  if ( isset($_POST["checkbox"]) ) {
+    $tagname = filter_input(INPUT_POST, 'upload_new_tag', FILTER_SANITIZE_STRING);
+    $sql = "INSERT INTO tags (tag) VALUES (:tag)";
+    $params = array(
+      ':tag' => $tagname
+    );
+    $result = exec_sql_query($db, $sql, $params);
+    if ($result) {
+      //success,  tag added to db and image
+    }
+  }
+}
+
+// query for adding existing tag
+
+if ( isset($_POST["submit_existing_tag"]) ) {
+  if ( isset($_POST["checkbox"]) ) {
+      $existing_tag = filter_input(INPUT_POST, 'upload_existing_tag', FILTER_SANITIZE_SPECIAL_CHARS);
+      $selected_id = $_POST["selected_id"];
+      $sql = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)";
+      $params = array (
+        ':tag_id' => $existing_tag,
+        ':image_id' => $selected_id
+      );
+      $result = exec_sql_query($db, $sql, $params);
+      if ($result) {
+        //success, tag added to image
+      } else {
+        array_push($messages, "Failed.");
+      }
+  } else {
+    array_push($messages, "Failed.");
   }
 }
 
@@ -83,18 +122,16 @@ if ( isset($_POST["submit_upload"]) ) {
     $result2 = exec_sql_query($db, $sql2, $params2);
   }
 
+  $newimageid = $db->lastInsertId();
+  $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
+  $params3 = array(
+    ':album_id' => $upload_album,
+    ':image_id' => $newimageid
+  );
 
-  // $newimageid = "SELECT id FROM images ORDER BY id DESC LIMIT 1";
-  // $result3 = exec_sql_query($db, $newimageid);
-  // echo $result3;
-  // //need to figure out how to get image id
-  //  $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
-  //  $params3 = array(
-  //    ':album_id' => $upload_album,
-  //    ':image_id' => $result3
-  //  );
+  $result4 = exec_sql_query($db, $sql4, $params3);
 
-  //  $result4 = exec_sql_query($db, $sql4, $params3);
+
   header("Location: gallery.php", true, 303);
 }
 
@@ -379,9 +416,7 @@ else {
             print_image($image);
             echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
             echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
-            echo "<input type=\"checkbox\" name=\"delete_button\" />
-            <input class=\"center\" type=\"submit\" name=\"submit_delete\" value=\"Delete Painting\">
-            </form>";
+            echo "<input type=\"checkbox\" name=\"checkbox\" />";
             // }
 
           }
@@ -398,16 +433,42 @@ else {
 
 
 
-    <!-- will uncomment when sessions work
+   <!-- will uncomment when sessions work -->
 
-    if ( !check_admin_log_in() ) {
+    <!-- if ( !check_admin_log_in() ) {
      echo "<h3>Sign in to edit gallery.</h3>";
      }
-    // else {
+    // else { -->
 
-    // form for adding an image -->
+      <!-- BUTTONS GONE FOR NOW -->
+      <!-- echo "<input class=\"center\" type=\"submit\" name=\"submit_delete\" value=\"Delete Painting\">
+            </form>";
+            echo "<form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
+            <li class=\"center\">
+            <input id=\"upload_new_tag\" type=\"text\" name=\"upload_new_tag\" />
+            <button class=\"center\" name=\"submit_new_tag\" type=\"submit\">Add a tag</button>
+            </li>
+            </form>";
+             echo "<li class=\"center\">";
+            echo "<select name=\"upload_existing_tag\">";
+
+            foreach ($tags as $tag) {
+              $tag_text = htmlspecialchars($tag["tag"]);
+              echo "<option value=\"" . $tag_text . "\">" . $tag_text . "</option>";
+            }
+
+            echo "</select>";
+            echo "<button name=\"submit_existing_tag\" type=\"submit\">Add existing tag</button>
+            </li>";
+          -->
 
     <div id="uploading">
+
+      <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
+      <input class="center" type="submit" name="submit_delete" value="Delete Painting"></form>
+
+    <!--  form for adding an image  -->
+
     <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
       <ul id="upload_form">
         <li class="center">
@@ -444,7 +505,7 @@ else {
       </ul>
     </form>
     </div>
-   <!-- add a tag form -->
+   <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
 
     <div id="tagsss">
     <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
@@ -455,7 +516,7 @@ else {
     </form>
 
 
-    <!-- add an existing tag form -->
+    <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
 
 
     <li class="center">
