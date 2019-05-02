@@ -18,6 +18,10 @@ if (isset($_GET['id'])){
 $single_img_id = $single_img["id"];
 $single_img_ext = $single_img["ext"];
 
+$tags_sql = "SELECT tags.id, tags.tag FROM tags";
+$tags_params = array();
+$tags_result = exec_sql_query($db, $tags_sql, $tags_params);
+$tags = $tags_result->fetchAll();
 
 $messages = array();
 
@@ -59,24 +63,23 @@ if ( isset($_POST["submit_new_tag"]) ) {
 
 // query for adding existing tag
 if ( isset($_POST["submit_existing_tag"]) ) {
-  if ( isset($_POST["checkbox"]) ) {
       $existing_tag = filter_input(INPUT_POST, 'upload_existing_tag', FILTER_SANITIZE_SPECIAL_CHARS);
-      $selected_id = $_POST["selected_id"];
       $sql = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)";
       $params = array (
         ':tag_id' => $existing_tag,
-        ':image_id' => $selected_id
+        ':image_id' => $single_img_id
       );
       $result = exec_sql_query($db, $sql, $params);
       if ($result) {
         //success, tag added to image
+        //array message here
       } else {
         array_push($messages, "Failed.");
       }
   } else {
     array_push($messages, "Failed.");
   }
-}
+
 
 // query for editing title
 // what is title? description?
@@ -250,7 +253,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
 
-
+    <form id="uploadFile" action="" method="post" enctype="multipart/form-data">
     <li class="center">
     <select name="upload_existing_tag">";
 
@@ -264,7 +267,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
     </select>
     <button name="submit_existing_tag" type="submit">Add existing tag</button>
     </li>
-
+  </form>
 
 
    <!-- edit title form -->
