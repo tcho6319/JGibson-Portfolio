@@ -286,6 +286,18 @@ footer {
   border-bottom: 2px solid #a01e1e;
 }
 
+#slideshowdiv{
+  display: flex;
+  flex-direction: row;
+}
+
+#next_button a, #back_button a{
+  font-size: 40pt;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 50px;
+}
+
 
 #uploading, #tagsss {
   margin-left: 500px;

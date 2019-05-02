@@ -8,6 +8,7 @@ $image_list = $_SESSION["image_list"];
 // var_dump($image_list);
 
 
+
 //find image that corresponds to id
 if (isset($_GET['id'])){
   $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -20,6 +21,59 @@ if (isset($_GET['id'])){
   $single_img_id_isset = True;
 }
 $single_img_id = $single_img["id"];
+
+// var_dump($single_img);
+
+//function to search $image_list for index of current single image. Returns False if not found
+function search_image_list($single_img, $image_list){
+  $single_img_ind_image_list = 0;
+
+  foreach ($image_list as $image){
+    if ($image["id"] == $single_img["id"]){
+      return $single_img_ind_image_list;
+    }
+    $single_img_ind_image_list = $single_img_ind_image_list + 1;
+  }
+  return FALSE;
+}
+
+
+
+
+
+//slidshow buttons
+$single_img_ind_image_list = search_image_list($single_img, $image_list);   //index of current single image in image_list
+
+// var_dump($single_img_ind_image_list);
+// var_dump(count($image_list)-1);
+if ($single_img_ind_image_list == (count($image_list) - 1)){ //current image is last image in image_list
+  $next_img_ind_image_list = 0;
+  $back_img_ind_image_list = $single_img_ind_image_list - 1;
+  // echo "In correct if block";
+}
+
+elseif ($single_img_ind_image_list == 0){ //current image is first image in image_list
+  $back_img_ind_image_list = count($image_list) - 1;
+  $next_img_ind_image_list = $single_img_ind_image_list + 1;
+  // echo "In single_img_ind_image_list == 0 block";
+
+}
+
+else { //in middle of slideshow
+  $back_img_ind_image_list = $single_img_ind_image_list - 1;
+  $next_img_ind_image_list = $single_img_ind_image_list + 1;
+  // echo "In else block";
+}
+
+$back_img = $image_list[$back_img_ind_image_list];
+$next_img = $image_list[$next_img_ind_image_list];
+
+// var_dump($back_img_ind_image_list);
+// var_dump($next_img_ind_image_list);
+
+$back_img_id = $back_img["id"];
+$next_img_id = $next_img["id"];
+
 
 //function to process title from filename
 function process_filename($single_img_filename){
@@ -51,6 +105,8 @@ function process_description($single_img_description){
 
 //function to return a string of tags
 function print_single_img_tags($single_img_id){
+  global $db;
+
   //get all tags for the single_img
   $sql = "SELECT tags.tag FROM tags INNER JOIN image_tags ON tags.id = image_tags.tag_id WHERE :img_id = image_id;";
   $params = array(
@@ -88,6 +144,9 @@ $single_img_filename = process_filename($single_img["filename"]);
 //call to process description of single image
 $single_img_description = process_description($single_img["description"]);
 
+//Call to print single image tags
+$tags_to_print = print_single_img_tags($single_img_id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,32 +157,38 @@ $single_img_description = process_description($single_img["description"]);
 
 <body>
 <?php include("includes/header.php");?>
+
   <div id="singleimgblock">
     <div id="single_img_title"><?php echo '"' . htmlspecialchars($single_img_filename) . '"' ?></div>
+
+    <div id="slideshowdiv">
+    <div id="back_button"><?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $back_img_id)).'"'?>>&lt</a></div>
+
     <?php
     if ($single_img_id != 17){
       echo '<img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/>';
     }
 
-    else{
+    else{ //accounting for very wide mustache piece
       echo '<div id="mustaches"><img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/></div>';
     }
 
 
     ?>
+
+    <div id="next_button"><?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $next_img_id)).'"'?>>&gt</a></div>
+  </div>
+
     <div id="single_img_details">
       <div id="single_img_descrip"><?php echo "Description: " . htmlspecialchars($single_img_description) ?></div>
 
       <div id="single_img_tags"><?php echo $tags_to_print ?></div>
 
     </div>
+
     <div id="return_gallery_link"><a href="gallery.php">Return to All Images</a></div>
   </div>
 
-  <div id="slideshow_button_div">
-    <?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $single_img_id)).'"'?><</p>
-    <p>></p>
-  </div>
 
  <!-- if logged in, show edit single image form -->
 
