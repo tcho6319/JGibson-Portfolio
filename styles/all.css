@@ -259,6 +259,11 @@ footer {
   width: auto;
 }
 
+#mustaches img{
+  width: 100%;
+  height: auto;
+}
+
 #single_img_title{
   text-align: center;
   color: black;

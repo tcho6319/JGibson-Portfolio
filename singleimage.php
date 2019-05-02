@@ -100,7 +100,17 @@ $single_img_description = process_description($single_img["description"]);
 <?php include("includes/header.php");?>
   <div id="singleimgblock">
     <div id="single_img_title"><?php echo '"' . htmlspecialchars($single_img_filename) . '"' ?></div>
-    <?php echo '<img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/>' ?>
+    <?php
+    if ($single_img_id != 17){
+      echo '<img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/>';
+    }
+
+    else{
+      echo '<div id="mustaches"><img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/></div>';
+    }
+
+
+    ?>
     <div id="single_img_details">
       <div id="single_img_descrip"><?php echo "Description: " . htmlspecialchars($single_img_description) ?></div>
 
