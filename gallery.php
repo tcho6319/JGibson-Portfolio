@@ -204,50 +204,56 @@ if ($do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
   if (is_valid_album($user_album)) {
     array_push($messages, "Search Results");
-    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND :search_field LIKE '%'||:search||'%';";
-    $params = array(':album' => $user_album, ':search_field' => $search_field, ':search' => $search);
-    $result = exec_sql_query($db, $sql, $params);
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND (filename LIKE '%'||:search||'%' OR description LIKE '%'||:search||'%');";
+    $params = array(':album' => $user_album, ':search' => $search);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
+    // var_dump($result->fetchAll());
   }
   else {
     array_push($messages, "Album doesn't exist.");
     $sql = "SELECT * FROM images;";
     $params = array();
-    $result = exec_sql_query($db, $sql, $params);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
+    // var_dump($result->fetchAll());
   }
 }
 else if ($do_search && isset($_GET['by_tag'])) {
   $user_tag = filter_input(INPUT_GET, 'by_tag', FILTER_SANITIZE_STRING);
   if (is_valid_tag($user_tag)) {
     array_push($messages, "Search Results");
-    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag = :tag AND :search_field LIKE '%'||:search||'%';";
-    $params = array(':tag' => $user_tag, ':search_field' => $search_field, ':search' => $search);
-    $result = exec_sql_query($db, $sql, $params);
+    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag = :tag AND (filename LIKE '%'||:search||'%' OR description LIKE '%'||:search||'%');";
+    $params = array(':tag' => $user_tag, ':search' => $search);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
+    // var_dump($result->fetchAll());
   }
   else {
     array_push($messages, "Tag doesn't exist.");
     $sql = "SELECT * FROM images;";
     $params = array();
-    $result = exec_sql_query($db, $sql, $params);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
   }
 }
 else if ($do_search) {
   array_push($messages, "Search Results");
-  $sql = "SELECT * FROM images WHERE :search_field LIKE '%' ||:search|| '%';";
-  $params = array(':search_field' => $search_field, ':search' => $search);
-  $result = exec_sql_query($db, $sql, $params);
+  $sql = "SELECT * FROM images WHERE (filename LIKE '%' ||:search|| '%' OR description LIKE '%' ||:search|| '%');";
+  $params = array(':search' => $search);
+  $result = exec_sql_query($db, $sql, $params)->fetchAll();
+  // var_dump($result->fetchAll());
 }
 else if (!$do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
   if (is_valid_album($user_album)) {
     $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album LIKE '%'||:album||'%';";
     $params = array(':album' => $user_album);
-    $result = exec_sql_query($db, $sql, $params);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
+    // var_dump($result->fetchAll());
   }
   else {
     array_push($messages, "Album doesn't exist.");
     $sql = "SELECT * FROM images;";
     $params = array();
-    $result = exec_sql_query($db, $sql, $params);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
+    // var_dump($result->fetchAll());
   }
 }
 else if (!$do_search && isset($_GET['by_tag'])) {
@@ -255,19 +261,20 @@ else if (!$do_search && isset($_GET['by_tag'])) {
   if (is_valid_tag($user_tag)) {
     $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag LIKE '%'||:tag||'%';";
     $params = array(':tag' => $user_tag);
-    $result = exec_sql_query($db, $sql, $params);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
+    // var_dump($result->fetchAll());
   }
   else {
     array_push($messages, "Tag doesn't exist.");
     $sql = "SELECT * FROM images;";
     $params = array();
-    $result = exec_sql_query($db, $sql, $params);
+    $result = exec_sql_query($db, $sql, $params)->fetchAll();
   }
 }
 else {
   $sql = "SELECT * FROM images;";
   $params = array();
-  $result = exec_sql_query($db, $sql, $params);
+  $result = exec_sql_query($db, $sql, $params)->fetchAll();
 }
 ?>
 
@@ -355,9 +362,9 @@ else {
 
     <div id="images-container">
       <?php
-        $images = $result->fetchAll();
-        if (count($images)>0) {
-          foreach ($images as $image) {
+        // var_dump($result);
+        if (count($result)>0) {
+          foreach ($result as $image) {
             // will uncomment when sessions work
 
             // if ( !check_admin_log_in() ) {
