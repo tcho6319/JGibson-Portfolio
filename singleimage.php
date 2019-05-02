@@ -1,6 +1,12 @@
 <?php
 include("includes/init.php");
 
+//start session to save array of imgs in gallery that can be accessed in singleimage.php
+session_start();
+
+$image_list = $_SESSION["image_list"];
+var_dump($image_list);
+
 //find image that corresponds to id
 if (isset($_GET['id'])){
   $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -15,10 +21,21 @@ if (isset($_GET['id'])){
 $single_img_id = $single_img["id"];
 
 //function to process title from filename
+function process_filename($single_img_filename){
+  //replace - with space
+  $single_img_filename = str_replace("-", " ", $single_img_filename);
 
+  //capitalize first word
+  $single_img_filename = ucwords($single_img_filename);
+
+  return $single_img_filename;
+}
 
 //function to process description paragraph
-
+function process_description($single_img_description){
+  $single_img_description = ucfirst($single_img_description);
+  return $single_img_description;
+}
 
 //function to return a string of tags
 function print_single_img_tags($single_img_id){
@@ -50,6 +67,15 @@ function print_single_img_tags($single_img_id){
   return $tags_to_print;
 }
 
+
+
+
+//Call to process filename of single image
+$single_img_filename = process_filename($single_img["filename"]);
+
+//call to process description of single image
+$single_img_description = process_description($single_img["description"]);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,19 +85,20 @@ function print_single_img_tags($single_img_id){
 
 
 <body>
-  <?php include("includes/header.php");?>
+<?php include("includes/header.php");?>
   <div id="singleimgblock">
-    <a href="gallery.php">Return to All Images</a>
+    <div id="single_img_title"><?php echo '"' . htmlspecialchars($single_img_filename) . '"' ?></div>
     <?php echo '<img alt="' . htmlspecialchars($single_img["description"]) . '" src="uploads/images/' . htmlspecialchars($single_img["id"]) . '.' . htmlspecialchars($single_img["ext"]) . '"/>' ?>
-    <div id="single_img_title"><?php echo '"' . htmlspecialchars($single_img["filename"]) . '"' ?></div>
     <div id="single_img_details">
-      <div id="single_img_descrip"><?php echo htmlspecialchars($single_img["description"]) ?></div>
+      <div id="single_img_descrip"><?php echo "Description: " . htmlspecialchars($single_img_description) ?></div>
 
       <div id="single_img_tags"><?php echo $tags_to_print ?></div>
 
     </div>
+    <div id="return_gallery_link"><a href="gallery.php">Return to All Images</a></div>
   </div>
 
+ <!-- if logged in, show edit single image form -->
 
   <?php include("includes/footer.php");?>
 </body>

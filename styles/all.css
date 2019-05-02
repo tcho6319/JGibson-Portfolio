@@ -250,3 +250,42 @@ footer {
   flex-direction: column;
   text-align: center;
 }
+
+#singleimgblock img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 700px;
+  width: auto;
+}
+
+#single_img_title{
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#return_gallery_link{
+  margin-top: 50px;
+}
+
+#single_img_descrip{
+  font-size: 13pt;
+  margin-top: 5px;
+}
+
+#nav_bar a:hover, #return_gallery_link a:hover{
+  color: #a01e1e;
+  border-bottom: 2px solid #a01e1e;
+}
+
+
+#uploading, #tagsss {
+  margin-left: 500px;
+  margin-right: 500px;
+  border-style: solid;
+  margin-top: 10px;
+  padding-bottom: 30px;
+}
