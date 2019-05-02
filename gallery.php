@@ -3,7 +3,8 @@ include("includes/init.php");
 
 //start session to save array of imgs in gallery that can be accessed in singleimage.php
 session_start();
-$_SESSION["image_list"] = [];
+$_SESSION["image_list"] = []; //list of images. either all or after search query
+
 
 $tags_sql = "SELECT tags.id, tags.tag FROM tags";
 $tags_params = array();

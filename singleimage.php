@@ -5,7 +5,8 @@ include("includes/init.php");
 session_start();
 
 $image_list = $_SESSION["image_list"];
-var_dump($image_list);
+// var_dump($image_list);
+
 
 //find image that corresponds to id
 if (isset($_GET['id'])){
@@ -27,6 +28,17 @@ function process_filename($single_img_filename){
 
   //capitalize first word
   $single_img_filename = ucwords($single_img_filename);
+
+  return $single_img_filename;
+}
+
+//function to process title from filename input
+function process_title($single_img_filename){
+  //replace - with space
+  $single_img_filename = str_replace(" ", "-", $single_img_filename);
+
+  //capitalize first word
+  $single_img_filename = strtolower($single_img_filename);
 
   return $single_img_filename;
 }
@@ -96,6 +108,11 @@ $single_img_description = process_description($single_img["description"]);
 
     </div>
     <div id="return_gallery_link"><a href="gallery.php">Return to All Images</a></div>
+  </div>
+
+  <div id="slideshow_button_div">
+    <?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $single_img_id)).'"'?><</p>
+    <p>></p>
   </div>
 
  <!-- if logged in, show edit single image form -->

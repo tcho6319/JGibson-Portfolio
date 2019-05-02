@@ -515,7 +515,12 @@ id : INTEGER {PK, U, Not, AI}
 name : TEXT {Not}
 admin_id : TEXT {Not} UNIQUE
 password : TEXT {Not}
-session : TEXT UNIQUE
+)
+
+sessions (
+id : INTEGER {PK, U, Not, AI}
+user_id : INTEGER {Not}
+session : TEXT {U, Not}
 )
 
 images (
