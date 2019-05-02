@@ -16,6 +16,73 @@ if (isset($_GET['id'])){
   $single_img_id_isset = True;
 }
 $single_img_id = $single_img["id"];
+
+
+$messages = array();
+
+//query for deleting an image
+if ( isset($_POST["submit_delete"]) ) {
+  if ( isset($_POST["checkbox"]) ) {
+      $selected_id = $_POST["selected_id"];
+      $selected_ext = $_POST["selected_ext"];
+      $sql = "DELETE FROM images WHERE id = '$selected_id'";
+      $result = exec_sql_query($db, $sql);
+      $delete_image = 'uploads/images/' . $selected_id . '.' . $selected_ext;
+      unlink($delete_image);
+      if ($result) {
+         echo "Image was deleted from gallery.";
+      } else {
+        echo "Image could not be deleted.";
+      }
+  }
+}
+
+// query for adding a new tag
+if ( isset($_POST["submit_new_tag"]) ) {
+  if ( isset($_POST["checkbox"]) ) {
+    $tagname = filter_input(INPUT_POST, 'upload_new_tag', FILTER_SANITIZE_STRING);
+    $sql = "INSERT INTO tags (tag) VALUES (:tag)";
+    $params = array(
+      ':tag' => $tagname
+    );
+    $result = exec_sql_query($db, $sql, $params);
+    if ($result) {
+      //success,  tag added to db and image
+    }
+  }
+}
+
+// query for adding existing tag
+if ( isset($_POST["submit_existing_tag"]) ) {
+  if ( isset($_POST["checkbox"]) ) {
+      $existing_tag = filter_input(INPUT_POST, 'upload_existing_tag', FILTER_SANITIZE_SPECIAL_CHARS);
+      $selected_id = $_POST["selected_id"];
+      $sql = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)";
+      $params = array (
+        ':tag_id' => $existing_tag,
+        ':image_id' => $selected_id
+      );
+      $result = exec_sql_query($db, $sql, $params);
+      if ($result) {
+        //success, tag added to image
+      } else {
+        array_push($messages, "Failed.");
+      }
+  } else {
+    array_push($messages, "Failed.");
+  }
+}
+
+// query for editing title
+// what is title? description?
+// if ( isset($_POST["submit_edit_title"]) ) {
+//   if ( isset($_POST["checkbox"]) ) {
+//     $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
+//     $selected_id - $_POST["selected_id"];
+//     $sql = "UPDATE images SET ";
+//   }
+// }
+
 // var_dump($single_img);
 //function to search $image_list for index of current single image. Returns False if not found
 function search_image_list($single_img, $image_list){
@@ -28,6 +95,7 @@ function search_image_list($single_img, $image_list){
   }
   return FALSE;
 }
+
 //slidshow buttons
 $single_img_ind_image_list = search_image_list($single_img, $image_list);   //index of current single image in image_list
 // var_dump($single_img_ind_image_list);
@@ -146,6 +214,60 @@ $tags_to_print = print_single_img_tags($single_img_id);
       <div id="single_img_tags"><?php echo $tags_to_print ?></div>
 
     </div>
+
+    <h3 class="subtitle2">━━━━━ Edit this Image ━━━━━</h3>
+
+
+   <!-- will uncomment when sessions work -->
+
+    <!-- if ( !check_admin_log_in() ) {
+     echo "<h3>Sign in to edit gallery.</h3>";
+     }
+    // else { -->
+
+    <div id="uploading">
+
+    <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
+    <input class="center" type="submit" name="submit_delete" value="Delete Painting"></form>
+
+<!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
+
+    <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
+    <li class="center">
+    <input id="upload_new_tag" type="text" name="upload_new_tag" />
+    <button name="submit_new_tag" type="submit">Add a tag</button>
+    </li>
+    </form>
+
+
+    <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
+
+
+    <li class="center">
+    <select name="upload_existing_tag">";
+
+    <?php
+    foreach ($tags as $tag) {
+      $tag_text = htmlspecialchars($tag["tag"]);
+      echo "<option value=\"" . $tag_text . "\">" . $tag_text . "</option>";
+    }
+    ?>
+
+    </select>
+    <button name="submit_existing_tag" type="submit">Add existing tag</button>
+    </li>
+
+
+
+   <!-- edit title form -->
+
+
+    <li class="center">
+    <input id="upload_edit_title" type="text" name="upload_edit_title" />
+    <button name="submit_edit_title" type="submit">Edit title</button>
+    </li>
+
+  </div>
 
     <div id="return_gallery_link"><a href="gallery.php">Return to All Images</a></div>
   </div>

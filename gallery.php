@@ -11,66 +11,12 @@ $albums_sql = "SELECT albums.id, albums.album FROM albums";
 $albums_params = array();
 $albums_result = exec_sql_query($db, $albums_sql, $albums_params);
 $albums = $albums_result->fetchAll();
+
 $messages = array();
+
 const MAX_FILE_SIZE = 1000000;
-if ( isset($_POST["submit_delete"]) ) {
-  if ( isset($_POST["checkbox"]) ) {
-      $selected_id = $_POST["selected_id"];
-      $selected_ext = $_POST["selected_ext"];
-      $sql = "DELETE FROM images WHERE id = '$selected_id'";
-      $result = exec_sql_query($db, $sql);
-      $delete_image = 'uploads/images/' . $selected_id . '.' . $selected_ext;
-      unlink($delete_image);
-      if ($result) {
-         echo "Image was deleted from gallery.";
-      } else {
-        echo "Image could not be deleted.";
-      }
-  }
-}
-// query for adding a new tag
-if ( isset($_POST["submit_new_tag"]) ) {
-  if ( isset($_POST["checkbox"]) ) {
-    $tagname = filter_input(INPUT_POST, 'upload_new_tag', FILTER_SANITIZE_STRING);
-    $sql = "INSERT INTO tags (tag) VALUES (:tag)";
-    $params = array(
-      ':tag' => $tagname
-    );
-    $result = exec_sql_query($db, $sql, $params);
-    if ($result) {
-      //success,  tag added to db and image
-    }
-  }
-}
-// query for adding existing tag
-if ( isset($_POST["submit_existing_tag"]) ) {
-  if ( isset($_POST["checkbox"]) ) {
-      $existing_tag = filter_input(INPUT_POST, 'upload_existing_tag', FILTER_SANITIZE_SPECIAL_CHARS);
-      $selected_id = $_POST["selected_id"];
-      $sql = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)";
-      $params = array (
-        ':tag_id' => $existing_tag,
-        ':image_id' => $selected_id
-      );
-      $result = exec_sql_query($db, $sql, $params);
-      if ($result) {
-        //success, tag added to image
-      } else {
-        array_push($messages, "Failed.");
-      }
-  } else {
-    array_push($messages, "Failed.");
-  }
-}
-// query for editing title
-// what is title? description?
-// if ( isset($_POST["submit_edit_title"]) ) {
-//   if ( isset($_POST["checkbox"]) ) {
-//     $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
-//     $selected_id - $_POST["selected_id"];
-//     $sql = "UPDATE images SET ";
-//   }
-// }
+
+//query for image upload
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
   $upload_info = $_FILES["new_image"];
@@ -391,10 +337,6 @@ else {
             // echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
             // echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
             // echo "<input type=\"checkbox\" name=\"checkbox\" />";
-            // echo "<li class=\"center\">";
-            // echo "<input id=\"upload_edit_title\" type=\"text\" name=\"upload_edit_title\" />";
-            // echo "<button name=\"submit_edit_title\" type=\"submit\">Edit title</button>
-            // </li>";
             // }
           }
         }
@@ -406,42 +348,11 @@ else {
       ?>
     </div>
 
-    <h3 class="subtitle2">━━━━━ Edit Gallery ━━━━━</h3>
-
-
-
-   <!-- will uncomment when sessions work -->
-
-    <!-- if ( !check_admin_log_in() ) {
-     echo "<h3>Sign in to edit gallery.</h3>";
-     }
-    // else { -->
-
-      <!-- BUTTONS GONE FOR NOW -->
-      <!-- echo "<input class=\"center\" type=\"submit\" name=\"submit_delete\" value=\"Delete Painting\">
-            </form>";
-            echo "<form id=\"uploadFile\" action=\"gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
-            <li class=\"center\">
-            <input id=\"upload_new_tag\" type=\"text\" name=\"upload_new_tag\" />
-            <button class=\"center\" name=\"submit_new_tag\" type=\"submit\">Add a tag</button>
-            </li>
-            </form>";
-             echo "<li class=\"center\">";
-            echo "<select name=\"upload_existing_tag\">";
-            foreach ($tags as $tag) {
-              $tag_text = htmlspecialchars($tag["tag"]);
-              echo "<option value=\"" . $tag_text . "\">" . $tag_text . "</option>";
-            }
-            echo "</select>";
-            echo "<button name=\"submit_existing_tag\" type=\"submit\">Add existing tag</button>
-            </li>";
-          -->
+    <h3 class="subtitle2">━━━━━ Edit this Gallery ━━━━━</h3>
 
     <div id="uploading">
 
-      <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
-      <input class="center" type="submit" name="submit_delete" value="Delete Painting"></form>
-
+    <p class="center">Please click on an image to delete it or edit its title/tags.</p>
     <!--  form for adding an image  -->
 
     <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
@@ -480,43 +391,6 @@ else {
       </ul>
     </form>
     </div>
-   <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
-
-    <div id="tagsss">
-    <form id="uploadFile" action="gallery.php" method="post" enctype="multipart/form-data">
-    <li class="center">
-    <input id="upload_new_tag" type="text" name="upload_new_tag" />
-    <button name="submit_new_tag" type="submit">Add a tag</button>
-    </li>
-    </form>
-
-
-    <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
-
-
-    <li class="center">
-    <select name="upload_existing_tag">";
-
-    <?php
-    foreach ($tags as $tag) {
-      $tag_text = htmlspecialchars($tag["tag"]);
-      echo "<option value=\"" . $tag_text . "\">" . $tag_text . "</option>";
-    }
-    ?>
-
-    </select>
-    <button name="submit_existing_tag" type="submit">Add existing tag</button>
-    </li>
-
-
-
-   <!-- edit title form -->
-
-
-    <li class="center">
-    <input id="upload_edit_title" type="text" name="upload_edit_title" />
-    <button name="submit_edit_title" type="submit">Edit title</button>
-    </li>
   </div>
   </div>
   <?php include("includes/footer.php");?>
