@@ -75,7 +75,7 @@ INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (10, 'ray
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (11, 'maria', 'jpg', 'watercolor illustration of a stone church', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (12, 'grandmother', 'jpg', 'pencil sketch of a grandmother', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (13, '9', 'jpg', 'pencil sketch of a child', 1);
-INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (14, 'skipping-rope-color', 'jpg', 'pencil illustration of a girl skipping rope', 1);
+INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (14, 'skipping-rope', 'jpg', 'watercolor illustration of a girl skipping rope', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (15, 'sonnet', 'jpg', 'watercolor piece illustrating a parent and child reading a sonnet', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (16, 'gramophone-love', 'jpg', 'flowery pencil illustration of a couple and a gramaphone', 1);
 INSERT INTO `images` (id, filename, ext, description, admin_id) VALUES (17, 'mustaches', 'jpg', 'pencil illustration of a whole lot of fake mustaches', 1);

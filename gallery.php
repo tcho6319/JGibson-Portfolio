@@ -98,6 +98,7 @@ if (isset($_GET['search']) && isset($_GET['category'])) {
   $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
   if (in_array($category, array_keys(SEARCH_FIELDS))) {
     $search_field = $category;
+    $search_field_db_key = array_search($search_field, SEARCH_FIELDS);
   }
   else {
     $do_search = FALSE;
@@ -188,7 +189,12 @@ if ($do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
   if (is_valid_album($user_album)) {
     array_push($messages, "Search Results");
-    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND (filename LIKE '%'||:search||'%' OR description LIKE '%'||:search||'%');";
+    if ($search_field == 'filename') {
+      $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND filename LIKE '%'||:search||'%';";
+    }
+    else {
+      $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND description LIKE '%'||:search||'%';";
+    }
     $params = array(':album' => $user_album, ':search' => $search);
     $result = exec_sql_query($db, $sql, $params)->fetchAll();
     // var_dump($result->fetchAll());
@@ -205,7 +211,12 @@ else if ($do_search && isset($_GET['by_tag'])) {
   $user_tag = filter_input(INPUT_GET, 'by_tag', FILTER_SANITIZE_STRING);
   if (is_valid_tag($user_tag)) {
     array_push($messages, "Search Results");
-    $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag = :tag AND (filename LIKE '%'||:search||'%' OR description LIKE '%'||:search||'%');";
+    if ($search_field == 'filename') {
+      $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag = :tag AND filename LIKE '%'||:search||'%';";
+    }
+    else {
+      $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_tags ON images.id = image_tags.image_id INNER JOIN tags ON tags.id = image_tags.tag_id WHERE tags.tag = :tag AND description LIKE '%'||:search||'%';";
+    }
     $params = array(':tag' => $user_tag, ':search' => $search);
     $result = exec_sql_query($db, $sql, $params)->fetchAll();
     // var_dump($result->fetchAll());
@@ -219,7 +230,12 @@ else if ($do_search && isset($_GET['by_tag'])) {
 }
 else if ($do_search) {
   array_push($messages, "Search Results");
-  $sql = "SELECT * FROM images WHERE (filename LIKE '%' ||:search|| '%' OR description LIKE '%' ||:search|| '%');";
+  if ($search_field == 'filename') {
+    $sql = "SELECT * FROM images WHERE filename LIKE '%' ||:search|| '%';";
+  }
+  else {
+    $sql = "SELECT * FROM images WHERE description LIKE '%' ||:search|| '%';";
+  }
   $params = array(':search' => $search);
   $result = exec_sql_query($db, $sql, $params)->fetchAll();
   // var_dump($result->fetchAll());
