@@ -194,7 +194,7 @@ function print_single_img_tags($single_img_id){
         $tags_to_print = "Tags: ";
       }
       if ($count != $records_img_tags_length - 1){
-        $tags_to_print = $tags_to_print . ucfirst(htmlspecialchars($record["tag"])) . ' ' . '&#9830' . ' ';
+        $tags_to_print = $tags_to_print . ucfirst(htmlspecialchars($record["tag"])) . ' ' . ' ' . '&#9830' . ' ' . ' ';
       }
       else{
         $tags_to_print = $tags_to_print . ucfirst(htmlspecialchars($record["tag"]));
