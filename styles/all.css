@@ -279,9 +279,13 @@ footer {
   margin-top: 50px;
 }
 
-#single_img_descrip{
+#single_img_descrip, #single_img_tags{
   font-size: 19px;
   margin-top: 5px;
+}
+
+#single_img_tags{
+  word-spacing: 5px;
 }
 
 #nav_bar a:hover, #return_gallery_link a:hover{
