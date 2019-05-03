@@ -1,6 +1,7 @@
 -- TODO: Put ALL SQL in between `BEGIN TRANSACTION` and `COMMIT`
 BEGIN TRANSACTION;
 
+
 -- admins table
 CREATE TABLE `admins` (
   'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -89,6 +90,12 @@ INSERT INTO `albums` (album) VALUES ('portrait');
 INSERT INTO `albums` (album) VALUES ('illustration');
 INSERT INTO `albums` (album) VALUES ('personal');
 
+INSERT INTO `image_albums` (album_id, image_id) VALUES (1,  1);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (1,  2);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (1,  3);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (1,  4);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (1,  5);
+INSERT INTO `image_albums` (album_id, image_id) VALUES (1,  7);
 INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  1);
 INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  2);
 INSERT INTO `image_albums` (album_id, image_id) VALUES (2,  3);
@@ -118,11 +125,43 @@ INSERT INTO `tags` (tag) VALUES ('facade');
 INSERT INTO `tags` (tag) VALUES ('landscape');
 INSERT INTO `tags` (tag) VALUES ('children');
 
-
--- STILL NEEDED: SEED TAGS DATA, SEED DATA FOR AVAILABLE IN image_albums
-
-
-
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  1);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  2);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  3);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  4);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  5);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  6);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  7);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  8);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  9);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (1,  14);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  11);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  12);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  13);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  15);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  17);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  18);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  19);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (2,  21);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (3,  3);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (3,  5);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (3,  7);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (3,  8);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (4,  1);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (4,  2);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (4,  4);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (4,  6);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (5,  3);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (5,  7);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (5,  8);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  14);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  15);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  16);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  17);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  18);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  19);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  20);
+INSERT INTO `image_tags` (tag_id, image_id) VALUES (6,  21);
 
 
 COMMIT;
