@@ -258,7 +258,7 @@ footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 650px;
+  height: 630px;
   width: auto;
 }
 
@@ -280,7 +280,7 @@ footer {
 }
 
 #single_img_descrip{
-  font-size: 15pt;
+  font-size: 19px;
   margin-top: 5px;
 }
 
