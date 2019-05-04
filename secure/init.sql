@@ -2,12 +2,11 @@
 BEGIN TRANSACTION;
 
 -- admins table
-CREATE TABLE  admins (
-  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-  name TEXT NOT NULL,
-  admin_id  TEXT NOT NULL UNIQUE, -- USED TO LOG IN
-  password  TEXT NOT NULL,
-  session  TEXT UNIQUE
+CREATE TABLE admins (
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	admin_id TEXT NOT NULL UNIQUE,
+	password TEXT NOT NULL
+  session TEXT UNIQUE
 );
 
 -- images table
@@ -57,7 +56,7 @@ CREATE TABLE  submissions (
 
 
 -- seed data
-INSERT INTO admins (id, name, admin_id, password) VALUES (1, 'Jennifer Gibson', 'jgibson', '$2y$10$7J6OBlJQvj0Jy6hXJNkTSuD1ceC5fUE74bftOy57LVTus4c5kHmKi'); -- password: instagram
+INSERT INTO admins (id, admin_id, password) VALUES (1, 'jgibson', '$2y$10$7J6OBlJQvj0Jy6hXJNkTSuD1ceC5fUE74bftOy57LVTus4c5kHmKi'); -- password: instagram
 
 INSERT INTO images (id, filename, ext, description, admin_id) VALUES (1, 'stone-church', 'jpg', 'watercolor illustration of a stone church.', 1);
 INSERT INTO images (id, filename, ext, description, admin_id) VALUES (2, 'goshen-jewelers', 'jpg', 'watercolor illustration of goshen jewelers.', 1);

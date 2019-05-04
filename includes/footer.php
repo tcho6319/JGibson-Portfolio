@@ -2,8 +2,6 @@
     <div class="footer">
     <div class="login">
         <hr>
-        <p>Log-In <br> *Admins only*
-
 
         <?php
         foreach($messages as $message){
@@ -11,7 +9,9 @@
         // this prints a message to admins
 
         if (!$current_admin) { ?>
-        <form id="loginForm" action="index.php" method="POST">
+            <form id="loginForm" action="index.php" method="POST">
+            <p>Log-In<br> *Admins only*</p>
+
                 <ul style="list-style-type:none;">
                 <li>
                     <label>Admin ID: </label>
@@ -25,11 +25,17 @@
                     <button name="login" type="submit"><strong>Log In</strong></button>
                 </li>
                 </ul>
-        </form>
+            </form>
         <?php
         } else {
-            echo "<br><strong>You are logged in</strong>\n";}?>
-        </p>
+            echo "<br><strong>You are logged in</strong>\n"; ?> <p>
+            <form id="loginForm" action="index.php" method="POST">
+            <button name="logout" type="submit"><strong>Log Out</strong></button>
+
+        </form>
+        <?php }?>
+
+
     </div>
     </div>
 
