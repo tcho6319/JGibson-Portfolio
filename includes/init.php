@@ -78,6 +78,44 @@ function session_alert($message) {
 
 /* Source: lab 8 solution (init.php) by Kyle Harms */
 
+
+function check_login() {
+  global $db;
+
+  if (isset($_COOKIE["session"])) {
+    $session = $_COOKIE["session"];
+
+    $sql = "SELECT * FROM admins WHERE session = :session;";
+    $params = array(':session' => $session);
+    $records = exec_sql_query($db, $sql, $params)->fetchAll();
+
+    if ($records) {
+      // There should only be 1 record
+      $account = $records[0];
+      return $account['admin_id'];
+    }
+  }
+  return NULL;
+}
+
+// a function to get an ID that is currently logged in
+function get_admin_id(){
+  global $db;
+
+  if (isset ($_COOKIE["session"])) {
+    $session = $_COOKIE["session"];
+    $sql= "SELECT *FROM admins WHERE session = :session;";
+    $params = array(':session'=>$session);
+    $records= exec_sql_query($db, $sql, $params) -> fetchAll();
+
+    if ($records){
+      // there should be only one record because admin name is unique
+      return $records[0]['id'];
+    }
+  }
+  return NULL;
+}
+
 // A function to login
 function log_in($admin_id, $password) {
   global $db;
@@ -147,25 +185,6 @@ function log_out() {
   $current_admin=NULL;
 }
 
-// a function to get an ID that is currently logged in
-function get_id(){
-  global $db;
-
-  if (isset ($_COOKIE["session"])) {
-    $session = $_COOKIE["session"];
-    $sql= "SELECT *FROM admins WHERE session = :session;";
-    $params = array(':session'=>$session);
-    $records= exec_sql_query($db, $sql, $params) -> fetchAll();
-
-    if ($records){
-      // there should be only one record because admin name is unique
-      return $records[0]['id'];
-    }
-  }
-  return NULL;
-}
-
-
 // a function to check whether a admin is logged in or not
 function check_admin_log_in () {
   global $current_admin;
@@ -185,7 +204,7 @@ if (isset ($_POST['login'])) {
 }
 
 if (!empty($current_admin)) {
-  $current_admin_id = get_id();
+  $current_admin_id = get_admin_id();
 }
 
 

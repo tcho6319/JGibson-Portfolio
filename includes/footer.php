@@ -28,7 +28,7 @@
         </form>
         <?php
         } else {
-            echo "<br><strong>You are already logged in</strong>\n";}?>
+            echo "<br><strong>You are logged in</strong>\n";}?>
         </p>
     </div>
     </div>
