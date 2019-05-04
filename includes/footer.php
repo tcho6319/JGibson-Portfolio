@@ -28,7 +28,7 @@
             </form>
         <?php
         } else {
-            echo "<br><strong>You are logged in</strong>\n"; ?> <p>
+            echo "<br>You are logged in\n"; ?> <p>
             <form id="loginForm" action="index.php" method="POST">
             <button name="logout" type="submit"><strong>Log Out</strong></button>
 
