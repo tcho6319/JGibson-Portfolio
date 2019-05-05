@@ -189,6 +189,9 @@ if ($do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
   if (is_valid_album($user_album)) {
     array_push($messages, "Search Results");
+    if ($user_album == "available") {
+      array_push($messages, "All pieces currently being viewed can be purchased upon request. Please use the contact page to inquire about commissions or purchases.");
+    }
     if ($search_field == 'filename') {
       $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album = :album AND filename LIKE '%'||:search||'%';";
     }
@@ -243,6 +246,9 @@ else if ($do_search) {
 else if (!$do_search && isset($_GET['by_album'])) {
   $user_album = filter_input(INPUT_GET, 'by_album', FILTER_SANITIZE_STRING);
   if (is_valid_album($user_album)) {
+    if ($user_album == "available") {
+      array_push($messages, "All pieces currently being viewed can be purchased upon request. Please use the contact page to inquire about commissions or purchases.");
+    }
     $sql = "SELECT DISTINCT images.id, images.filename, images.ext, images.admin_id FROM images INNER JOIN image_albums ON images.id = image_albums.image_id INNER JOIN albums ON albums.id = image_albums.album_id WHERE albums.album LIKE '%'||:album||'%';";
     $params = array(':album' => $user_album);
     $result = exec_sql_query($db, $sql, $params)->fetchAll();
@@ -299,6 +305,8 @@ else {
     }
     ?>
     <h1>Gallery</h1>
+
+    <h2>Albums&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tags</h2>
 
     <div id="gallery-button-group">
       <span id="album-buttons">
