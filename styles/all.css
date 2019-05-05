@@ -45,11 +45,11 @@ h3 {
 
 header {
     background-color: white;
-    padding: 1px 0 40px 0;
+    padding: 1px 0 10px 0;
   }
 
 header #title {
-    padding: 30px;
+    padding: 10px;
   }
 
 body {

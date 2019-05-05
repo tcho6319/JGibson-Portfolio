@@ -302,8 +302,8 @@ else {
 
     <div id="gallery-button-group">
       <span id="album-buttons">
-        <a href="gallery.php" class="album-button">All</a>
         <?php
+        echo '<a href="gallery.php" class="album-button">All</a>';
         foreach($albums as $album){
           print_album_buttons($album);
         }

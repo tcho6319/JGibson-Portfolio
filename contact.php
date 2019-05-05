@@ -22,7 +22,13 @@ if (isset($_POST['submit_r'])){
   }
   $comment = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_STRING);
   if ($submit_respond == TRUE) {
-    $sql1 = "INSERT INTO questions (reason, name, email, phone, comment) VALUES (:reason, :user_name, :user_email, :user_phone, :comment);";
+    $to = "jeg256@gmail.com";
+    $subject = "Form Submission";
+    $message = $user_name . " wrote the following message:" . "\n\nReason: " . $reason . "\n\nComment: " . $comment . "\n\nPhone Number: " . $user_phone;
+    $headers = "From:" . $user_email;
+    mail($to, $subject, $message, $headers);
+
+    $sql1 = "INSERT INTO submissions (reason, name, email, phone, comment) VALUES (:reason, :user_name, :user_email, :user_phone, :comment);";
     $params1 = array(
       ':reason' => $reason,
       ':user_name' => $user_name,
