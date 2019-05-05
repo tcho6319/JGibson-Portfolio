@@ -5,6 +5,15 @@
   width: 80%;
 }
 
+header {
+  background-color: white;
+  padding: 20px 0 10px 0;
+}
+
+header #title {
+  padding: 10px;
+}
+
 /* Title font*/
 h1{
     text-align: center;
@@ -42,15 +51,6 @@ h3 {
   padding: 0 20px 20px 0;
  }
 
-
-header {
-    background-color: white;
-    padding: 1px 0 10px 0;
-  }
-
-header #title {
-    padding: 10px;
-  }
 
 body {
   background-color: white;
