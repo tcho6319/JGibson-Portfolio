@@ -4,6 +4,7 @@ include("includes/init.php");
 
 if (isset($_POST['submit_r'])){
   $submit_respond = TRUE;
+
   $reason = filter_input(INPUT_POST, 'reason', FILTER_SANITIZE_STRING);
   $user_name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $user_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
@@ -12,14 +13,15 @@ if (isset($_POST['submit_r'])){
     $user_email = NULL;
     $submit_respond = FALSE;
   }
-  $user_phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
 
-  if (preg_match("/^[0-9\-]|[\+0-9]|[0-9\s]|[0-9()]*$/", $phone)) {
+  $user_phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
+  if (preg_match("/^[0-9\-]|[\+0-9]|[0-9\s]|[0-9()]*$/", $user_phone)) {
     // this reg ex is the format the html date input creates
   } else {
-    $date = NULL;
+    $user_phone = NULL;
     $submit_respond = FALSE;
   }
+
   $comment = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_STRING);
   if ($submit_respond == TRUE) {
     $to = "jeg256@gmail.com";
