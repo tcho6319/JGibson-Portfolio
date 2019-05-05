@@ -94,6 +94,7 @@ body {
 #blurb {
   font-style: italic;
   font-size: large;
+  margin-top: 40px;
 }
 
 .subtitle1 {
@@ -166,8 +167,12 @@ body {
   border: 3px solid white;
 }
 
-#album-buttons a, #album-buttons a:hover {
+#album-buttons a {
   color: #a01e1e;
+}
+
+#album-buttons a:hover {
+  color: white;
 }
 
 #tag-buttons {
