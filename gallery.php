@@ -131,7 +131,7 @@ function print_image($image) {
     <div class="image-content">
       <figure>
         <!-- Artwork created by Jennifer Gibson. -->
-        <?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $fileid)).'"'?>><img src=<?php echo $fullpath;?> alt=<?php echo $filename;?>></a>
+        <?php echo '<a href="singleimage.php?'.http_build_query(array('id' => $fileid)). '#singleimgblock' . '"'?>><img src=<?php echo $fullpath;?> alt=<?php echo $filename;?>></a>
         <figcaption>Artwork created by Jennifer Gibson.</figcaption>
       </figure>
     </div>
