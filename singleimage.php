@@ -248,6 +248,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     </div>
 
+  <?php if (check_admin_log_in() != NULL) { ?>
     <h3 class="subtitle2">━━━━━ Edit this Image ━━━━━</h3>
 
 
@@ -305,6 +306,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
   </form>
 
   </div>
+  <?php } ?>
 
     <div id="return_gallery_link"><a href="gallery.php">Return to All Images</a></div>
   </div>

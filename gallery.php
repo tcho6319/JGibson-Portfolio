@@ -394,6 +394,7 @@ else {
       ?>
     </div>
 
+<?php if (check_admin_log_in() != NULL) { ?>
     <h3 class="subtitle2">━━━━━ Edit this Gallery ━━━━━</h3>
 
     <div id="uploading">
@@ -437,6 +438,7 @@ else {
       </ul>
     </form>
     </div>
+<?php } ?>
   </div>
   </div>
   <?php include("includes/footer.php");?>

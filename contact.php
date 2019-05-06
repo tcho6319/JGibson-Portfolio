@@ -1,6 +1,8 @@
 <?php
 include("includes/init.php");
 
+//To show messages
+$feedbacks = array();
 
 if (isset($_POST['submit_r'])){
   $submit_respond = TRUE;
@@ -40,9 +42,11 @@ if (isset($_POST['submit_r'])){
     );
     $result = exec_sql_query($db, $sql1, $params1);
     if ($result) {
-      echo "<p class=\"subtitle1\">Your response was successfully submitted!</p>\n";
+      // echo "<p class=\"subtitle1\">Your response was successfully submitted!</p>\n";
+      array_push($feedbacks, "Your response was successfully submitted!");
     } else {
-      echo "<p class=\"subtitle1\">Failed to submit your response, please try again</p>";
+      // echo "<p class=\"subtitle1\">Failed to submit your response, please try again</p>";
+      array_push($feedbacks, "Failed to submit your response, please try again");
     }
   }
 }
@@ -74,8 +78,14 @@ function print_record($record) {
   <?php include("includes/header.php");?>
   <div id="content-wrap">
   <div class="contact">
+
   <h3 class="subtitle2">Submit your question or concern through the form below</h3>
 
+  <?php
+    foreach($feedbacks as $feedback){
+      echo "<p class='subtitle1'>" . htmlspecialchars($feedback) . "</p>\n";
+    }
+    ?>
 
   <div class="container">
   <form ction="contact.php" method="post">
