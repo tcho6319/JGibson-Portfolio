@@ -6,7 +6,13 @@ CREATE TABLE admins (
 	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	admin_id TEXT NOT NULL UNIQUE,
 	password TEXT NOT NULL
-  session TEXT UNIQUE
+);
+
+-- sessions table
+CREATE TABLE sessions (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  user_id INTEGER,
+  session TEXT NOT NULL UNIQUE
 );
 
 -- images table

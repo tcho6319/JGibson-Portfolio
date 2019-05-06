@@ -519,7 +519,7 @@ password : TEXT {Not}
 
 sessions (
 id : INTEGER {PK, U, Not, AI}
-user_id : INTEGER {Not}
+user_id : INTEGER {}
 session : TEXT {U, Not}
 )
 
