@@ -282,19 +282,24 @@ footer {
 }
 
 #return_gallery_link{
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
-#single_img_descrip, #single_img_tags{
+#single_img_descrip, #single_img_tags, #single_img_avail{
   font-size: 19px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 #single_img_tags{
   word-spacing: 5px;
 }
 
-#nav_bar a:hover, #return_gallery_link a:hover{
+#single_img_avail a {
+  color: #a01e1e;
+  font-weight: bold;
+}
+
+#nav_bar a:hover, #return_gallery_link a:hover, #single_img_avail a:hover{
   color: #a01e1e;
   border-bottom: 2px solid #a01e1e;
 }

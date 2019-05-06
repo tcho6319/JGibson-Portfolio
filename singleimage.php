@@ -25,6 +25,27 @@ $tags = $tags_result->fetchAll();
 
 $messages = array();
 
+
+//Returns TRUE if $single_img is in Available album
+function isAvailable($single_img){
+  global $db;
+  $single_img_id = $single_img["id"];
+
+  $sql = "SELECT * FROM albums INNER JOIN image_albums ON albums.id = image_albums.album_id INNER JOIN images ON images.id = image_albums.image_id WHERE albums.album = 'available' AND images.id = :single_img_id;";
+
+  $params = array(
+    ':single_img_id' => $single_img_id
+  );
+
+  $result = exec_sql_query($db, $sql, $params)->fetchAll();
+
+  if (sizeof($result) == 0){ //No query
+    return FALSE;
+  }
+  return TRUE;
+}
+
+
 //query for deleting an image
 if ( isset($_POST["submit_delete"]) ) {
       $sql = "DELETE FROM images WHERE id = :id;";
@@ -245,6 +266,11 @@ $tags_to_print = print_single_img_tags($single_img_id);
       <div id="single_img_descrip"><?php echo "Description: " . htmlspecialchars($single_img_description) ?></div>
 
       <div id="single_img_tags"><?php echo $tags_to_print ?></div>
+
+      <!-- show Available: Request Purchase Here -->
+      <?php if (isAvailable($single_img)) { ?>
+      <div id="single_img_avail"><a href="contact.php">Available: Request Purchase Here</a></div>
+      <?php } ?>
 
     </div>
 
