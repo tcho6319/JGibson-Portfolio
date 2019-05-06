@@ -78,47 +78,6 @@ function session_alert($message) {
 
 /* Source: lab 8 solution (init.php) by Kyle Harms */
 
-//Did
-// a function to check whether a admin is logged in or not
-function check_admin_log_in () {
-  global $db;
-
-  if (isset($_COOKIE["session"])) {
-    $session = $_COOKIE["session"];
-
-    $sql = "SELECT * FROM admins WHERE session = :session;";
-    $params = array(':session' => $session);
-    $records = exec_sql_query($db, $sql, $params)->fetchAll();
-    if ($records) {
-      // There should only be 1 record
-      $account = $records[0];
-      return $account['admin_id'];
-    }
-  }
-  return NULL;
-}
-
-
-//Did
-// a function to get an ID that is currently logged in
-function get_admin_id(){
-  global $db;
-
-  if (isset ($_COOKIE["session"])) {
-    $session = $_COOKIE["session"];
-    $sql= "SELECT *FROM admins WHERE session = :session;";
-    $params = array(':session'=>$session);
-    $records= exec_sql_query($db, $sql, $params) -> fetchAll();
-
-    if ($records){
-      // there should be only one record because admin name is unique
-      return $records[0]['id'];
-    }
-  }
-  return NULL;
-}
-
-//Did
 // A function to login
 function log_in($admin_id, $password) {
   global $db;
@@ -134,8 +93,8 @@ function log_in($admin_id, $password) {
     // there should be only one record because admin name is unique
     if (password_verify($password, $records[0]['password'])){
       // password is checked in database, and then session is generated/stored
-      $session = uniqid();
-      $sql = "UPDATE admins SET session = :session WHERE id = :user_id;";
+      $session = session_create_id();
+      $sql = "INSERT INTO sessions (user_id, session) VALUES (:user_id, :session);";
       $params = array(':user_id' => $records[0]['id'],
                       ':session' => $session);
     $result = exec_sql_query($db, $sql, $params);
@@ -172,43 +131,91 @@ $current_admin = NULL;
 return NULL;
 }
 
-// Did
-// A logout function
-function log_out() {
-  global $current_admin;
+// a function to find an ID that is currently logged in
+function find_user_id($user_id) {
   global $db;
+  $sql = "SELECT * FROM admins WHERE id = :user_id;";
+  $params = array(':user_id' => $user_id);
+  $records = exec_sql_query($db, $sql, $params)->fetchAll();
+  if ($records) {
+    // There should only be 1 record since sessions are unique
+    return $records[0];
+  }
 
-  if ($current_admin) {
-    $sql = "UPDATE admins SET session = :session WHERE admin_id = :admin_id;";
-    $params = array (':admin_id' => $current_admin, ':session' => NULL);
-    if (!exec_sql_query($db, $sql, $params)) {
-      session_alert ("Log out failed.");
+  return NULL;
+}
+
+
+function find_session($session) {
+  global $db;
+  if (isset($session)) {
+    $sql = "SELECT * FROM sessions WHERE session = :session;";
+    $params = array(':session' => $session);
+    $records = exec_sql_query($db, $sql, $params)->fetchAll();
+    if ($records) {
+      // There should only be 1 record since sessions are unique
+      return $records[0];
     }
   }
-  // Remove the session from the cookie expire it.
-  setcookie("session", "", time()-3600);
+  return NULL;
+}
+
+
+function session_login() {
+  global $current_admin;
+
+  if (isset($_COOKIE["session"])) {
+    $session = $_COOKIE["session"];
+    $session_record = find_session($session);
+    if ( isset($session_record) ) {
+      $current_admin = find_user_id($session_record['user_id']);
+
+      // Renew the cookie
+      setcookie("session", $session, time() + 3600);
+      return $current_admin;
+    }
+  }
+  $current_admin = NULL;
+  return NULL;
+}
+
+// a function to check whether a admin is logged in or not
+function check_admin_log_in() {
+  global $current_admin;
+  // if $current_admin is not NULL, then a user is logged in!
+  return ($current_admin != NULL);
+}
+
+
+// a logout function
+function log_out() {
+  global $current_admin;
+// Remove the session from the cookie
+// expire the session
+  setcookie('session', '', time() - 3600);
   $current_admin = NULL;
 }
 
 
-// Did
-// check if the admin should be logged in or not
-if (isset ($_POST['login'])) {
+// should we login the user?
+if (isset($_POST['login']) && isset($_POST['admin_id']) && isset($_POST['password'])) {
   $admin_id= filter_input(INPUT_POST, 'admin_id', FILTER_SANITIZE_STRING);
-  $admin_id= trim($admin_id);
-  $password= filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+  $admin_id = trim( $_POST['admin_id'] );
+  $password = trim( $_POST['password'] );
   $current_admin= log_in($admin_id, $password);
 
 } else {
+  // user is already logged in
+  session_login();
   $current_admin = check_admin_log_in();
 }
 
-if (!empty($current_admin)) {
-  $current_admin_id = get_admin_id();
-}
 
-if (isset($_POST['logout'])) {
-  log_out(); }
+
+// when a user click "logout"
+if (isset($current_admin) && ( isset($_GET['logout']) || isset($_POST['logout'])) ) {
+  log_out();
+}
 
 
 
