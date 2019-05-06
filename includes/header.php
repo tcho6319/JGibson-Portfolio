@@ -5,7 +5,7 @@
         $pages = [['index.php', 'Home'],['gallery.php', 'Gallery'],['about.php', 'About'],['contact.php', 'Contact']];
         $current_file = basename($_SERVER['PHP_SELF']);
     ?>
-    <h2 id="nav_bar">
+    <div id="nav_bar">
         <ul>
             <?php foreach($pages as $page) {
                 if ($page[0] == $current_file) {
@@ -16,5 +16,5 @@
                 }
             } ?>
         </ul>
-    </h2>
+    </div>
 </header>

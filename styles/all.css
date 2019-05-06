@@ -22,7 +22,7 @@ h1{
   }
 
 /* Nav bar font */
-h2, a{
+h2, #nav_bar ul li a, a{
   text-align: center;
   color: black;
   font-size: 20px;
@@ -79,9 +79,10 @@ body {
   padding-left: 50px;
 }
 
-#current_page a {
+ #nav_bar #current_page a {
   color: #a01e1e;
   border-bottom: 2px solid #a01e1e;
+  font-weight: bold;
 }
 
 /* Center image */
