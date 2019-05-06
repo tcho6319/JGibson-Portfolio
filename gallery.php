@@ -355,10 +355,11 @@ else {
               ?>
               <option value="<?php echo $dbname;?>"><?php echo $label;?></option>
               <?php
-            }
-        }
+            } ?>
+          </select>
+        <?php }
         ?>
-        </select>
+
         <input type="text" name="search" value="<?php if (isset($search)) { echo $search; } ?>"/>
         <button type="submit">Search</button>
       </form>
@@ -439,7 +440,6 @@ else {
     </form>
     </div>
 <?php } ?>
-  </div>
   </div>
   <?php include("includes/footer.php");?>
 </body>
