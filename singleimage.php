@@ -332,52 +332,43 @@ $tags_to_print = print_single_img_tags($single_img_id);
     ?>
 
     <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
-    <form id="submit_delete" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
+    <form id="submit_delete" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
       <input class="center" type="submit" name="submit_delete" value="Delete Painting">
     </form>
 
 <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="newtag" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
-    <li class="center">
-    <input id="upload_new_tag" type="text" name="upload_new_tag" />
-    <button name="submit_new_tag" type="submit">Add a tag</button>
-    </li>
+    <form id="newtag" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data" class="center">
+      <input id="upload_new_tag" type="text" name="upload_new_tag" />
+      <button name="submit_new_tag" type="submit">Add a tag</button>
     </form>
 
 
     <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="existingtag" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
-    <li class="center">
-    <select name="upload_existing_tag">";
-    <option value=""></option>
-    <?php
-    foreach ($tags as $tag) {
-      $tag_text = htmlspecialchars($tag["tag"]);
-      $tag_id = htmlspecialchars($tag["id"]);
-      echo "<option value=\"" . $tag_id . "\">" . $tag_text . "</option>";
-    }
-    ?>
-
-    </select>
-    <button name="submit_existing_tag" type="submit">Add existing tag</button>
-    </li>
-  </form>
+    <form id="existingtag" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data" class="center">
+      <select name="upload_existing_tag">
+        <option disabled selected value>Pick a Tag</option>
+        <?php
+        foreach ($tags as $tag) {
+          $tag_text = htmlspecialchars($tag["tag"]);
+          $tag_id = htmlspecialchars($tag["id"]);
+          echo "<option value=\"" . $tag_id . "\">" . $tag_text . "</option>";
+        }
+        ?>
+      </select>
+      <button name="submit_existing_tag" type="submit">Add existing tag</button>
+    </form>
 
 
    <!-- edit title form -->
 
-   <form id="edittitle" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
-    <li class="center">
-    <input id="upload_edit_title" type="text" name="upload_edit_title" />
-    <button name="submit_edit_title" type="submit">Edit title</button>
-    </li>
-  </form>
-
+    <form id="edittitle" action="<?php echo $_SERVER['REQUEST_URI']?>" method="post" enctype="multipart/form-data" class="center">
+      <input id="upload_edit_title" type="text" name="upload_edit_title" />
+      <button name="submit_edit_title" type="submit">Edit title</button>
+    </form>
   </div>
   <?php } ?>
-
     <div id="return_gallery_link"><a href="gallery.php">Return to All Images</a></div>
   </div>
 
