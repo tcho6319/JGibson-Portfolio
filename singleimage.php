@@ -332,13 +332,13 @@ $tags_to_print = print_single_img_tags($single_img_id);
     ?>
 
     <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
-    <form id="submit_delete" action="" method="post" enctype="multipart/form-data">
+    <form id="submit_delete" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
       <input class="center" type="submit" name="submit_delete" value="Delete Painting">
     </form>
 
 <!-- add a tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="newtag" action="" method="post" enctype="multipart/form-data">
+    <form id="newtag" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
     <li class="center">
     <input id="upload_new_tag" type="text" name="upload_new_tag" />
     <button name="submit_new_tag" type="submit">Add a tag</button>
@@ -348,7 +348,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     <!-- add an existing tag form NOT FUNCTIONAL DOWN HERE-->
 
-    <form id="existingtag" action="" method="post" enctype="multipart/form-data">
+    <form id="existingtag" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
     <li class="center">
     <select name="upload_existing_tag">";
     <option value=""></option>
@@ -368,7 +368,7 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
    <!-- edit title form -->
 
-   <form id="edittitle" action="" method="post" enctype="multipart/form-data">
+   <form id="edittitle" action="<?php  $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data">
     <li class="center">
     <input id="upload_edit_title" type="text" name="upload_edit_title" />
     <button name="submit_edit_title" type="submit">Edit title</button>
