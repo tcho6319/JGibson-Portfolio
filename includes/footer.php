@@ -4,8 +4,8 @@
         <hr>
 
         <?php
-        foreach($messages as $message){
-            echo "<strong>" . htmlspecialchars($message) . "</strong>\n";}
+        foreach($messages_login as $message_login){
+            echo "<strong>" . htmlspecialchars($message_login) . "</strong>\n";}
         // this prints a message to admins
 
         if (!$current_admin) { ?>

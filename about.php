@@ -17,9 +17,11 @@ include("includes/init.php");
   <div class="info">
     <!-- Artwork created by Jennifer Gibson. -->
     <p><img src="images/alternative-about-image.jpg" alt="Alternative Image" style="width:500px;height:640px;"><cite><a href="https://images.squarespace-cdn.com/content/5a0cc7c1b7411c602e377db0/1554255556468-DKLOTL0WV15V1QBUR92D/Maria-1.jpg?content-type=image%2Fjpeg"></a></cite>
+
     Hi! I am an artist / illustrator based in the Finger Lakes region of upstate New York. I work in a variety of media but primarily pencil, gouache, oils and digital. My focus is children's picture book illustration and plein air / portrait painting from life. <br>
 
-    For picture book inquiries, please write to my agent, Mike Hoogland, at mhoogland@dystel.com. All other inquiries or just to say hello, write to illustrationjennifer@gmail.com.</p>
+    For picture book inquiries, please write to my agent, Mike Hoogland, at mhoogland@dystel.com. All other inquiries or just to say hello, write to illustrationjennifer@gmail.com or click <a href="contact.php">here</a>.
+  </p>
     </div>
     <hr>
 

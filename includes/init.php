@@ -66,12 +66,12 @@ function exec_sql_query($db, $sql, $params = array())
 
 $db = open_or_init_sqlite_db('secure/site.sqlite', 'secure/init.sql');
 
-$messages = array();
+$messages_login = array();
 
 // function to record and display a message
-function session_alert($message) {
-  global $messages;
-  array_push($messages, $message);
+function session_alert($message_login) {
+  global $messages_login;
+  array_push($messages_login, $message_login);
 }
 
 // login and logout

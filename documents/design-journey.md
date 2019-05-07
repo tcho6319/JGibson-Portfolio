@@ -639,6 +639,10 @@ include init.php
 <body>
 include header.php
 
+code for an artwork created by Jennifer Gibson
+
+coded for short discription for the image and summary of website
+
 include footer.php
 </body>
 ```
@@ -651,6 +655,10 @@ include init.php
 include header.php
 
 link to contact page
+
+code for an artwork created by Jennifer Gibson
+
+code brief introduction and history of Jennifer Gibson
 
 include footer.php
 </body>
@@ -694,7 +702,7 @@ include init.php
 <body>
 include header.php
 
-include contactform.php
+include contact form (reason, name, email, phone number, comment)
 
 include footer.php
 </body>
