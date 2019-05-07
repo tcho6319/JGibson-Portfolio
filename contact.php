@@ -88,7 +88,7 @@ function print_record($record) {
     ?>
 
   <div class="container">
-  <form ction="contact.php" method="post">
+  <form action="contact.php" method="post">
 
     <label for="reason"> </label>
       <select id="reason" name="reason" style="width: 100%;" required>
