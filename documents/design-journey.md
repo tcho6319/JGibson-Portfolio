@@ -668,28 +668,36 @@ include footer.php
 
 ```
 include init.php
+
+submit upload code
+
+search validation code
+
+print image function
+
+print album buttons function
+
+print tags buttons function
+
+valid album function
+
+valid tag function
+
+search code + album/ tag buttons code/ both code
+
+include head.php
+
 <body>
+
 include header.php
 
-code for buttons that filter images by categories (SQL query)
+print all buttons
 
-code for search bar (SQL query)
+print all images
 
-code for delete images button db (SQL query)
+if user is logged in:
 
-code for uploadform (SQL query)
-
-
-
-if search button pressed or filter category button pressed:
-  show search results
-
-else:
-  show all gallery images
-
-if logged_in:
-  show check boxes for images in gallery
-  show edit the gallery section, with delete images button and include uploadform.php
+  show the edit gallery section
 
 include footer.php
 </body>
