@@ -609,6 +609,9 @@ image_id : TEXT {Not}
   - INSERT INTO albums (album) VALUES (:album)
   - INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)
 
+- Trying to see if a single_img is in the available album
+  - SELECT * FROM albums INNER JOIN image_albums ON albums.id = image_albums.album_id INNER JOIN images ON images.id = image_albums.image_id WHERE albums.album = 'available' AND images.id = :single_img_id;
+
 
 ## PHP File Structure
 
@@ -622,8 +625,7 @@ image_id : TEXT {Not}
 * includes/init.php - stuff that useful for every web page.
 * includes/header.php - a header for every web page.
 * includes/footer.php - a footer for every web page.
-* includes/contactform.php - the contact form.
-* includes/uploadform.php - the image upload form.
+
 
 
 ## Pseudocode
@@ -746,19 +748,6 @@ nav bar HTML
 code to dynamically indicate current page in nav bar
 ```
 
-### includes/contactform.php
-
-```
-HTML for contact form
-```
-
-### includes/uploadform.php
-
-```
-HTML for upload form
-```
-
-
 ## Additional Comments
 
 [Add any additional comments you have here.]
@@ -781,11 +770,32 @@ HTML for upload form
 
 [Include any other information that your client needs to know about your final website design. For example, what client wants or needs were unable to be realized in your final product? Why were you unable to meet those wants/needs?]
 
+The website is not responsive. Within the time constraints, the team decided to prioritize the more advanced functionalities of the website so that the content would be easily filterable and browsable. If the client would like to pursue this objective, we would be happy to discuss this feature.
+
+
 
 ## Final Notes to the Graders
 
 [1. Give us three specific strengths of your site that sets it apart from the previous website of the client (if applicable) and/or from other websites. Think of this as your chance to argue for the things you did really well.]
 
+1. Highly filterable and easily browsable content
+  - Highly filterable content: While the client's previous website's content was organized in four general categories (outdoor, portrait, illustration, and personal), it did not offer a more specialized filtering experience for the busy target audience members. Users would have to scroll through the four albums to see works that were created with different types of media. As requested by the client, our website maintains the four general albums from the previous website; however, its additional implementation of tags for the art's media and a keyword search allows busy users to look for the content they want to see almost exactly. For example, if a gallery is looking for underwater pieces, the gallery can either click on the Outdoor album button or do a keyword search for "underwater." Furthermore, if an art gallery director wants to measure the client's skill when using pencil, they can just click on the pencil tag button. Since a keyword search can be done within any collection of images based on album or on tag, the filtering process is even more specialized.
+
+  - Easy Browsing of Works: Our website makes the images themselves easy-to-browse with the use of our slideshow feature in the single image view. If a user were to click on an image in the search query (whether the query be a result of albums, tags, keyword searches, or just all images), the user would be directed to a single image view of the work. We minimized the need to scroll and to navigate back to the gallery in order to click on the next image in the query of images by directing the user to the very part of the page that has the title, image, and details of the image. Also, we created a slideshow feature so that the user can just click back and forth through the single image views to see all the images. The client's prior website did not have this functionality.
+
+  - Streamlined images in single image view: The images in the client's previous website had different dimensions, which made the site seem less professional looking. The client asked for us to find appropriate dimensions for her images so that they would showcase the details of the art well but would not be so large that they would require scrolling. With some research, we found that art pieces whose longest side is between 600px and 900px on websites are most appropriate because the images are not so small that details cannot be seen but are also not so large that they can be printed out and reproduced impermissibly. Therefore, we made the height of the images 640px and set the width to be auto so that the images would be proportional.
+
+  - Clear indication of image details: The client's previous website did not have any information about the images, except for the title. It did not indicate whether or not they were up for purchase - which did not help the client's request to get possible buyers from her website. In our website's single image view, the user is able to see the title of the piece, a short description about it (which may be good for screenreaders), tags indicating the media the client used, and an indication of availability if available. The indication of availability links to the Contact form so it further assists the user's decision to purchase a piece.
+
+2. Convenient, Multipurposeful Contact Form: The client's old website did not have an official contact form; she merely listed her email on her About page. In order to cater to the three different target audiences (art directors, local galleries, and local people) who may want to either purchase, commission, or contact the client for a job opportunity, we created a contact form. As mentioned prior, we link the Contact page when appropriate, such as when indicating that a piece is Available for purchase, so that users know how to contact the client best.
+
+3. Easy-to-Manage Works with Admin Privileges (Uploading & Editiing Images): Given that our client is a freelance artist and that she used squarespace to create her website, it was clear to us that our site had to give the client the autonomy of running her own website (without the need for a webmaster) going forward. Since our website has more advanced functionalities than her more static initial site, we gave her upload and edit image forms that would allow her to easily manage her online portfolio.
+
 [2. Tell us about things that don't work, what you wanted to implement, or what you would do if you keep working with the client in the future. Give justifications.]
 
+If we were to keep working with the client in the future, we would probably work on a responsive design. Given that the client's current website is responsive and that target audience members may use a wide variety of devices with different screen dimensions, it would further add to the professionalism and streamlined appearance of the website. We were unable to do so in the time span of the project because we had to prioritize our more advanced functionalities; however, time permitting, we would address this need.
+
+
 [3. Tell us anything else you need us to know for when we're looking at the project.]
+
+We have optimized the usability of our forms by providing user feedback and making the forms sticky.
