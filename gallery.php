@@ -406,11 +406,7 @@ else {
           <option value="illustration">Illustration</option>
           <option value="personal">Personal</option>
         </select>
-        <li class="center">
-          <label for="upload_title">Title:</label>
-          <input id="upload_title" type="text" name="upload_title" />
         </li>
-        <li>
         <li class="center">
         <label for="upload_tag\">Tag:</label>
         <input id="upload_tag" type="text" name="upload_tag" />
