@@ -71,7 +71,6 @@ if ( isset($_POST["submit_new_tag"]) ) {
 
     // can't be empty
     if ($tagname == '') {
-      var_dump($tagname);
       $valid_new_tag = FALSE;
       array_push($messages, "Tag cannot be empty.");
     }
@@ -102,25 +101,32 @@ if ( isset($_POST["submit_new_tag"]) ) {
 
 // query for adding existing tag
 if ( isset($_POST["submit_existing_tag"]) ) {
+      $valid_existing_tag = TRUE;
+
       $existing_tag = filter_input(INPUT_POST, 'upload_existing_tag', FILTER_SANITIZE_SPECIAL_CHARS);
-      $sql = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)";
-      $params = array (
-        ':tag_id' => $existing_tag,
-        ':image_id' => $single_img_id
-      );
-      $result = exec_sql_query($db, $sql, $params);
-      if ($result) {
-        //success, tag added to image
-        //array message here
-      } else {
-        //message
+
+      if ($existing_tag=='') {
+        $valid_existing_tag=FALSE;
+        array_push($messages, "Please select an existing tag to add.");
       }
-  } else {
-    //message
+
+      if ( isset($valid_existing_tag) && $valid_existing_tag) {
+        $sql = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id)";
+        $params = array (
+          ':tag_id' => $existing_tag,
+          ':image_id' => $single_img_id
+        );
+        $result = exec_sql_query($db, $sql, $params);
+        if ($result) {
+          //success, tag added to image
+          array_push($messages, "Your tag has been added to this image.");
+        } else {
+          array_push($messages, "Your tag could not be added to this image.");
+        }
+    }
   }
 
-
-// query for editing title
+  // query for editing title
 
 if ( isset($_POST["submit_edit_title"]) ) {
     $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
@@ -332,11 +338,12 @@ $tags_to_print = print_single_img_tags($single_img_id);
     <form id="existingtag" action="" method="post" enctype="multipart/form-data">
     <li class="center">
     <select name="upload_existing_tag">";
-
+    <option value=""></option>
     <?php
     foreach ($tags as $tag) {
       $tag_text = htmlspecialchars($tag["tag"]);
-      echo "<option value=\"" . $tag_text . "\">" . $tag_text . "</option>";
+      $tag_id = htmlspecialchars($tag["id"]);
+      echo "<option value=\"" . $tag_id . "\">" . $tag_text . "</option>";
     }
     ?>
 
