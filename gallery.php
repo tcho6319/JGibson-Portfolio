@@ -57,24 +57,22 @@ if ( isset($_POST["submit_upload"]) ) {
       );
       $result = exec_sql_query($db, $sql1, $params1);
 
-      if ($result) {
+      if ($result && $upload_info['error'] == UPLOAD_ERR_OK) {
         //image was added to db
         //need to move image to images folder
         $file_id = $db->lastInsertId("id");
         $id_filename = 'uploads/images/' . $file_id . '.' . $upload_ext;
         if ( move_uploaded_file($upload_info["tmp_name"], $id_filename) ) {
           // image was moved to folder
-          } else {
-            array_push($upload_messages, "Image could not be uploaded.");
-          }
         } else {
-          array_push($upload_messages, "Image could not be uploaded.");
-        }
-      } else {
-          array_push($upload_messages, "Image could not be uploaded. Make sure you selected a file.");
+            array_push($upload_messages, "Image could not be uploaded.");
         }
 
-    if ($upload_tag && $upload_tag != null) {
+      } else {
+          array_push($upload_messages, "Image could not be uploaded. Make sure you selected a file.");
+      }
+
+    if ($upload_tag && $upload_tag != null && result && $upload_info['error'] == UPLOAD_ERR_OK) {
       $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
       $params2 = array(
         ':tag' => $upload_tag
@@ -106,10 +104,14 @@ if ( isset($_POST["submit_upload"]) ) {
       );
       $result4 = exec_sql_query($db, $sql4, $params3);
   }
+  if ($upload_info['error'] != UPLOAD_ERR_OK){
+    array_push($upload_messages, "Image could not be uploaded. Make sure you selected a file.");
+  }
   $location="gallery.php";
   if ($result && $result2 && $result_tag && $result4) {
     header("Location: $location?upload_message=Image has been uploaded to the gallery.");
   }
+}
 }
 
 // Search
@@ -436,6 +438,7 @@ else {
     <div id="uploading">
 
     <?php
+    // var_dump($upload_messages);
     foreach($upload_messages as $message){
       echo "<p class='center'><strong>" . htmlspecialchars($message) . "</strong></p>\n";
     }
