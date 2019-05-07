@@ -22,6 +22,8 @@ const MAX_FILE_SIZE = 1000000;
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
 
+  $valid_upload = TRUE;
+
   $upload_info = $_FILES["new_image"];
   $upload_description = filter_input(INPUT_POST, 'upload_description', FILTER_SANITIZE_STRING);
   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
@@ -412,17 +414,15 @@ else {
           <input id="new_image" type="file" name="new_image">
         </li>
         <li class="center">
+        <label for="upload_album">Album for new painting:</label>
         <select name="upload_album">
+          <option value=""></option>
           <option value="available">Available</option>
           <option value="outdoor">Outdoor</option>
           <option value="portrait">Portrait</option>
           <option value="illustration">Illustration</option>
           <option value="personal">Personal</option>
         </select>
-        <li class="center">
-          <label for="upload_title">Title:</label>
-          <input id="upload_title" type="text" name="upload_title" />
-        </li>
         <li>
         <li class="center">
         <label for="upload_tag\">Tag:</label>
