@@ -11,66 +11,101 @@ $albums_sql = "SELECT albums.id, albums.album FROM albums";
 $albums_params = array();
 $albums_result = exec_sql_query($db, $albums_sql, $albums_params);
 $albums = $albums_result->fetchAll();
+
 $messages = array();
+$upload_messages = array();
+
 const MAX_FILE_SIZE = 1000000;
 //query for image upload
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
+  $valid_upload = TRUE;
+
   $upload_info = $_FILES["new_image"];
   $upload_description = filter_input(INPUT_POST, 'upload_description', FILTER_SANITIZE_STRING);
   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
   $upload_album = filter_input(INPUT_POST, 'upload_album', FILTER_SANITIZE_SPECIAL_CHARS);
-  if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
-    $upload_name = basename($upload_info["name"]);
-    $upload_filename = strtolower( pathinfo($upload_name, PATHINFO_FILENAME));
-    $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION) );
-  $sql1 = "INSERT INTO images (filename, ext, description, admin_id) VALUES (:filename, :ext, :description, :admin_id)";
-  $params1 = array(
-    ':filename' => $upload_filename,
-    ':ext' => $upload_ext,
-    ':description' => $upload_description,
-    ':admin_id' => $current_admin
-  );
-  $result = exec_sql_query($db, $sql1, $params1);
-  if ($result) {
-    //image was added to db
-    //need to move image to images folder
-    $file_id = $db->lastInsertId("id");
-    $id_filename = 'uploads/images/' . $file_id . '.' . $upload_ext;
-    if ( move_uploaded_file($upload_info["tmp_name"], $id_filename) ) {
-      // image was moved to folder
-      } else {
-        array_push($messages, "failed");
-      }
-    } else {
-      array_push($messages, "failed");
-    }
-  } else {
-      array_push($messages, "failed");
-    }
-  if ($upload_tag && $upload_tag != null) {
-    $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
-    $params2 = array(
-      ':tag' => $upload_tag
-    );
-    $result2 = exec_sql_query($db, $sql2, $params2);
+
+  var_dump($upload_description);
+
+  // tell user to select file if they didn't
+  if (is_uploaded_file($upload_info) == FALSE) {
+    $valid_upload = FALSE;
+    array_push($upload_messages, "Please select a file to upload.");
   }
-  $newimageid = $db->lastInsertId();
-  $sql_album = "SELECT id FROM albums WHERE album = :album";
-  $params = array(
-      ':album' => $upload_album
-    );
-  $result_album = exec_sql_query($db, $sql_album, $params)->fetchAll();
-  $single_album = $result_album[0];
-  $album_needed = $single_album[0];
-    $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
-    $params3 = array(
-      ':album_id' => $album_needed,
-      ':image_id' => $newimageid
-    );
-    $result4 = exec_sql_query($db, $sql4, $params3);
-  header("Location: gallery.php", true, 303);
+
+  // make sure user selects album
+  if ($upload_album == '') {
+    $valid_upload = FALSE;
+    array_push($upload_messages, "Please select an album for the upload.");
+  }
+
+  // tags can be added and edited later, so not required upon submission
+
+  // make sure user writes description
+  if (trim($upload_description) == '') {
+    $valid_upload = FALSE;
+    array_push($upload_messages, "Please write a description for the upload.");
+  }
+
+  if ( isset($valid_upload) && $valid_upload ) {
+    if ( $upload_info['error'] == UPLOAD_ERR_OK ) {
+      $upload_name = basename($upload_info["name"]);
+      $upload_filename = strtolower( pathinfo($upload_name, PATHINFO_FILENAME));
+      $upload_ext = strtolower( pathinfo($upload_name, PATHINFO_EXTENSION) );
+
+      $sql1 = "INSERT INTO images (filename, ext, description, admin_id) VALUES (:filename, :ext, :description, :admin_id)";
+      $params1 = array(
+        ':filename' => $upload_filename,
+        ':ext' => $upload_ext,
+        ':description' => $upload_description,
+        ':admin_id' => $current_admin
+      );
+      $result = exec_sql_query($db, $sql1, $params1);
+
+      if ($result) {
+        //image was added to db
+        //need to move image to images folder
+        $file_id = $db->lastInsertId("id");
+        $id_filename = 'uploads/images/' . $file_id . '.' . $upload_ext;
+        if ( move_uploaded_file($upload_info["tmp_name"], $id_filename) ) {
+          // image was moved to folder
+          } else {
+            array_push($upload_messages, "Image could not be uploaded.");
+          }
+        } else {
+          array_push($upload_messages, "Image could not be uploaded.");
+        }
+      } else {
+          array_push($upload_messages, "Image could not be uploaded.");
+        }
+
+    if ($upload_tag && $upload_tag != null) {
+      $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
+      $params2 = array(
+        ':tag' => $upload_tag
+      );
+      $result2 = exec_sql_query($db, $sql2, $params2);
+    }
+
+    $newimageid = $db->lastInsertId();
+    $sql_album = "SELECT id FROM albums WHERE album = :album";
+    $params = array(
+        ':album' => $upload_album
+      );
+    $result_album = exec_sql_query($db, $sql_album, $params)->fetchAll();
+    $single_album = $result_album[0];
+    $album_needed = $single_album[0];
+      $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
+      $params3 = array(
+        ':album_id' => $album_needed,
+        ':image_id' => $newimageid
+      );
+      $result4 = exec_sql_query($db, $sql4, $params3);
+  }
+
 }
+
 // Search
 const SEARCH_FIELDS = [
   "filename" => "By Artwork Name",
@@ -387,6 +422,12 @@ else {
 
     <div id="uploading">
 
+    <?php
+    foreach($upload_messages as $message){
+      echo "<p class='center'><strong>" . htmlspecialchars($message) . "</strong></p>\n";
+    }
+    ?>
+
     <p class="center">Please click on an image to delete it or edit its title/tags.</p>
     <!--  form for adding an image  -->
 
@@ -399,21 +440,25 @@ else {
           <input id="new_image" type="file" name="new_image">
         </li>
         <li class="center">
+        <label for="upload_album">Album:</label>
         <select name="upload_album">
-          <option value="available">Available</option>
-          <option value="outdoor">Outdoor</option>
-          <option value="portrait">Portrait</option>
-          <option value="illustration">Illustration</option>
-          <option value="personal">Personal</option>
+          <option value=""></option>
+          <option <?php if($upload_album=="available") echo 'selected="selected"'; ?> value="available">Available</option>
+          <option <?php if($upload_album=="outdoor") echo 'selected="selected"'; ?> value="outdoor">Outdoor</option>
+          <option <?php if($upload_album=="portrait") echo 'selected="selected"'; ?> value="portrait">Portrait</option>
+          <option <?php if($upload_album=="illustration") echo 'selected="selected"'; ?> value="illustration">Illustration</option>
+          <option <?php if($upload_album=="personal") echo 'selected="selected"'; ?> value="personal">Personal</option>
         </select>
         </li>
         <li class="center">
-        <label for="upload_tag\">Tag:</label>
-        <input id="upload_tag" type="text" name="upload_tag" />
+        <label for="upload_tag\">New tag:</label>
+        <input id="upload_tag" type="text" name="upload_tag" value="<?php echo $upload_tag; ?>"/>
+        <p class = 'center'><em>(Existing tag can be added later)</em></p>
         </li>
         <li class="center">
         <p>Description:</p>
         <textarea id="upload_description" name="upload_description" rows="10" cols="30">
+        <?php echo $upload_description; ?>
         </textarea>
         </li>
         <li>
