@@ -36,15 +36,15 @@
 
 
 5. What roles will we create? Include a description of exactly what each role is responsible for.
-    Note that everyone will do both front-end and back-end.
-    *Subject to change
-    - Client Liason: Communicates with the client directly. Organizes meetings with the client for updates on the website.
+    Note that everyone will do both front-end and back-end. See design journey for more detailed distribution of work for implementation.
 
-    - Content Gatherer: Gathers and curates materials from the client (i.e. images, content) that would be displayed on the site
+    - Client Liason (Shea Murphy): Communicates with the client directly. Organizes meetings with the client for updates on the website.
 
-    - User-Tester: User-tests the website
+    - Design Journey Editer (Theresa Cho): Before the submission of every milestone, proofreads and edits the design journey to make sure it is up to par.
 
-    - Designer: Helps design website
+    - Tester (Cora Geunes): Tests the website's design as the cognitive walkthrough facilitator
+
+    - Designer (Jinny Lee): Helps streamline the design and aesthetics of the website
 
 
 

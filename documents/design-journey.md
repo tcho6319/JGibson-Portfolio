@@ -14,35 +14,35 @@ In-person meeting with client: 4/15/19
 
 Purpose of Client's Website (Like a portfolio):
 
-- Children's illustration work to show to art directors
-  - Art directors mostly in NY. Working in print publishing for children's illustrations and smaller publishers.
+- To get work as a children's illustrator
+  - Possible employers/recruiters are art directors mostly in NY or smaller-scale publishers who are in print publishing for children's illustrations.
 - To showcase older pieces for purchase
-  - Local people
-  - Galleries
+  - By Local people
+  - By Galleries
 - Commissions
-  - Local people
-  - Galleries
+  - By Local people
+  - By Galleries
 
 - Clean, white background. Put focus on the art work.
-- Likes idea of filtering gallery images. Would like to keep the categories she has on her squarespace site. For example, her illustrations category is specifically geared toward art directors for potetntial children's illustration work.
+- Likes idea of filtering gallery images. Would like to keep the categories she has on her squarespace site. For example, her illustrations category is specifically geared toward art directors for potential children's illustration work.
 - Likes the form ideas
 - Concerns: Image size and resolution. Would like good resolution for images and sizes that would be appropriate (i.e. so that user would not have to scroll to see the entire piece).
 - We should give client ability to delete her images
-- Client will send content/images, possibly login so we can access her squarespace site, and details about her pieces (title, date, description like what media she used).
+- Client will send content/images, possibly login so we can access her squarespace site, and details about her pieces (title, date, description, such as what media she used).
 
-- Theresa's question to the rest of the group: Should we give the client the option to edit the title, date, description of a single image? This is in case she adds an image where her description has a typo or something.
+- Theresa's question to the rest of the group: Should we give the client the option to edit the title/date/description of a single image? This is in case she adds an image where her description has a typo or something.
 
 ## Purpose & Content
 
-Our client requested that we make her a new, improved website that could serve as a gallery for her artwork, as well as a way to attract potential clients. This would mean that our website's content would include her art, details about her art (i.e. title, date, media, whether or not it is available for purchase), information regarding her previous projects, and forms to allow her to upload her new art and a contact/art request form.
+Our client requested that we make her a new, improved website that could serve as a portfolio for her artwork, as well as a way to attract potential clients. This would mean that our website's content would include her art, details about her art (i.e. title, date, media, whether or not it is available for purchase), information regarding her previous projects, and forms to allow her to upload her new art and a contact/art request form.
 
 ## Target Audience(s)
 
 Based on our meeting with the client, there are three main target audiences.
 
-The first target audience is art directors interested in childrens illustration work. Most of these art directors would live in NY. They would interact with the site to see her work and decide if they would like to publish it.
+The first target audience is art directors interested in children's illustration work. Most of these art directors would live in NY. They would interact with the site to see her work and decide if they would like to publish it.
 
-The second target audience is local people and galleries who may be interested in showcasing the client's older pieces for purchase. They would interact with the site similarly to the directors by viewing her portfolio and decided if they would like to showcase her work.
+The second target audience is local people and galleries who may be interested in showcasing the client's older pieces for purchase. They would interact with the site similarly to the directors by viewing her portfolio and deciding if they would like to showcase her work.
 
 The third target audience would be local people/galleries who want to buy art directly from the client. Rather than viewing the website for publishing or showcasing purposes, they would be deciding if they are interested in buying her work for themselves.
 
@@ -64,7 +64,7 @@ All of the target audiences would find the client's website through her referral
   - **Design Ideas and Choices**
     - We will design the website so that the user can view each image on their browser without having to scroll up/down to view the image.
   - **Rationale**
-    - Make the images a good size so that the target audience can consume them, but not too big that they are longer than the length of the website page. Minimize horizontal & vertical scrolling to further enhance the professional look of the website.
+    - Make the images a good size (between 600px-900px as found from research on ideal dimensions for images on art websites) so that the target audience can consume them, but not too big that they are longer than the length of the website page. Minimize horizontal & vertical scrolling to further enhance the professional look of the website.
 
 - Client Requirement
   - **Requirement**
@@ -72,7 +72,7 @@ All of the target audiences would find the client's website through her referral
   - **Design Ideas and Choices**
     - We will design the website so that when the client uploads an image she can add a title, date, and description of the media. In addition, after uploading she should be able to edit these pieces of information about the image.
   - **Rationale**
-    - The client should be able to justify her artwork ongoing, so she should be able to edit her description of the image. Another example may be if a piece wins an award and she wants to mention that in the image description. Also, since the client is a freelancer, she needs to be able to showcase her works herself after we deliver the product to her. The client does not have a webmaster so the website should be accessible to her, especially when she wants to add works or modify details of her works.
+    - The client should be able to manage her artwork ongoing, so she should be able to edit her description of the image. Another example may be if a piece wins an award and she wants to mention that in the image description. Also, since the client is a freelancer, she needs to be able to showcase her works herself after we deliver the product to her. The client does not have a webmaster so the website should be accessible to her, especially when she wants to add works or modify details of her works.
 
 
 Target Audience Needs for All Three Target Audiences
@@ -80,23 +80,21 @@ Target Audience Needs for All Three Target Audiences
   - **Need**
     - Client wants to filter gallery images the way they are currently filtered on her website. Filtering helps the target audience by making it easier to find the type of art they are looking for.
   - **Design Ideas and Choices**
-    - We will have four separate galleries for her 4 different styles - outdoor, portraits,  illustration, and personal.
-    - We will create buttons for the 4 different styles to help filter the gallery.
+    - We will include four albums for her 4 different styles that are carried over from her previous website - outdoor, portraits,  illustration, and personal.
+    - We will create buttons for the albums to help filter the gallery.
   - **Rationale**
-    - The target audiences will likely have 1/4 styles in their mind when visiting the client's website, so we will make it simple for them to find the type of art they're looking for.
-    - Since the target audience would be working professionals or local people/galleries, they may be older and not want to bother with complicated filtering. Therefore, having buttons that in essence do a filter search specific to the 4 different style categories will aid in simple usability.
+    - The target audiences will likely have a certain style in their mind when visiting the client's website, so we will make it simple for them to find the type of art they're looking for.
+    - Since the target audience would be working professionals or local people/galleries, they may be older and not want to bother with complicated filtering. Therefore, having buttons that in essence do a filter search specific to the album categories will aid in simple usability.
 
 - Target Audience Need
   - **Need**
     - Art Directors are busy filtering through different artists for children's illustrations. They will have to work through a high volume of applicants in a limited amount of time.
     - Local people or galleries that may want to showcase or purchase certain art pieces may already want a specific type of piece, and they may not have the time to go through the client's whole gallery of works.
   - **Design Ideas and Choices**
-    - We will include an additional element to the search bar for the gallery so that the user can look up a keyword in the description field. For example, if a user entered "underwater" because they wanted to see if the client did any underwater pieces to see her technique (maybe for art directors) or if they specifically wanted to showcase or purchase an underwater piece, any pieces that have the word "underwater" in the description will show up in the search results.
-    - If there are no pieces that correspond to the search term, then there will be a message that directs the user to a contact form to show that the client would be willing to work with the user to create the style of work the user was looking for.
+    - We will include an additional element to the search bar for the gallery so that the user can look up a keyword in the description field. For example, if a user entered "underwater" because they wanted to see her technique (maybe for art directors) or if they specifically wanted to showcase or purchase an underwater piece, any pieces that have the word "underwater" in the description will show up in the search results.
     - We will allow the user to flip through single image views of all search results (if a search was made) or all works (default).
   - **Rationale**
     - The text input field for a keyword search in addition to the tag search will further expedite the process of browsing for the busy target audiences. Since the purpose of the site is to engage the target audience's interest in the hopes of encouraging contact between the client and the target audience, adding this convenient way to filter the gallery would be helpful for busy users.
-    - Adding a message that directs the target audience to a contact form in case there are no search results for the keyword search further helps maintain contact between the client and the target audience. Since the client is using this site to get projects, it would be in her best interest to redirect the target audience to an alternative of reaching out to her directly if they want to view a specific style of art rather than simply showing that she does not have the work.
     - Flip through single image views: By having buttons on the left and right side of a single image view, a user can look through the single image views of search results or the whole gallery quickly without having to go back to the grid form and clicking on the next piece to see it in single image view.
 
 Target Audience Need for Local People and Galleries
@@ -105,11 +103,13 @@ Target Audience Need for Local People and Galleries
     - Want to purchase the client's art.
   - **Design Ideas and Choices**
     - We will include another filter button called "Available" that, when clicked, would show the pieces that the client would like to sell.
-    - On the Gallery page, we will include a message that directs the user to the contact page if they would like to purchase a piece.
+    - On the Gallery page, we will include a message that explains what the Available album is when the Available button is clicked..
+    - On the single image view of a piece, we will indicate that the piece is Available if it is in the Available album
     - We will not list the price of the piece.
   - **Rationale**
     - The filter button creates a more personalized experience for target audience members who solely wish to purchase the client's work so that they do not have to unnecessarily browse through her art and guess whether or not a piece is on sale.
     - The message on the Gallery page guides the process of requesting to purchase a piece by directing the user to the contact/purchase form. By having the message right on the page where the gallery is, the user would see the instructions easily and know how to request an available piece.
+    - By including the detail that the piece is Available in single image view, we would direct the user to the contact page so that they can request purchase. In case the user does not click on the Available album right away, this identification of availability on the single image view will inform the user who is interested in buying the piece.
     - We did not list the price of the piece in case the client would like to negotiate a price with a potential buyer.
 
 
@@ -191,7 +191,7 @@ Target Audience Need for Local People and Galleries
 
 [Set internal deadlines. Determine your internal dependencies. Whose task needs to be completed first in order for another person's task to be relevant? Be specific in your task descriptions so that everyone knows what needs to be done and can track the progress effectively. Consider how much time will be needed to review and integrate each other's work. Most of all, make sure that tasks are balanced across the team.]
 
-- **How we are initially planning to split up the workload:**
+- **Responsibilities For Each Member:**
   - Jinny: Home/About Page + Login/Logout/Sessions + Request Commission Form (sticky w/ feedback) + Nav bar + Design Sketcher
   - Shae: Gallery Page + Search Bar + Client Liason
   - Cora: Sticky form to upload image (sticky w/ feedback) + Initial CSS (general site layout) + Forms for editing details for single image on page (add/remove tags, delete image) + GenderMag evaluation facilitator
@@ -247,7 +247,7 @@ Here are screenshots of the client's original website:
 ## Client Feedback
 
 [Share the feedback notes you received from your client about your initial design.]
-- Our client's only feedback was that she wanted "gallery" page before "about" page in the navigarion bar.
+- Our client's only feedback was that she wanted "gallery" page before "about" page in the navigation bar.
 
 ## Iterated Design
 
@@ -620,9 +620,9 @@ image_id : TEXT {Not}
 * index.php - home page.
 * about.php - about page.
 * gallery.php - gallery page.
-* contact.php - contact (and also upload) page.
-* singleimage.php - page used to view an image in fullscreen.
-* includes/init.php - stuff that useful for every web page.
+* contact.php - contact form page.
+* singleimage.php - page used to view a single image and its details, including edit image form.
+* includes/init.php - functionalities that are useful for every web page, including login/logout/sessions.
 * includes/header.php - a header for every web page.
 * includes/footer.php - a footer for every web page.
 
@@ -774,9 +774,9 @@ code to dynamically indicate current page in nav bar
 ## Issues & Challenges
 
 [Tell us about any issues or challenges you faced while trying to complete milestone 3. Bullet points preferred.]
-- gallery.php had a bug where the keyword search could not be properly used. We debugged as a team and was able to figure it out.
+- gallery.php had a bug where the keyword search could not be properly used. We debugged as a team, and we were able to figure it out.
 
-- We were deciding where the most appropriate places for the upload form and edit image forms were, and after referring to our sketches and some discussion, we decided to put the upload form at the bottom of the gallery.php and to put the edit image form, including the delete image option, for the single image page, singleimage.php. We realized that it would look cleaner for the client to have edit image details for the specific single image that she is viewing.
+- We were deciding where the most appropriate places for the upload form and edit image forms were, and after referring to our sketches and some discussion, we ultimately decided to put the upload form at the bottom of the gallery.php and to put the edit image form, including the delete image option, at the bottom of the single image page, singleimage.php. We realized that it would look cleaner for the client to have edit image details for the specific single image that she is viewing.
 
 - Slideshow: We tried to figure out a way to store the search results of the gallery page when creating the slideshow on the single image page (the user would flip through the single image view of the images in the search results). We used sessions to store the list of images in the search results from the gallery.php so that it could be used in singleimage.php. We will have to ensure that doing so does not interfere with the sessions started when our client does admin login/logout.
 
@@ -795,17 +795,17 @@ The website is not responsive. Within the time constraints, the team decided to 
 [1. Give us three specific strengths of your site that sets it apart from the previous website of the client (if applicable) and/or from other websites. Think of this as your chance to argue for the things you did really well.]
 
 1. Highly filterable and easily browsable content
-  - Highly filterable content: While the client's previous website's content was organized in four general categories (outdoor, portrait, illustration, and personal), it did not offer a more specialized filtering experience for the busy target audience members. Users would have to scroll through the four albums to see works that were created with different types of media. As requested by the client, our website maintains the four general albums from the previous website; however, its additional implementation of tags for the art's media and a keyword search allows busy users to look for the content they want to see almost exactly. For example, if a gallery is looking for underwater pieces, the gallery can either click on the Outdoor album button or do a keyword search for "underwater." Furthermore, if an art gallery director wants to measure the client's skill when using pencil, they can just click on the pencil tag button. Since a keyword search can be done within any collection of images based on album or on tag, the filtering process is even more specialized.
+  - Highly filterable content: While the client's previous website's content was organized in four general categories (outdoor, portrait, illustration, and personal), it did not offer a more specialized filtering experience for the busy target audience members. Users would have to scroll through the four albums to see works that were created with different types of media. As requested by the client, our website maintains the four general albums from the previous website; however, its additional implementation of tags for the art's media and a keyword search allows busy users to look for the content they want to see almost exactly. For example, if a gallery is looking for water pieces, the gallery can either click on the Outdoor album button or do a keyword search for "water." Furthermore, if an art gallery director wants to measure the client's skill when using pencil, they can just click on the pencil tag button. Since a keyword search can be done within any collection of images based on album or based on tag, the filtering process is even more specialized.
 
-  - Easy Browsing of Works: Our website makes the images themselves easy-to-browse with the use of our slideshow feature in the single image view. If a user were to click on an image in the search query (whether the query be a result of albums, tags, keyword searches, or just all images), the user would be directed to a single image view of the work. We minimized the need to scroll and to navigate back to the gallery in order to click on the next image in the query of images by directing the user to the very part of the page that has the title, image, and details of the image. Also, we created a slideshow feature so that the user can just click back and forth through the single image views to see all the images. The client's prior website did not have this functionality.
+  - Easy Browsing of Works: Our website makes the images themselves easy-to-browse with the use of our slideshow feature in the single image view. If a user were to click on an image in the search query (whether the query be a result of albums, tags, keyword searches, or just all images), the user would be directed to a single image view of the work. We removed the need to scroll and to navigate back to the gallery in order to click on the next image in the query of images by directing the user to the very part of the page that has the title, image, and details of the piece. Also, we created a slideshow feature so that the user can just click back and forth through the single image views to see all the images. The client's prior website did not have this functionality.
 
   - Streamlined images in single image view: The images in the client's previous website had different dimensions, which made the site seem less professional looking. The client asked for us to find appropriate dimensions for her images so that they would showcase the details of the art well but would not be so large that they would require scrolling. With some research, we found that art pieces whose longest side is between 600px and 900px on websites are most appropriate because the images are not so small that details cannot be seen but are also not so large that they can be printed out and reproduced impermissibly. Therefore, we made the height of the images 640px and set the width to be auto so that the images would be proportional.
 
-  - Clear indication of image details: The client's previous website did not have any information about the images, except for the title. It did not indicate whether or not they were up for purchase - which did not help the client's request to get possible buyers from her website. In our website's single image view, the user is able to see the title of the piece, a short description about it (which may be good for screenreaders), tags indicating the media the client used, and an indication of availability if available. The indication of availability links to the Contact form so it further assists the user's decision to purchase a piece.
+  - Clear indication of image details: The client's previous website did not have any information about the images. It did not indicate whether or not they were up for purchase - which did not help the client's request to get possible buyers from her website. In our website's single image view, the user is able to see the title of the piece, a short description about it (which may be good for screenreaders), tags indicating the media the client used, and an indication of availability if up for purchase. The indication of availability links to the Contact form, so it further assists the user's decision to purchase a piece.
 
-2. Convenient, Multipurposeful Contact Form: The client's old website did not have an official contact form; she merely listed her email on her About page. In order to cater to the three different target audiences (art directors, local galleries, and local people) who may want to either purchase, commission, or contact the client for a job opportunity, we created a contact form. As mentioned prior, we link the Contact page when appropriate, such as when indicating that a piece is Available for purchase, so that users know how to contact the client best.
+2. Convenient, Multipurposeful Contact Form: The client's old website did not have an official contact form; she merely listed her email on her About page. In order to cater to the three different target audiences (art directors, local galleries, and local people) who may want to either purchase, commission, or contact the client for a job opportunity, we created a contact form. As mentioned prior, we link the Contact page when appropriate, such as when indicating that a piece is Available for purchase, so that users know how to contact the client best for their specific need.
 
-3. Easy-to-Manage Works with Admin Privileges (Uploading & Editiing Images): Given that our client is a freelance artist and that she used squarespace to create her website, it was clear to us that our site had to give the client the autonomy of running her own website (without the need for a webmaster) going forward. Since our website has more advanced functionalities than her more static initial site, we gave her upload and edit image forms that would allow her to easily manage her online portfolio.
+3. Easy-to-Manage Works with Admin Privileges (Uploading & Editing Images): Given that our client is a freelance artist and that she used squarespace to create her website, it was clear to us that our site had to give the client the autonomy of running her own website (without the need for a webmaster) going forward. Since our website has more advanced functionalities than her more static initial site, we gave her upload and edit image forms that would allow her to easily manage her online portfolio.
 
 [2. Tell us about things that don't work, what you wanted to implement, or what you would do if you keep working with the client in the future. Give justifications.]
 
