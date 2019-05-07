@@ -412,16 +412,7 @@ else {
         $_SESSION["image_list"] = $result;
         if (count($result)>0) {
           foreach ($result as $image) {
-            // will uncomment when sessions work
-            // if ( !check_admin_log_in() ) {
-            //   print_image($image);
-            // } else {
             print_image($image);
-            // echo "<form method=\"post\">";
-            // echo "<input type=\"hidden\" value=\"" . $image['id'] .  "\"name=\"selected_id\" />";
-            // echo "<input type=\"hidden\" value=\""  . $image['ext'] . "\"name=\"selected_ext\" />";
-            // echo "<input type=\"checkbox\" name=\"checkbox\" />";
-            // }
           }
         }
         else {
