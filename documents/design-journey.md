@@ -798,4 +798,6 @@ If we were to keep working with the client in the future, we would probably work
 
 [3. Tell us anything else you need us to know for when we're looking at the project.]
 
+Difference between albums and tags: We have albums and tags as two separate entities on our website. The albums are the more general categories carried over mostly from the client's previous site: Outdoor, Portrait, Illustrations, Personal, and our additions Available and All. The tags are the more specific features of the pieces themselves (i.e. different keywords or media: pencil, watercolor, nature, children) that can be found across various albums.
+
 We have optimized the usability of our forms by providing user feedback and making the forms sticky.
