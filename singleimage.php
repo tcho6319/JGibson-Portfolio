@@ -129,21 +129,29 @@ if ( isset($_POST["submit_existing_tag"]) ) {
   // query for editing title
 
 if ( isset($_POST["submit_edit_title"]) ) {
+    $valid_new_title = TRUE;
+
     $edit_title = filter_input(INPUT_POST, 'upload_edit_title', FILTER_SANITIZE_STRING);
-    var_dump($edit_title);
     $new_title = str_replace(" ", "-", $edit_title);
     $new_title = strtolower($new_title);
-    $sql = "UPDATE images SET (filename) = (:filename) WHERE id = :id;";
-    $params = array(
-      ':filename' => $new_title,
-      ':id' => $single_img_id
-    );
-    $result = exec_sql_query($db, $sql, $params);
-    if ($result) {
-      //success
-      //message here
-    } else {
-      //message
+
+    if ($edit_title=='') {
+      $valid_new_title = FALSE;
+      array_push($messages, "Title cannot be empty.");
+    }
+
+    if ( isset($valid_new_title) && $valid_new_title ) {
+      $sql = "UPDATE images SET (filename) = (:filename) WHERE id = :id;";
+      $params = array(
+        ':filename' => $new_title,
+        ':id' => $single_img_id
+      );
+      $result = exec_sql_query($db, $sql, $params);
+      if ($result) {
+        array_push($messages, "Title has been updated.");
+      } else {
+        array_push($messages, "Title could not be updated.");
+      }
     }
   }
 
@@ -266,7 +274,12 @@ $tags_to_print = print_single_img_tags($single_img_id);
 <?php include("includes/header.php");?>
 
   <div id="singleimgblock">
-    <div id="single_img_title"><?php echo '"' . htmlspecialchars($single_img_filename) . '"' ?></div>
+
+
+    <div id="single_img_title"><?php if ( isset($valid_new_title) && $valid_new_title ) {
+      echo '"' . htmlspecialchars($edit_title) . '"';
+    } else { echo '"' . htmlspecialchars($single_img_filename) . '"'; }
+     ?></div>
 
     <div id="slideshowdiv">
     <?php if (count($image_list) > 1) { ?>
