@@ -28,12 +28,6 @@ if ( isset($_POST["submit_upload"]) ) {
 
   var_dump($upload_description);
 
-  // tell user to select file if they didn't
-  if (is_uploaded_file($upload_info) == FALSE) {
-    $valid_upload = FALSE;
-    array_push($upload_messages, "Please select a file to upload.");
-  }
-
   // make sure user selects album
   if ($upload_album == '') {
     $valid_upload = FALSE;
@@ -77,7 +71,7 @@ if ( isset($_POST["submit_upload"]) ) {
           array_push($upload_messages, "Image could not be uploaded.");
         }
       } else {
-          array_push($upload_messages, "Image could not be uploaded.");
+          array_push($upload_messages, "Image could not be uploaded. Make sure you selected a file.");
         }
 
     if ($upload_tag && $upload_tag != null) {
@@ -86,6 +80,15 @@ if ( isset($_POST["submit_upload"]) ) {
         ':tag' => $upload_tag
       );
       $result2 = exec_sql_query($db, $sql2, $params2);
+
+      $newtagid = $db->lastInsertId("id");
+      var_dump($newtagid, $file_id);
+      $sql_tag = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id);";
+      $params_tag = array(
+        ':tag_id'=>$newtagid,
+        ':image_id'=>$file_id
+      );
+      $result_tag = exec_sql_query($db, $sql_tag, $params_tag);
     }
 
     $newimageid = $db->lastInsertId();
