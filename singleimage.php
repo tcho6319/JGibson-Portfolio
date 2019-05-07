@@ -58,9 +58,8 @@ if ( isset($_POST["submit_delete"]) ) {
       if ($result) {
         $location = "gallery.php";
         header("Location: $location?delete_message=Image has been deleted from gallery.");
-        echo("Image was deleted from gallery");
       } else {
-        echo "Image could not be deleted.";
+        array_push($messages, "Your image could not be deleted.");
       }
   }
 

@@ -14,11 +14,7 @@ $albums = $albums_result->fetchAll();
 
 $messages = array();
 
-if(!empty($_GET['delete_message'])) {
-  $delete_message = $_GET['delete_message'];
-  echo $delete_message;
-// rest of your code
-}
+
 
 const MAX_FILE_SIZE = 1000000;
 
@@ -368,8 +364,12 @@ else {
 
     <h3 class="disclaimer">Click images to see fullscreen view!</h3>
 
-
-    <div id="images-container">
+    <?php if( $_GET['delete_message'] ) {
+        $delete_message = $_GET['delete_message'];
+        echo '<p class="center"><strong>' . $delete_message . '</strong></p>';
+      }
+      ?>
+      <div id="images-container">
       <?php
         // var_dump($result);
         $_SESSION["image_list"] = $result;
