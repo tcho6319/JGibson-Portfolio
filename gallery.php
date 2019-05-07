@@ -26,7 +26,7 @@ if ( isset($_POST["submit_upload"]) ) {
   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
   $upload_album = filter_input(INPUT_POST, 'upload_album', FILTER_SANITIZE_SPECIAL_CHARS);
 
-  var_dump($upload_description);
+  // var_dump($upload_description);
 
   // make sure user selects album
   if ($upload_album == '') {
@@ -82,7 +82,7 @@ if ( isset($_POST["submit_upload"]) ) {
       $result2 = exec_sql_query($db, $sql2, $params2);
 
       $newtagid = $db->lastInsertId("id");
-      var_dump($newtagid, $file_id);
+      // var_dump($newtagid, $file_id);
       $sql_tag = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id);";
       $params_tag = array(
         ':tag_id'=>$newtagid,
