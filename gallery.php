@@ -106,7 +106,10 @@ if ( isset($_POST["submit_upload"]) ) {
       );
       $result4 = exec_sql_query($db, $sql4, $params3);
   }
-
+  $location="gallery.php";
+  if ($result && $result2 && $result_tag && $result4) {
+    header("Location: $location?upload_message=Image has been uploaded to the gallery.");
+  }
 }
 
 // Search
@@ -394,6 +397,13 @@ else {
         echo '<p class="center"><strong>' . $delete_message . '</strong></p>';
       }
       ?>
+
+<?php if( $_GET['upload_message'] ) {
+        $upload_message = $_GET['upload_message'];
+        echo '<p class="center"><strong>' . $upload_message . '</strong></p>';
+      }
+      ?>
+
       <div id="images-container">
       <?php
         // var_dump($result);
@@ -439,7 +449,7 @@ else {
         <li class="center">
           <!-- declare max file size before uploading an image -->
           <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>" />
-          <label for="new_image">Add a new painting:</label>
+          <label for="new_image"><strong>Add a new painting:</strong></label>
           <input id="new_image" type="file" name="new_image">
         </li>
         <li class="center">
