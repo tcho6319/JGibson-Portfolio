@@ -29,7 +29,7 @@ if ( isset($_POST["submit_upload"]) ) {
   // var_dump($upload_description);
 
   // make sure user selects album
-  if ($upload_album == '') {
+  if ( isset($upload_album) == FALSE) {
     $valid_upload = FALSE;
     array_push($upload_messages, "Please select an album for the upload.");
   }
@@ -452,13 +452,13 @@ else {
         <li class="center">
           <!-- declare max file size before uploading an image -->
           <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>" />
-          <label for="new_image"><strong>Add a new painting:</strong></label>
+          <p><strong>Add a new painting:</strong></p>
           <input id="new_image" type="file" name="new_image">
         </li>
         <li class="center">
-        <label for="upload_album">Album:</label>
+        <p class="center">Album:</p>
         <select name="upload_album">
-          <option value=""></option>
+          <option disabled selected value>Pick an Album</option>
           <option <?php if($upload_album=="available") echo 'selected="selected"'; ?> value="available">Available</option>
           <option <?php if($upload_album=="outdoor") echo 'selected="selected"'; ?> value="outdoor">Outdoor</option>
           <option <?php if($upload_album=="portrait") echo 'selected="selected"'; ?> value="portrait">Portrait</option>
@@ -467,7 +467,7 @@ else {
         </select>
         </li>
         <li class="center">
-        <label for="upload_tag\">New tag:</label>
+        <p>New tag:</p>
         <input id="upload_tag" type="text" name="upload_tag" value="<?php echo $upload_tag; ?>"/>
         <p class = 'center'><em>(Existing tag can be added later)</em></p>
         </li>
