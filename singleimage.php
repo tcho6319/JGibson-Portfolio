@@ -67,16 +67,35 @@ if ( isset($_POST["submit_delete"]) ) {
 // query for adding a new tag
 if ( isset($_POST["submit_new_tag"]) ) {
     $tagname = filter_input(INPUT_POST, 'upload_new_tag', FILTER_SANITIZE_STRING);
-    $sql = "INSERT INTO tags (tag) VALUES (:tag)";
-    $params = array(
-      ':tag' => $tagname
-    );
-    $result = exec_sql_query($db, $sql, $params);
-    if ($result) {
-      //success
-      //array message here
-    } else {
-      // array message here
+    $valid_new_tag = TRUE;
+
+    // can't be empty
+    if ($tagname == '') {
+      var_dump($tagname);
+      $valid_new_tag = FALSE;
+      array_push($messages, "Tag cannot be empty.");
+    }
+
+    if (isset($valid_new_tag) && $valid_new_tag) {
+      $sql1 = "INSERT INTO tags (tag) VALUES (:tag);";
+      $params1 = array(
+        ':tag' => $tagname
+      );
+      $result1 = exec_sql_query($db, $sql1, $params1);
+
+      $newtagid = $db->lastInsertId("id");
+      $sql2 = "INSERT INTO image_tags (tag_id, image_id) VALUES (:tag_id, :image_id);";
+      $params2 = array(
+        ':tag_id'=> $newtagid,
+        ':image_id' =>$single_img_id
+      );
+      $result2 = exec_sql_query($db, $sql2, $params2);
+      if ($result1 && $result2) {
+        //success
+        array_push($messages, "Your tag has been added to this image.");
+      } else {
+        array_push($messages, "Your tag could not be added to this image.");
+      }
     }
   }
 
@@ -94,10 +113,10 @@ if ( isset($_POST["submit_existing_tag"]) ) {
         //success, tag added to image
         //array message here
       } else {
-        array_push($messages, "Failed.");
+        //message
       }
   } else {
-    array_push($messages, "Failed.");
+    //message
   }
 
 
@@ -286,6 +305,12 @@ $tags_to_print = print_single_img_tags($single_img_id);
 
     <div id="uploading">
 
+    <?php
+    // array for sending messages to admin
+    foreach ($messages as $message) {
+      echo "<p><strong>" . htmlspecialchars($message) . "</strong></p>\n";
+    }
+    ?>
 
     <!-- delete image button - CURRENTLY NOT FUNCTIONAL DOWN HERE -->
     <form id="submit_delete" action="" method="post" enctype="multipart/form-data">
