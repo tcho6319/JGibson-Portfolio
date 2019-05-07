@@ -11,19 +11,11 @@ $albums_sql = "SELECT albums.id, albums.album FROM albums";
 $albums_params = array();
 $albums_result = exec_sql_query($db, $albums_sql, $albums_params);
 $albums = $albums_result->fetchAll();
-
 $messages = array();
-
-
-
 const MAX_FILE_SIZE = 1000000;
-
 //query for image upload
 // user needs to be logged in
 if ( isset($_POST["submit_upload"]) ) {
-
-  $valid_upload = TRUE;
-
   $upload_info = $_FILES["new_image"];
   $upload_description = filter_input(INPUT_POST, 'upload_description', FILTER_SANITIZE_STRING);
   $upload_tag = filter_input(INPUT_POST, 'upload_tag', FILTER_SANITIZE_STRING);
@@ -39,7 +31,6 @@ if ( isset($_POST["submit_upload"]) ) {
     ':description' => $upload_description,
     ':admin_id' => $current_admin
   );
-
   $result = exec_sql_query($db, $sql1, $params1);
   if ($result) {
     //image was added to db
@@ -57,7 +48,6 @@ if ( isset($_POST["submit_upload"]) ) {
   } else {
       array_push($messages, "failed");
     }
-
   if ($upload_tag && $upload_tag != null) {
     $sql2 = "INSERT INTO tags (tag) VALUES (:tag)";
     $params2 = array(
@@ -65,9 +55,7 @@ if ( isset($_POST["submit_upload"]) ) {
     );
     $result2 = exec_sql_query($db, $sql2, $params2);
   }
-
   $newimageid = $db->lastInsertId();
-
   $sql_album = "SELECT id FROM albums WHERE album = :album";
   $params = array(
       ':album' => $upload_album
@@ -75,15 +63,12 @@ if ( isset($_POST["submit_upload"]) ) {
   $result_album = exec_sql_query($db, $sql_album, $params)->fetchAll();
   $single_album = $result_album[0];
   $album_needed = $single_album[0];
-
     $sql4 = "INSERT INTO image_albums (album_id, image_id) VALUES (:album_id, :image_id)";
     $params3 = array(
       ':album_id' => $album_needed,
       ':image_id' => $newimageid
     );
     $result4 = exec_sql_query($db, $sql4, $params3);
-
-
   header("Location: gallery.php", true, 303);
 }
 // Search
@@ -414,15 +399,17 @@ else {
           <input id="new_image" type="file" name="new_image">
         </li>
         <li class="center">
-        <label for="upload_album">Album for new painting:</label>
         <select name="upload_album">
-          <option value=""></option>
           <option value="available">Available</option>
           <option value="outdoor">Outdoor</option>
           <option value="portrait">Portrait</option>
           <option value="illustration">Illustration</option>
           <option value="personal">Personal</option>
         </select>
+        <li class="center">
+          <label for="upload_title">Title:</label>
+          <input id="upload_title" type="text" name="upload_title" />
+        </li>
         <li>
         <li class="center">
         <label for="upload_tag\">Tag:</label>
