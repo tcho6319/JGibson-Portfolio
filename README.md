@@ -5,4 +5,6 @@ This website was created by a group of four in my Intermediate Web Design and Pr
 
 The website showcases a dynamic filterable gallery, a contact form, admin login/logout, and a single image view slideshow where the user can flip through their search results or all images.
 
-View the website here: https://guarded-sea-31666.herokuapp.com/index.php
+View the website as originally designed & programmed here: https://guarded-sea-31666.herokuapp.com/index.php
+
+View the live website (as modified slightly by a freelance developer before deployment) here:https://jgibsonillustration.com/index.php
