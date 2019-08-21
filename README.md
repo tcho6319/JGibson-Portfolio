@@ -1,14 +1,8 @@
-# Project 3
+# Website for Freelance Artist Jennifer Gibson
 
-See the course website for Project 4's requirements: [Project 4](https://github.coecis.cornell.edu/info2300-sp2019/info2300-sp2019-website/blob/master/assignments/project-4/project-4.md) ([PDF](https://github.coecis.cornell.edu/info2300-sp2019/info2300-sp2019-website/blob/master/assignments/project-4/project-4.pdf)).
+This website was created by a group of four in my Intermediate Web Design and Programming course. This website was created with the contributions of Shea Murphy, Cora Geunes, and Jinny Lee. Artwork on the website is all by Jennifer Gibson. 
 
-# Submission Instructions
 
-See the respective **submit-_milestone_.md** file for each submission.
+The website showcases a dynamic filterable gallery, a contact form, admin login/logout, and a single image view slideshow where the user can flip through their search results or all images.
 
-| Submission  | Instructions                       |
-| ----------- | ---------------------------------- |
-| Milestone 1 | [submit-m1.md](submit-m1.md)       |
-| Milestone 2 | [submit-m2.md](submit-m2.md)       |
-| Milestone 3 | [submit-m3.md](submit-m3.md)       |
-| Final       | [submit-FINAL.md](submit-FINAL.md) |
+View the website here: https://guarded-sea-31666.herokuapp.com/index.php
